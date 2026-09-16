@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" defer src="main.js"></script>
+    <script type="module" src="./mythis.js"></script>
+
+    <style>
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+
+      .font-cinzel {
+        font-family: "Cinzel", serif;
+      }
+
+      @media print {
+        body {
+          background-color: #ffffff !important;
+          color: #000000 !important;
+          padding: 0 !important;
+          line-height: 38px !important;
+        }
+
+        .no-print {
+          display: none !important;
+        }
+
+        .page-card {
+          box-shadow: none !important;
+          border: 1px solid #cbd5e1 !important;
+          max-width: 100% !important;
+          margin: 0 !important;
+          background: #ffffff !important;
+          color: #000000 !important;
+        }
+
+        .text-amber-800,
+        .text-amber-900,
+        .text-amber-700 {
+          color: #854d0e !important;
+        }
+
+        .text-slate-700,
+        .text-slate-600,
+        .text-slate-800 {
+          color: #0f172a !important;
+        }
+
+        .bg-amber-50,
+        .bg-amber-100\/50,
+        .bg-slate-50,
+        .bg-slate-100 {
+          background-color: #ffffff !important;
+          border-color: #e2e8f0 !important;
+        }
+
+        .page-break-before {
+          page-break-before: always;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-slate-50 text-slate-700 p-6 md:p-12">
+    <h1 class="text-3xl text-amber-800 font-bold">React JS v18.0.0</h1>
+    <p>This is a JavaScript library for rendering user interfaces faster.</p>
+    <h4 class="text-xl font-semibold text-amber-600 mt-4">ES6 Features</h4>
+    <p>Master ES6 features in React JS v18.0.0</p>
+  </body>
+</html>
