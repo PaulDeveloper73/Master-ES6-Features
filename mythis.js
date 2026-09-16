@@ -8,6 +8,11 @@ const video = {
   },
   myObject: function () {
     console.log(this)
+  },
+  showTags: function () {
+    this.tags.forEach(function (tag) {
+      console.log(this.title + ': ' + tag)
+    }, this)
   }
 }
 video.stop = function () {
@@ -20,5 +25,9 @@ console.log('Video title is: ' + video.title)
 console.log('My entire object')
 console.log(video.myObject())
 console.log('Data loading..')
-
+console.log('Show All Tags')
+console.log('Show All Tags')
+video.showTags()
+console.log('Stop the video')
+video.stop()
 export default video
