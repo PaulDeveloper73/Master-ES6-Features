@@ -16,7 +16,7 @@ const video = {
   }
 }
 video.stop = function () {
-  console.log(`Stopping video: ${this}`)
+  console.log(this)
 }
 console.log('<------------ Extract video Details from function ------------> ')
 console.log(video.getVideoDetails())
