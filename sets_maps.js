@@ -44,3 +44,4 @@ studentData.set('address', { city: 'Kampala', country: 'Uganda' })
 studentData.set(['name', 'Age'], ['Magezi Joshua', 25])
 console.log([...studentData])
 console.log(studentData)
+/
