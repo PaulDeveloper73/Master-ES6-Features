@@ -68,3 +68,35 @@ console.log(`Additions of two number:${addNumber(34, 6)}`)
 console.log(
   `GrandTotal of array numbers is: ${sumTotal(7, 8, 9, 6, 6, 1, 3, 2)}`
 )
+// Function to display the first five letters of the array
+const displayFirstFiveLetters = (a, b, c, d, e) =>
+  console.log(`The first five letters are: ${a},${b},${c},${d},${e}`)
+displayFirstFiveLetters(...myArray2)
+// Traditional function definition
+
+function myFunc () {
+  for (var i = 1; i <= 10; i++) {
+    console.log(i)
+  }
+  console.log('\nis globally accessed withing the function scope' + i)
+}
+myFunc()
+// binding obect to to reference method
+
+const userObject = {
+  title: 'Manager',
+  arrival_time () {
+    console.log(this)
+  },
+  departure_time () {}
+}
+
+userObject['title'] = 'Human resource Manager'
+
+const arrival_timePro = userObject.arrival_time.bind(userObject)
+arrival_timePro()
+// Object destructuring
+const { title, arrival_time, departure_time } = userObject
+console.log(
+  `My title is: ${title} and arrival time is: ${arrival_time} and departure time is: ${departure_time}`
+)
