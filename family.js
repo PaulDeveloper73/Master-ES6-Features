@@ -22,3 +22,13 @@ const childWalk = familyData.walk()
 // console.log(childWalk)
 const brotherWalk = familyData.walk.bind(familyData)
 console.log(brotherWalk)
+
+// Data manipulation methods
+// 1. Filter
+const userData = [
+  { id: '001', child_name: 'Magezi', dob: '2023', mother: 'Teddy' },
+  { id: '002', child_name: 'Elivis', dob: '2023', mother: 'Precious' },
+  { id: '003', child_name: 'Git', dob: '2020', mother: 'Moreen' }
+]
+const sameDOB = userData.filter(year => year.dob == 2023)
+console.log(sameDOB)
