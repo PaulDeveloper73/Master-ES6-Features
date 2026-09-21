@@ -32,3 +32,10 @@ const userData = [
 ]
 const sameDOB = userData.filter(year => year.dob == 2023)
 console.log(sameDOB)
+
+// 2. Map
+
+const colors=["green", "orange"," blue","black"];
+const colorItems=colors.map(color=>`<li>${color}</li>`);
+
+console.log(`<ul>${colorItems}</ul>`)
