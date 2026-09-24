@@ -1,0 +1,1567 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Fundamentals — Part 1 & Part 2</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+      .font-cinzel {
+        font-family: "Cinzel", serif;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .code {
+        font-family:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", monospace;
+      }
+
+      .code-block {
+        background: #0f172a;
+        color: #e2e8f0;
+        border-radius: 14px;
+        padding: 1rem;
+        overflow-x: auto;
+        font-size: 0.88rem;
+        line-height: 1.7;
+      }
+
+      .kw {
+        color: #f9a8d4;
+      }
+      .fn {
+        color: #93c5fd;
+      }
+      .str {
+        color: #86efac;
+      }
+      .num {
+        color: #fde68a;
+      }
+      .com {
+        color: #94a3b8;
+        font-style: italic;
+      }
+      .op {
+        color: #c4b5fd;
+      }
+
+      .memory-card {
+        border-left: 5px solid #d97706;
+      }
+
+      .topic-card {
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+      .topic-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 35px rgba(15, 23, 42, 0.09);
+      }
+
+      .diagram-arrow {
+        font-size: 1.6rem;
+        color: #d97706;
+        font-weight: 800;
+      }
+
+      @media print {
+        body {
+          background-color: #ffffff !important;
+          color: #000000 !important;
+          padding: 0 !important;
+        }
+        .no-print {
+          display: none !important;
+        }
+        .page-card {
+          box-shadow: none !important;
+          border: 1px solid #cbd5e1 !important;
+          max-width: 100% !important;
+          margin: 0 !important;
+          background: #ffffff !important;
+        }
+        .text-amber-800,
+        .text-amber-900,
+        .text-amber-950 {
+          color: #78350f !important;
+        }
+        .bg-amber-50,
+        .bg-slate-50,
+        .bg-red-50,
+        .bg-emerald-50 {
+          background-color: #ffffff !important;
+          border-color: #e2e8f0 !important;
+        }
+        .code-block {
+          color: #111827 !important;
+          background: #f8fafc !important;
+          border: 1px solid #cbd5e1 !important;
+        }
+        .topic-card:hover {
+          transform: none;
+          box-shadow: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-slate-100 text-slate-800">
+    <div class="page-card max-w-7xl mx-auto bg-white shadow-2xl">
+      <!-- HERO -->
+      <header
+        class="bg-gradient-to-br from-slate-950 via-slate-900 to-amber-950 text-white px-6 sm:px-10 lg:px-16 py-14"
+      >
+        <div class="max-w-5xl mx-auto">
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span
+              class="px-3 py-1 rounded-full bg-amber-400/15 border border-amber-300/30 text-amber-200 text-xs font-bold uppercase tracking-wider"
+              >JavaScript</span
+            >
+            <span
+              class="px-3 py-1 rounded-full bg-white/10 border border-white/15 text-slate-200 text-xs font-bold uppercase tracking-wider"
+              >Fundamentals</span
+            >
+            <span
+              class="px-3 py-1 rounded-full bg-white/10 border border-white/15 text-slate-200 text-xs font-bold uppercase tracking-wider"
+              >Part 1 + Part 2</span
+            >
+          </div>
+
+          <h1
+            class="font-cinzel text-4xl sm:text-5xl lg:text-6xl font-black leading-tight"
+          >
+            JavaScript Fundamentals
+          </h1>
+          <p class="mt-5 text-xl sm:text-2xl text-slate-300 max-w-3xl">
+            Learn the ideas, see the code, connect the concepts, and build
+            memory hooks that last.
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-3 no-print">
+            <button
+              onclick="window.print()"
+              class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-5 py-3 rounded-xl"
+            >
+              Print / Save as PDF
+            </button>
+            <a
+              href="#memory-map"
+              class="bg-white/10 hover:bg-white/15 border border-white/20 px-5 py-3 rounded-xl font-bold"
+            >
+              Jump to Memory Map
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- QUICK NAV -->
+      <nav
+        class="no-print sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 px-4 py-3"
+      >
+        <div
+          class="max-w-6xl mx-auto flex gap-2 overflow-x-auto text-sm font-bold"
+        >
+          <a
+            href="#part1"
+            class="px-3 py-2 rounded-lg hover:bg-slate-100 whitespace-nowrap"
+            >Part 1</a
+          >
+          <a
+            href="#part2"
+            class="px-3 py-2 rounded-lg hover:bg-slate-100 whitespace-nowrap"
+            >Part 2</a
+          >
+          <a
+            href="#memory-map"
+            class="px-3 py-2 rounded-lg hover:bg-slate-100 whitespace-nowrap"
+            >Memory Map</a
+          >
+          <a
+            href="#cheat-sheet"
+            class="px-3 py-2 rounded-lg hover:bg-slate-100 whitespace-nowrap"
+            >Cheat Sheet</a
+          >
+          <a
+            href="#practice"
+            class="px-3 py-2 rounded-lg hover:bg-slate-100 whitespace-nowrap"
+            >Practice</a
+          >
+        </div>
+      </nav>
+
+      <main class="px-5 sm:px-8 lg:px-14 py-12">
+        <!-- HOW TO STUDY -->
+        <section class="max-w-5xl mx-auto mb-14">
+          <div
+            class="bg-amber-50 border border-amber-200 rounded-2xl p-6 sm:p-8"
+          >
+            <p
+              class="text-xs font-extrabold uppercase tracking-widest text-amber-800"
+            >
+              The learning formula
+            </p>
+            <h2
+              class="font-cinzel text-2xl sm:text-3xl font-bold text-slate-900 mt-2"
+            >
+              WHAT → WHY → CODE → MEMORY → USE
+            </h2>
+            <div class="grid sm:grid-cols-5 gap-3 mt-6 text-center">
+              <div class="bg-white rounded-xl p-4 border border-amber-100">
+                <b>1</b><br /><span class="text-sm text-slate-600"
+                  >What is it?</span
+                >
+              </div>
+              <div class="bg-white rounded-xl p-4 border border-amber-100">
+                <b>2</b><br /><span class="text-sm text-slate-600"
+                  >Why use it?</span
+                >
+              </div>
+              <div class="bg-white rounded-xl p-4 border border-amber-100">
+                <b>3</b><br /><span class="text-sm text-slate-600"
+                  >How do I write it?</span
+                >
+              </div>
+              <div class="bg-white rounded-xl p-4 border border-amber-100">
+                <b>4</b><br /><span class="text-sm text-slate-600"
+                  >What should I remember?</span
+                >
+              </div>
+              <div class="bg-white rounded-xl p-4 border border-amber-100">
+                <b>5</b><br /><span class="text-sm text-slate-600"
+                  >Where would I use it?</span
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PART 1 -->
+        <section id="part1" class="max-w-6xl mx-auto">
+          <div class="mb-10">
+            <span
+              class="text-amber-700 font-extrabold uppercase tracking-widest text-sm"
+              >Part 01</span
+            >
+            <h2 class="font-cinzel text-4xl font-black text-slate-950 mt-2">
+              Modern JavaScript Foundations
+            </h2>
+            <p class="text-slate-600 mt-3 text-lg">
+              The core features you will repeatedly meet in React, Next.js,
+              Node.js and modern JavaScript.
+            </p>
+          </div>
+
+          <div class="space-y-10">
+            <!-- 1 -->
+            <article
+              class="topic-card border border-slate-200 rounded-2xl p-6 sm:p-8"
+            >
+              <div class="flex gap-4">
+                <div
+                  class="w-11 h-11 shrink-0 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center font-black"
+                >
+                  01
+                </div>
+                <div>
+                  <h3 class="text-2xl font-bold">const, let & Block Scope</h3>
+                  <p class="mt-2 text-slate-600">
+                    Use variables to store values. <b>let</b> can be reassigned;
+                    <b>const</b> cannot be reassigned.
+                  </p>
+                </div>
+              </div>
+
+              <div class="grid lg:grid-cols-2 gap-6 mt-6">
+                <div>
+                  <pre
+                    class="code-block"
+                  ><code><span class="kw">let</span> age = <span class="num">30</span>;
+age = <span class="num">31</span>; <span class="com">// allowed</span>
+
+<span class="kw">const</span> name = <span class="str">"Paul"</span>;
+<span class="com">// name = "John"; // error</span></code></pre>
+                </div>
+                <div class="bg-slate-50 rounded-xl p-5 border border-slate-200">
+                  <div class="font-bold mb-3">Block scope illustration</div>
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <div class="bg-white border rounded-lg px-4 py-3">
+                      Outside
+                    </div>
+                    <span class="diagram-arrow">→</span>
+                    <div
+                      class="bg-amber-100 border border-amber-200 rounded-lg px-4 py-3"
+                    >
+                      <b>{ }</b><br /><span class="text-sm"
+                        >let / const live here</span
+                      >
+                    </div>
+                    <span class="diagram-arrow">→</span>
+                    <div class="bg-white border rounded-lg px-4 py-3">
+                      Outside
+                    </div>
+                  </div>
+                  <div class="memory-card bg-white rounded-lg p-4 mt-4">
+                    <b>🧠 Remember:</b> let can change. const cannot be
+                    reassigned. Both respect block scope.
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- 2 -->
+            <article
+              class="topic-card border border-slate-200 rounded-2xl p-6 sm:p-8"
+            >
+              <h3 class="text-2xl font-bold">02. Template Literals</h3>
+              <p class="mt-2 text-slate-600">
+                Use backticks and <code>${...}</code> to place JavaScript
+                expressions directly inside text.
+              </p>
+              <pre
+                class="code-block mt-5"
+              ><code><span class="kw">const</span> name = <span class="str">"Paul"</span>;
+<span class="kw">const</span> age = <span class="num">31</span>;
+
+<span class="fn">console.log</span>(<span class="str">`Hello ${name}, you are ${age}.`</span>);</code></pre>
+              <div class="memory-card bg-amber-50 rounded-xl p-4 mt-4">
+                <b>🧠 Memory:</b> Backticks + <code>${}</code> = JavaScript
+                inside text.
+              </div>
+            </article>
+
+            <!-- 3 -->
+            <article
+              class="topic-card border border-slate-200 rounded-2xl p-6 sm:p-8"
+            >
+              <h3 class="text-2xl font-bold">03. Destructuring Objects</h3>
+              <p class="mt-2 text-slate-600">
+                Pull named properties out of an object in one step.
+              </p>
+              <pre
+                class="code-block mt-5"
+              ><code><span class="kw">const</span> user = {
+    name: <span class="str">"Paul"</span>,
+    age: <span class="num">31</span>,
+    country: <span class="str">"Uganda"</span>
+};
+
+<span class="kw">const</span> { name, age } = user;
+
+<span class="fn">console.log</span>(name); <span class="com">// Paul</span>
+<span class="fn">console.log</span>(age);  <span class="com">// 31</span></code></pre>
+              <div class="memory-card bg-amber-50 rounded-xl p-4 mt-4">
+                <b>🧠 Memory:</b> <code>{ }</code> destructuring = take
+                properties by their names.
+              </div>
+            </article>
+
+            <!-- 4 -->
+            <article
+              class="topic-card border border-slate-200 rounded-2xl p-6 sm:p-8"
+            >
+              <h3 class="text-2xl font-bold">04. Destructuring Arrays</h3>
+              <p class="mt-2 text-slate-600">
+                Pull values out of an array according to their position.
+              </p>
+              <pre
+                class="code-block mt-5"
+              ><code><span class="kw">const</span> colors = [<span class="str">"red"</span>, <span class="str">"green"</span>, <span class="str">"blue"</span>];
+
+<span class="kw">const</span> [first, second, third] = colors;
+
+<span class="fn">console.log</span>(first);  <span class="com">// red</span>
+<span class="fn">console.log</span>(second); <span class="com">// green</span></code></pre>
+              <div class="memory-card bg-amber-50 rounded-xl p-4 mt-4">
+                <b>🧠 Memory:</b> Objects use <b>names</b>; arrays use
+                <b>positions</b>.
+              </div>
+            </article>
+
+            <!-- 5 -->
+            <article
+              class="topic-card border border-slate-200 rounded-2xl p-6 sm:p-8"
+            >
+              <h3 class="text-2xl font-bold">
+                05. Object Literals & Property Shorthand
+              </h3>
+              <pre
+                class="code-block mt-5"
+              ><code><span class="kw">const</span> name = <span class="str">"Paul"</span>;
+<span class="kw">const</span> age = <span class="num">31</span>;
+
+<span class="com">// Old style</span>
+<span class="kw">const</span> user1 = { name: name, age: age };
+
+<span class="com">// Modern shorthand</span>
+<span class="kw">const</span> user2 = { name, age };</code></pre>
+              <div class="memory-card bg-amber-50 rounded-xl p-4 mt-4">
+                <b>🧠 Memory:</b> If the property name and variable name match,
+                write it once.
+              </div>
+            </article>
+
+            <!-- 6 -->
+            <article
+              class="topic-card border border-slate-200 rounded-2xl p-6 sm:p-8"
+            >
+              <h3 class="text-2xl font-bold">06. for...of Loop</h3>
+              <p class="mt-2 text-slate-600">
+                <code>for...of</code> walks through the <b>values</b> of an
+                iterable such as an array.
+              </p>
+              <pre
+                class="code-block mt-5"
+              ><code><span class="kw">const</span> fruits = [<span class="str">"apple"</span>, <span class="str">"banana"</span>, <span class="str">"orange"</span>];
+
+<span class="kw">for</span> (<span class="kw">const</span> fruit <span class="kw">of</span> fruits) {
+    <span class="fn">console.log</span>(fruit);
+}</code></pre>
+              <div class="memory-card bg-amber-50 rounded-xl p-4 mt-4">
+                <b>🧠 Memory:</b> <b>OF = values.</b> Think: “for each value of
+                this collection”.
+              </div>
+            </article>
+
+            <!-- 7 + 8 -->
+            <article
+              class="topic-card border border-slate-200 rounded-2xl p-6 sm:p-8"
+            >
+              <h3 class="text-2xl font-bold">07–08. Spread & Rest Operators</h3>
+              <p class="mt-2 text-slate-600">
+                Both use <code>...</code>, but the meaning depends on where you
+                use them.
+              </p>
+              <div class="grid lg:grid-cols-2 gap-6 mt-5">
+                <pre
+                  class="code-block"
+                ><code><span class="com">// SPREAD = unpack</span>
+<span class="kw">const</span> numbers = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>];
+
+<span class="kw">const</span> more = [...numbers, <span class="num">4</span>, <span class="num">5</span>];
+
+<span class="com">// Object spread</span>
+<span class="kw">const</span> user = { name: <span class="str">"Paul"</span>, age: <span class="num">31</span> };
+<span class="kw">const</span> updated = { ...user, age: <span class="num">32</span> };</code></pre>
+                <pre
+                  class="code-block"
+                ><code><span class="com">// REST = collect</span>
+<span class="kw">function</span> <span class="fn">add</span>(...numbers) {
+    <span class="kw">return</span> numbers.reduce(
+        (total, n) =&gt; total + n,
+        <span class="num">0</span>
+    );
+}
+
+<span class="fn">console.log</span>(<span class="fn">add</span>(<span class="num">10</span>, <span class="num">20</span>, <span class="num">30</span>));</code></pre>
+              </div>
+              <div class="grid sm:grid-cols-2 gap-4 mt-5">
+                <div
+                  class="bg-emerald-50 border border-emerald-200 rounded-xl p-4"
+                >
+                  <b>SPREAD → unpack/open</b><br /><span class="text-sm"
+                    >Take values out and place them somewhere.</span
+                  >
+                </div>
+                <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+                  <b>REST → collect</b><br /><span class="text-sm"
+                    >Gather remaining arguments into an array.</span
+                  >
+                </div>
+              </div>
+            </article>
+
+            <!-- 9 -->
+            <article
+              class="topic-card border border-slate-200 rounded-2xl p-6 sm:p-8"
+            >
+              <h3 class="text-2xl font-bold">09. Arrow Functions</h3>
+              <pre
+                class="code-block mt-5"
+              ><code><span class="com">// Traditional function</span>
+<span class="kw">function</span> <span class="fn">add</span>(a, b) {
+    <span class="kw">return</span> a + b;
+}
+
+<span class="com">// Arrow function</span>
+<span class="kw">const</span> add = (a, b) =&gt; a + b;</code></pre>
+              <div class="memory-card bg-amber-50 rounded-xl p-4 mt-4">
+                <b>🧠 Memory:</b> <code>=&gt;</code> is the visual signature of
+                an arrow function.
+              </div>
+            </article>
+
+            <!-- 10 -->
+            <article
+              class="topic-card border border-slate-200 rounded-2xl p-6 sm:p-8"
+            >
+              <h3 class="text-2xl font-bold">10. Default Parameters</h3>
+              <pre
+                class="code-block mt-5"
+              ><code><span class="kw">function</span> <span class="fn">greet</span>(name = <span class="str">"Guest"</span>) {
+    <span class="kw">return</span> <span class="str">`Hello ${name}`</span>;
+}
+
+<span class="fn">console.log</span>(<span class="fn">greet</span>());      <span class="com">// Hello Guest</span>
+<span class="fn">console.log</span>(<span class="fn">greet</span>(<span class="str">"Paul"</span>)); <span class="com">// Hello Paul</span></code></pre>
+              <div class="memory-card bg-amber-50 rounded-xl p-4 mt-4">
+                <b>🧠 Memory:</b> Default parameter = backup value.
+              </div>
+            </article>
+
+            <!-- 11 -->
+            <article
+              class="topic-card border border-slate-200 rounded-2xl p-6 sm:p-8"
+            >
+              <h3 class="text-2xl font-bold">11. Export & Import</h3>
+              <div class="grid lg:grid-cols-2 gap-6 mt-5">
+                <pre
+                  class="code-block"
+                ><code><span class="com">// math.js</span>
+<span class="kw">export const</span> add = (a, b) =&gt; a + b;</code></pre>
+                <pre class="code-block"><code><span class="com">// app.js</span>
+<span class="kw">import</span> { add } <span class="kw">from</span> <span class="str">"./math.js"</span>;
+
+<span class="fn">console.log</span>(<span class="fn">add</span>(<span class="num">5</span>, <span class="num">3</span>));</code></pre>
+              </div>
+              <div
+                class="flex flex-wrap items-center justify-center gap-4 mt-5 font-bold"
+              >
+                <div class="bg-amber-100 rounded-xl px-5 py-3">
+                  EXPORT<br /><span class="text-xs font-normal">send out</span>
+                </div>
+                <span class="diagram-arrow">→</span>
+                <div class="bg-slate-100 rounded-xl px-5 py-3">
+                  another file
+                </div>
+                <span class="diagram-arrow">→</span>
+                <div class="bg-emerald-100 rounded-xl px-5 py-3">
+                  IMPORT<br /><span class="text-xs font-normal">bring in</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- 12 -->
+            <article
+              class="topic-card border border-slate-200 rounded-2xl p-6 sm:p-8"
+            >
+              <h3 class="text-2xl font-bold">12. Trailing Commas</h3>
+              <pre
+                class="code-block mt-5"
+              ><code><span class="kw">const</span> user = {
+    name: <span class="str">"Paul"</span>,
+    age: <span class="num">31</span>,
+};</code></pre>
+              <p class="mt-4 text-slate-600">
+                A comma after the final item is valid in many modern JavaScript
+                structures and can make future edits cleaner.
+              </p>
+            </article>
+
+            <!-- 13 -->
+            <article
+              class="topic-card border border-slate-200 rounded-2xl p-6 sm:p-8"
+            >
+              <h3 class="text-2xl font-bold">13. includes()</h3>
+              <p class="mt-2 text-slate-600">
+                Ask the simple question: <b>“Is this value inside?”</b>
+              </p>
+              <pre
+                class="code-block mt-5"
+              ><code><span class="kw">const</span> fruits = [<span class="str">"apple"</span>, <span class="str">"banana"</span>, <span class="str">"orange"</span>];
+
+fruits.includes(<span class="str">"banana"</span>); <span class="com">// true</span>
+fruits.includes(<span class="str">"mango"</span>);  <span class="com">// false</span>
+
+<span class="str">"JavaScript"</span>.includes(<span class="str">"Script"</span>); <span class="com">// true</span></code></pre>
+              <div class="memory-card bg-amber-50 rounded-xl p-4 mt-4">
+                <b>🧠 Memory:</b> <code>includes()</code> = “Is it inside?”
+              </div>
+            </article>
+
+            <!-- 14 -->
+            <article
+              class="topic-card border border-slate-200 rounded-2xl p-6 sm:p-8"
+            >
+              <h3 class="text-2xl font-bold">14. Async & Await</h3>
+              <p class="mt-2 text-slate-600">
+                Used when JavaScript works with operations that finish later,
+                such as network requests.
+              </p>
+              <div class="grid lg:grid-cols-2 gap-6 mt-5">
+                <pre
+                  class="code-block"
+                ><code><span class="kw">async function</span> <span class="fn">getUsers</span>() {
+    <span class="kw">const</span> response =
+        <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">"/users"</span>);
+
+    <span class="kw">const</span> users =
+        <span class="kw">await</span> response.json();
+
+    <span class="kw">return</span> users;
+}</code></pre>
+                <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
+                  <div class="text-center font-bold mb-4">
+                    Think: ordering food 🍲
+                  </div>
+                  <div class="flex flex-col items-center gap-2">
+                    <div class="bg-white border rounded-xl px-5 py-3">
+                      Order
+                    </div>
+                    <div class="diagram-arrow">↓</div>
+                    <div
+                      class="bg-amber-100 border border-amber-200 rounded-xl px-5 py-3"
+                    >
+                      <b>await</b> preparation
+                    </div>
+                    <div class="diagram-arrow">↓</div>
+                    <div
+                      class="bg-emerald-100 border border-emerald-200 rounded-xl px-5 py-3"
+                    >
+                      Result arrives
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="memory-card bg-amber-50 rounded-xl p-4 mt-5">
+                <b>🧠 Memory:</b> <code>async</code> = this function can work
+                with waiting; <code>await</code> = wait for this Promise here.
+              </div>
+            </article>
+
+            <!-- 15 -->
+            <article
+              class="topic-card border border-slate-200 rounded-2xl p-6 sm:p-8"
+            >
+              <h3 class="text-2xl font-bold">15. Sets</h3>
+              <p class="mt-2 text-slate-600">
+                A <code>Set</code> stores unique values. Duplicate values are
+                not stored twice.
+              </p>
+              <pre
+                class="code-block mt-5"
+              ><code><span class="kw">const</span> numbers = <span class="kw">new</span> <span class="fn">Set</span>([<span class="num">1</span>, <span class="num">2</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">3</span>]);
+
+<span class="fn">console.log</span>(numbers); <span class="com">// Set(3) { 1, 2, 3 }</span>
+
+numbers.add(<span class="num">4</span>);
+numbers.has(<span class="num">2</span>);    <span class="com">// true</span></code></pre>
+              <div class="memory-card bg-amber-50 rounded-xl p-4 mt-4">
+                <b>🧠 Memory:</b> SET = unique values.
+              </div>
+            </article>
+
+            <!-- 16 -->
+            <article
+              class="topic-card border border-slate-200 rounded-2xl p-6 sm:p-8"
+            >
+              <h3 class="text-2xl font-bold">16. Classes</h3>
+              <p class="mt-2 text-slate-600">
+                A class is a blueprint from which objects can be created.
+              </p>
+              <pre
+                class="code-block mt-5"
+              ><code><span class="kw">class</span> <span class="fn">User</span> {
+    <span class="fn">constructor</span>(name, age) {
+        <span class="kw">this</span>.name = name;
+        <span class="kw">this</span>.age = age;
+    }
+
+    <span class="fn">greet</span>() {
+        <span class="fn">console.log</span>(<span class="str">`Hello ${this.name}`</span>);
+    }
+}
+
+<span class="kw">const</span> user = <span class="kw">new</span> <span class="fn">User</span>(<span class="str">"Paul"</span>, <span class="num">31</span>);
+user.greet();</code></pre>
+              <div
+                class="flex flex-wrap items-center justify-center gap-4 mt-6 font-bold"
+              >
+                <div class="bg-slate-100 border rounded-xl p-4 text-center">
+                  CLASS<br /><span class="text-sm font-normal">Blueprint</span>
+                </div>
+                <span class="diagram-arrow">→</span>
+                <div class="bg-amber-100 border rounded-xl p-4 text-center">
+                  <code>new User()</code><br /><span class="text-sm font-normal"
+                    >Build</span
+                  >
+                </div>
+                <span class="diagram-arrow">→</span>
+                <div class="bg-emerald-100 border rounded-xl p-4 text-center">
+                  OBJECT<br /><span class="text-sm font-normal"
+                    >Thing created</span
+                  >
+                </div>
+              </div>
+              <div class="memory-card bg-amber-50 rounded-xl p-4 mt-5">
+                <b>🧠 Memory:</b> Class = blueprint. Object = thing built from
+                the blueprint.
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- PART 2 -->
+        <section id="part2" class="max-w-6xl mx-auto mt-20">
+          <div class="mb-10">
+            <span
+              class="text-amber-700 font-extrabold uppercase tracking-widest text-sm"
+              >Part 02</span
+            >
+            <h2 class="font-cinzel text-4xl font-black text-slate-950 mt-2">
+              Powerful Everyday Features
+            </h2>
+            <p class="text-slate-600 mt-3 text-lg">
+              Small features with big practical value.
+            </p>
+          </div>
+
+          <div class="space-y-10">
+            <!-- 17 -->
+            <article
+              class="topic-card border border-slate-200 rounded-2xl p-6 sm:p-8"
+            >
+              <h3 class="text-2xl font-bold">17. padStart() & padEnd()</h3>
+              <p class="mt-2 text-slate-600">
+                Add characters until a string reaches a chosen length.
+              </p>
+              <pre
+                class="code-block mt-5"
+              ><code><span class="str">"5"</span>.padStart(<span class="num">3</span>, <span class="str">"0"</span>); <span class="com">// "005"</span>
+<span class="str">"5"</span>.padEnd(<span class="num">3</span>, <span class="str">"0"</span>);   <span class="com">// "500"</span></code></pre>
+              <div class="grid sm:grid-cols-2 gap-4 mt-5">
+                <div
+                  class="bg-blue-50 border border-blue-200 rounded-xl p-5 text-center"
+                >
+                  <div class="font-black text-lg">padStart</div>
+                  <div
+                    class="mt-2 flex justify-center items-center gap-2 font-mono"
+                  >
+                    <span>00</span
+                    ><span class="bg-white border px-2 py-1 rounded">5</span>
+                  </div>
+                  <p class="text-sm mt-2">Adds on the LEFT</p>
+                </div>
+                <div
+                  class="bg-emerald-50 border border-emerald-200 rounded-xl p-5 text-center"
+                >
+                  <div class="font-black text-lg">padEnd</div>
+                  <div
+                    class="mt-2 flex justify-center items-center gap-2 font-mono"
+                  >
+                    <span class="bg-white border px-2 py-1 rounded">5</span
+                    ><span>00</span>
+                  </div>
+                  <p class="text-sm mt-2">Adds on the RIGHT</p>
+                </div>
+              </div>
+            </article>
+
+            <!-- 18 -->
+            <article
+              class="topic-card border border-slate-200 rounded-2xl p-6 sm:p-8"
+            >
+              <h3 class="text-2xl font-bold">
+                18. Exponential Operator <code>**</code>
+              </h3>
+              <p class="mt-2 text-slate-600">
+                Raise one number to the power of another.
+              </p>
+              <pre
+                class="code-block mt-5"
+              ><code><span class="num">2</span> ** <span class="num">3</span>;  <span class="com">// 8</span>
+<span class="num">5</span> ** <span class="num">2</span>;  <span class="com">// 25</span>
+<span class="num">10</span> ** <span class="num">3</span>; <span class="com">// 1000</span></code></pre>
+              <div class="memory-card bg-amber-50 rounded-xl p-4 mt-4">
+                <b>🧠 Memory:</b> <code>**</code> = “to the power of”. Think
+                <b>2³</b>.
+              </div>
+            </article>
+
+            <!-- 19 -->
+            <article
+              class="topic-card border border-slate-200 rounded-2xl p-6 sm:p-8"
+            >
+              <h3 class="text-2xl font-bold">19. Object.values()</h3>
+              <p class="mt-2 text-slate-600">
+                Get all the values from an object as an array.
+              </p>
+              <pre
+                class="code-block mt-5"
+              ><code><span class="kw">const</span> user = {
+    name: <span class="str">"Paul"</span>,
+    age: <span class="num">31</span>,
+    country: <span class="str">"Uganda"</span>
+};
+
+Object.values(user);
+<span class="com">// ["Paul", 31, "Uganda"]</span></code></pre>
+              <div class="memory-card bg-amber-50 rounded-xl p-4 mt-4">
+                <b>🧠 Memory:</b> VALUES = “give me the values.”
+              </div>
+            </article>
+
+            <!-- 20 -->
+            <article
+              class="topic-card border border-slate-200 rounded-2xl p-6 sm:p-8"
+            >
+              <h3 class="text-2xl font-bold">20. Object.entries()</h3>
+              <p class="mt-2 text-slate-600">
+                Get each key and value together as pairs.
+              </p>
+              <pre
+                class="code-block mt-5"
+              ><code><span class="kw">const</span> user = {
+    name: <span class="str">"Paul"</span>,
+    age: <span class="num">31</span>
+};
+
+Object.entries(user);
+
+<span class="com">// [
+//   ["name", "Paul"],
+//   ["age", 31]
+// ]</span></code></pre>
+              <div
+                class="bg-slate-50 border border-slate-200 rounded-xl p-5 mt-5"
+              >
+                <div
+                  class="flex flex-col sm:flex-row items-center justify-center gap-3 font-mono"
+                >
+                  <span class="bg-white border rounded-lg px-4 py-2">name</span>
+                  <span class="diagram-arrow">+</span>
+                  <span class="bg-white border rounded-lg px-4 py-2">Paul</span>
+                  <span class="diagram-arrow">=</span>
+                  <span
+                    class="bg-amber-100 border border-amber-200 rounded-lg px-4 py-2"
+                    >entry</span
+                  >
+                </div>
+              </div>
+              <div class="memory-card bg-amber-50 rounded-xl p-4 mt-4">
+                <b>🧠 Memory:</b> ENTRIES = keys + values together.
+              </div>
+            </article>
+
+            <!-- 21 -->
+            <article
+              class="topic-card border border-slate-200 rounded-2xl p-6 sm:p-8"
+            >
+              <h3 class="text-2xl font-bold">21. Maps</h3>
+              <p class="mt-2 text-slate-600">
+                A <code>Map</code> stores explicit
+                <b>key → value</b> relationships.
+              </p>
+              <pre
+                class="code-block mt-5"
+              ><code><span class="kw">const</span> users = <span class="kw">new</span> <span class="fn">Map</span>();
+
+users.set(<span class="num">1</span>, <span class="str">"Paul"</span>);
+users.set(<span class="num">2</span>, <span class="str">"John"</span>);
+
+users.get(<span class="num">1</span>);   <span class="com">// "Paul"</span>
+users.has(<span class="num">2</span>);   <span class="com">// true</span>
+users.delete(<span class="num">1</span>);</code></pre>
+
+              <div class="grid sm:grid-cols-2 gap-5 mt-6">
+                <div class="bg-amber-50 border border-amber-200 rounded-xl p-5">
+                  <h4 class="font-black text-lg">SET</h4>
+                  <p class="text-sm mt-1">Unique values</p>
+                  <div class="font-mono mt-3">Paul · John · Mary</div>
+                </div>
+                <div class="bg-blue-50 border border-blue-200 rounded-xl p-5">
+                  <h4 class="font-black text-lg">MAP</h4>
+                  <p class="text-sm mt-1">Key → value</p>
+                  <div class="font-mono mt-3">
+                    1 → Paul<br />2 → John<br />3 → Mary
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- 22 -->
+            <article
+              class="topic-card border border-slate-200 rounded-2xl p-6 sm:p-8"
+            >
+              <h3 class="text-2xl font-bold">
+                22. Object.getOwnPropertyDescriptor()
+              </h3>
+              <p class="mt-2 text-slate-600">
+                Inspect the rulebook for one own property of an object.
+              </p>
+              <pre
+                class="code-block mt-5"
+              ><code><span class="kw">const</span> user = {
+    name: <span class="str">"Paul"</span>
+};
+
+Object.getOwnPropertyDescriptor(user, <span class="str">"name"</span>);
+
+<span class="com">// {
+//   value: "Paul",
+//   writable: true,
+//   enumerable: true,
+//   configurable: true
+// }</span></code></pre>
+              <div class="grid sm:grid-cols-4 gap-3 mt-5 text-center">
+                <div class="bg-slate-50 border rounded-xl p-4">
+                  <b>value</b><br /><span class="text-xs">stored value</span>
+                </div>
+                <div class="bg-slate-50 border rounded-xl p-4">
+                  <b>writable</b><br /><span class="text-xs"
+                    >can value change?</span
+                  >
+                </div>
+                <div class="bg-slate-50 border rounded-xl p-4">
+                  <b>enumerable</b><br /><span class="text-xs"
+                    >shows in enumeration?</span
+                  >
+                </div>
+                <div class="bg-slate-50 border rounded-xl p-4">
+                  <b>configurable</b><br /><span class="text-xs"
+                    >can descriptor change?</span
+                  >
+                </div>
+              </div>
+              <div class="memory-card bg-amber-50 rounded-xl p-4 mt-5">
+                <b>🧠 Memory:</b> Descriptor = a property's rulebook.
+              </div>
+            </article>
+
+            <!-- 23 -->
+            <article
+              class="topic-card border border-slate-200 rounded-2xl p-6 sm:p-8"
+            >
+              <h3 class="text-2xl font-bold">
+                23. Object.getOwnPropertyDescriptors()
+              </h3>
+              <p class="mt-2 text-slate-600">
+                Plural: inspect descriptors for <b>all own properties</b>.
+              </p>
+              <pre
+                class="code-block mt-5"
+              ><code><span class="kw">const</span> user = {
+    name: <span class="str">"Paul"</span>,
+    age: <span class="num">31</span>
+};
+
+Object.getOwnPropertyDescriptors(user);</code></pre>
+              <div
+                class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-5"
+              >
+                <div class="bg-slate-100 border rounded-xl p-4 text-center">
+                  <code>getOwnPropertyDescriptor()</code><br />
+                  <span class="text-sm">ONE property</span>
+                </div>
+                <span class="diagram-arrow">vs</span>
+                <div
+                  class="bg-amber-100 border border-amber-200 rounded-xl p-4 text-center"
+                >
+                  <code>getOwnPropertyDescriptors()</code><br />
+                  <span class="text-sm">ALL own properties</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- MEMORY MAP -->
+        <section id="memory-map" class="max-w-6xl mx-auto mt-20">
+          <div class="text-center mb-10">
+            <span
+              class="text-amber-700 font-extrabold uppercase tracking-widest text-sm"
+              >Master the concepts</span
+            >
+            <h2 class="font-cinzel text-4xl font-black mt-2">
+              The JavaScript Memory Map
+            </h2>
+            <p class="text-slate-600 mt-3">
+              Do not memorise 23 isolated features. Group them by the problem
+              they solve.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+              <div class="text-2xl">📦</div>
+              <h3 class="font-bold text-lg mt-3">Variables</h3>
+              <p class="text-sm text-slate-600 mt-2">let · const</p>
+              <p class="font-bold mt-4">Store things.</p>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+              <div class="text-2xl">✍️</div>
+              <h3 class="font-bold text-lg mt-3">Text</h3>
+              <p class="text-sm text-slate-600 mt-2">
+                Template literals · padStart · padEnd · includes
+              </p>
+              <p class="font-bold mt-4">Work with strings.</p>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+              <div class="text-2xl">🧱</div>
+              <h3 class="font-bold text-lg mt-3">Objects</h3>
+              <p class="text-sm text-slate-600 mt-2">
+                Destructuring · values · entries · descriptors
+              </p>
+              <p class="font-bold mt-4">Work with named data.</p>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+              <div class="text-2xl">🔢</div>
+              <h3 class="font-bold text-lg mt-3">Arrays</h3>
+              <p class="text-sm text-slate-600 mt-2">
+                Destructuring · for...of · spread · includes
+              </p>
+              <p class="font-bold mt-4">Work with ordered data.</p>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+              <div class="text-2xl">⚙️</div>
+              <h3 class="font-bold text-lg mt-3">Functions</h3>
+              <p class="text-sm text-slate-600 mt-2">
+                Arrow · defaults · rest · async · await
+              </p>
+              <p class="font-bold mt-4">Create behaviour.</p>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+              <div class="text-2xl">🧺</div>
+              <h3 class="font-bold text-lg mt-3">Collections</h3>
+              <p class="text-sm text-slate-600 mt-2">Set · Map</p>
+              <p class="font-bold mt-4">Store groups of data.</p>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+              <div class="text-2xl">🔗</div>
+              <h3 class="font-bold text-lg mt-3">Modules</h3>
+              <p class="text-sm text-slate-600 mt-2">export · import</p>
+              <p class="font-bold mt-4">Connect files.</p>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+              <div class="text-2xl">🏗️</div>
+              <h3 class="font-bold text-lg mt-3">Object-Oriented JS</h3>
+              <p class="text-sm text-slate-600 mt-2">
+                class · constructor · new · this
+              </p>
+              <p class="font-bold mt-4">Build objects from blueprints.</p>
+            </div>
+          </div>
+
+          <div class="mt-10 bg-slate-950 text-white rounded-2xl p-7">
+            <h3 class="font-cinzel text-2xl font-bold">
+              The 20-second recall test
+            </h3>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+              <div>
+                <b class="text-amber-300">let</b><br /><span
+                  class="text-slate-300"
+                  >changeable</span
+                >
+              </div>
+              <div>
+                <b class="text-amber-300">const</b><br /><span
+                  class="text-slate-300"
+                  >cannot reassign</span
+                >
+              </div>
+              <div>
+                <b class="text-amber-300">...</b><br /><span
+                  class="text-slate-300"
+                  >spread / collect</span
+                >
+              </div>
+              <div>
+                <b class="text-amber-300">of</b><br /><span
+                  class="text-slate-300"
+                  >values</span
+                >
+              </div>
+              <div>
+                <b class="text-amber-300">includes()</b><br /><span
+                  class="text-slate-300"
+                  >is it inside?</span
+                >
+              </div>
+              <div>
+                <b class="text-amber-300">Set</b><br /><span
+                  class="text-slate-300"
+                  >unique</span
+                >
+              </div>
+              <div>
+                <b class="text-amber-300">Map</b><br /><span
+                  class="text-slate-300"
+                  >key → value</span
+                >
+              </div>
+              <div>
+                <b class="text-amber-300">**</b><br /><span
+                  class="text-slate-300"
+                  >power</span
+                >
+              </div>
+              <div>
+                <b class="text-amber-300">async</b><br /><span
+                  class="text-slate-300"
+                  >can wait</span
+                >
+              </div>
+              <div>
+                <b class="text-amber-300">await</b><br /><span
+                  class="text-slate-300"
+                  >wait here</span
+                >
+              </div>
+              <div>
+                <b class="text-amber-300">export</b><br /><span
+                  class="text-slate-300"
+                  >send out</span
+                >
+              </div>
+              <div>
+                <b class="text-amber-300">import</b><br /><span
+                  class="text-slate-300"
+                  >bring in</span
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CHEAT SHEET -->
+        <section id="cheat-sheet" class="max-w-6xl mx-auto mt-20">
+          <div class="text-center mb-10">
+            <span
+              class="text-amber-700 font-extrabold uppercase tracking-widest text-sm"
+              >Quick revision</span
+            >
+            <h2 class="font-cinzel text-4xl font-black mt-2">
+              One-Page Cheat Sheet
+            </h2>
+          </div>
+
+          <div class="overflow-x-auto border border-slate-200 rounded-2xl">
+            <table class="w-full text-left text-sm">
+              <thead class="bg-slate-950 text-white">
+                <tr>
+                  <th class="p-4">Feature</th>
+                  <th class="p-4">Meaning</th>
+                  <th class="p-4">Memory Hook</th>
+                  <th class="p-4">Tiny Example</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200">
+                <tr>
+                  <td class="p-4 font-bold">let</td>
+                  <td class="p-4">Reassignable variable</td>
+                  <td class="p-4">Can change</td>
+                  <td class="p-4"><code>let x = 1</code></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-bold">const</td>
+                  <td class="p-4">Non-reassignable binding</td>
+                  <td class="p-4">Cannot reassign</td>
+                  <td class="p-4"><code>const x = 1</code></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-bold">Template literal</td>
+                  <td class="p-4">Dynamic strings</td>
+                  <td class="p-4">Backticks + ${}</td>
+                  <td class="p-4"><code>`Hi ${name}`</code></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-bold">Destructuring</td>
+                  <td class="p-4">Extract data</td>
+                  <td class="p-4">Object names / array positions</td>
+                  <td class="p-4"><code>const {name}=user</code></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-bold">for...of</td>
+                  <td class="p-4">Loop values</td>
+                  <td class="p-4">OF = values</td>
+                  <td class="p-4"><code>for (const x of xs)</code></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-bold">Spread</td>
+                  <td class="p-4">Unpack</td>
+                  <td class="p-4">Open it</td>
+                  <td class="p-4"><code>[...arr]</code></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-bold">Rest</td>
+                  <td class="p-4">Collect arguments</td>
+                  <td class="p-4">Gather them</td>
+                  <td class="p-4"><code>fn(...args)</code></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-bold">Arrow</td>
+                  <td class="p-4">Function syntax</td>
+                  <td class="p-4">=&gt;</td>
+                  <td class="p-4"><code>x =&gt; x * 2</code></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-bold">Default parameter</td>
+                  <td class="p-4">Fallback argument</td>
+                  <td class="p-4">Backup</td>
+                  <td class="p-4"><code>name="Guest"</code></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-bold">export / import</td>
+                  <td class="p-4">Module sharing</td>
+                  <td class="p-4">Send / bring</td>
+                  <td class="p-4"><code>export / import</code></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-bold">includes()</td>
+                  <td class="p-4">Membership check</td>
+                  <td class="p-4">Is it inside?</td>
+                  <td class="p-4"><code>arr.includes(x)</code></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-bold">async / await</td>
+                  <td class="p-4">Async flow</td>
+                  <td class="p-4">Can wait / wait here</td>
+                  <td class="p-4"><code>await fetch()</code></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-bold">Set</td>
+                  <td class="p-4">Unique collection</td>
+                  <td class="p-4">No duplicates</td>
+                  <td class="p-4"><code>new Set()</code></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-bold">Class</td>
+                  <td class="p-4">Object blueprint</td>
+                  <td class="p-4">Blueprint</td>
+                  <td class="p-4"><code>new User()</code></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-bold">padStart / padEnd</td>
+                  <td class="p-4">Pad strings</td>
+                  <td class="p-4">Left / right</td>
+                  <td class="p-4"><code>"5".padStart(3,"0")</code></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-bold">**</td>
+                  <td class="p-4">Exponentiation</td>
+                  <td class="p-4">Power</td>
+                  <td class="p-4"><code>2 ** 3</code></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-bold">Object.values()</td>
+                  <td class="p-4">Object values</td>
+                  <td class="p-4">Values</td>
+                  <td class="p-4"><code>Object.values(obj)</code></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-bold">Object.entries()</td>
+                  <td class="p-4">Key/value pairs</td>
+                  <td class="p-4">Entries</td>
+                  <td class="p-4"><code>Object.entries(obj)</code></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-bold">Map</td>
+                  <td class="p-4">Key/value collection</td>
+                  <td class="p-4">Key → value</td>
+                  <td class="p-4"><code>map.set(k,v)</code></td>
+                </tr>
+                <tr>
+                  <td class="p-4 font-bold">Descriptor</td>
+                  <td class="p-4">Property rules</td>
+                  <td class="p-4">Rulebook</td>
+                  <td class="p-4"><code>getOwnPropertyDescriptor()</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- PRACTICE -->
+        <section id="practice" class="max-w-6xl mx-auto mt-20">
+          <div
+            class="bg-amber-50 border border-amber-200 rounded-2xl p-7 sm:p-10"
+          >
+            <span
+              class="text-amber-800 font-extrabold uppercase tracking-widest text-sm"
+              >Active recall</span
+            >
+            <h2 class="font-cinzel text-3xl font-black mt-2">
+              Test Yourself Before Looking at the Answers
+            </h2>
+
+            <div class="grid lg:grid-cols-2 gap-5 mt-8">
+              <div class="bg-white border rounded-xl p-5">
+                <b>1. What is the output?</b>
+                <pre
+                  class="code-block mt-3"
+                ><code><span class="kw">const</span> numbers = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>];
+<span class="kw">const</span> newNumbers = [...numbers, <span class="num">4</span>];
+<span class="fn">console.log</span>(newNumbers);</code></pre>
+              </div>
+
+              <div class="bg-white border rounded-xl p-5">
+                <b>2. What does this extract?</b>
+                <pre
+                  class="code-block mt-3"
+                ><code><span class="kw">const</span> user = {
+    name: <span class="str">"Paul"</span>,
+    age: <span class="num">31</span>
+};
+
+<span class="kw">const</span> { name } = user;</code></pre>
+              </div>
+
+              <div class="bg-white border rounded-xl p-5">
+                <b>3. Spread or Rest?</b>
+                <pre
+                  class="code-block mt-3"
+                ><code><span class="kw">const</span> copy = [...numbers];
+
+<span class="kw">function</span> <span class="fn">test</span>(...numbers) {}</code></pre>
+              </div>
+
+              <div class="bg-white border rounded-xl p-5">
+                <b>4. What does entries() return?</b>
+                <pre class="code-block mt-3"><code>Object.entries({
+    name: <span class="str">"Paul"</span>,
+    age: <span class="num">31</span>
+});</code></pre>
+              </div>
+
+              <div class="bg-white border rounded-xl p-5">
+                <b>5. Set vs Map?</b>
+                <p class="mt-3 text-slate-600">
+                  Explain the difference in one sentence each.
+                </p>
+              </div>
+
+              <div class="bg-white border rounded-xl p-5">
+                <b>6. What does await mean?</b>
+                <pre
+                  class="code-block mt-3"
+                ><code><span class="kw">const</span> result = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">"/api/users"</span>);</code></pre>
+              </div>
+            </div>
+
+            <details
+              class="mt-8 bg-slate-950 text-white rounded-xl p-5 cursor-pointer"
+            >
+              <summary class="font-bold">Show answer key</summary>
+              <div class="mt-5 text-slate-300 space-y-3 text-sm">
+                <p>
+                  <b class="text-white">1.</b> <code>[1, 2, 3, 4]</code> —
+                  spread copies/unpacks the original array.
+                </p>
+                <p>
+                  <b class="text-white">2.</b> It extracts the
+                  <code>name</code> property from the object.
+                </p>
+                <p>
+                  <b class="text-white">3.</b> <code>[...numbers]</code> is
+                  spread; <code>...numbers</code> in a parameter list is rest.
+                </p>
+                <p>
+                  <b class="text-white">4.</b> An array of
+                  <code>[key, value]</code> pairs.
+                </p>
+                <p>
+                  <b class="text-white">5.</b> Set stores unique values; Map
+                  stores key/value relationships.
+                </p>
+                <p>
+                  <b class="text-white">6.</b> It waits for the Promise returned
+                  by <code>fetch()</code> to settle before assigning the result.
+                </p>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <!-- CAPSTONE -->
+        <section class="max-w-6xl mx-auto mt-20">
+          <div class="bg-slate-950 text-white rounded-3xl p-7 sm:p-10">
+            <span
+              class="text-amber-300 font-extrabold uppercase tracking-widest text-sm"
+              >Put it together</span
+            >
+            <h2 class="font-cinzel text-3xl font-black mt-2">
+              Mini JavaScript Challenge
+            </h2>
+            <p class="text-slate-300 mt-3">
+              Read the code and try to explain every feature before checking the
+              notes.
+            </p>
+
+            <pre
+              class="code-block mt-7 border border-slate-700"
+            ><code><span class="kw">class</span> <span class="fn">User</span> {
+    <span class="fn">constructor</span>(name, age) {
+        <span class="kw">this</span>.name = name;
+        <span class="kw">this</span>.age = age;
+    }
+
+    <span class="fn">greet</span>(message = <span class="str">"Hello"</span>) {
+        <span class="kw">return</span> <span class="str">`${message}, ${this.name}`</span>;
+    }
+}
+
+<span class="kw">const</span> users = [
+    <span class="kw">new</span> <span class="fn">User</span>(<span class="str">"Paul"</span>, <span class="num">31</span>),
+    <span class="kw">new</span> <span class="fn">User</span>(<span class="str">"John"</span>, <span class="num">28</span>),
+    <span class="kw">new</span> <span class="fn">User</span>(<span class="str">"Mary"</span>, <span class="num">25</span>)
+];
+
+<span class="kw">const</span> names = users.map(({ name }) =&gt; name);
+<span class="kw">const</span> uniqueNames = <span class="kw">new</span> <span class="fn">Set</span>(names);
+
+<span class="kw">for</span> (<span class="kw">const</span> name <span class="kw">of</span> uniqueNames) {
+    <span class="fn">console.log</span>(name);
+}</code></pre>
+
+            <div class="grid md:grid-cols-2 gap-4 mt-7 text-sm">
+              <div class="bg-white/5 border border-white/10 rounded-xl p-5">
+                <b class="text-amber-300">class</b> → blueprint
+              </div>
+              <div class="bg-white/5 border border-white/10 rounded-xl p-5">
+                <b class="text-amber-300">constructor</b> → initializes each
+                object
+              </div>
+              <div class="bg-white/5 border border-white/10 rounded-xl p-5">
+                <b class="text-amber-300">new</b> → creates an object
+              </div>
+              <div class="bg-white/5 border border-white/10 rounded-xl p-5">
+                <b class="text-amber-300">default parameter</b> → fallback
+                message
+              </div>
+              <div class="bg-white/5 border border-white/10 rounded-xl p-5">
+                <b class="text-amber-300">template literal</b> → dynamic
+                greeting
+              </div>
+              <div class="bg-white/5 border border-white/10 rounded-xl p-5">
+                <b class="text-amber-300">destructuring</b> → gets name from
+                each object
+              </div>
+              <div class="bg-white/5 border border-white/10 rounded-xl p-5">
+                <b class="text-amber-300">arrow function</b> → compact callback
+              </div>
+              <div class="bg-white/5 border border-white/10 rounded-xl p-5">
+                <b class="text-amber-300">Set</b> → unique names
+              </div>
+              <div class="bg-white/5 border border-white/10 rounded-xl p-5">
+                <b class="text-amber-300">for...of</b> → loops over values
+              </div>
+              <div class="bg-white/5 border border-white/10 rounded-xl p-5">
+                <b class="text-amber-300">this</b> → current User object
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FINAL MEMORY -->
+        <section class="max-w-5xl mx-auto mt-20">
+          <div class="text-center">
+            <h2 class="font-cinzel text-3xl sm:text-4xl font-black">
+              The Final Memory Chain
+            </h2>
+            <p class="text-slate-600 mt-3">
+              Say this chain aloud until the ideas become automatic.
+            </p>
+          </div>
+
+          <div
+            class="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3"
+          >
+            <div class="bg-slate-900 text-white rounded-xl p-4 text-center">
+              <b>STORE</b><br /><span class="text-xs text-slate-300"
+                >let / const</span
+              >
+            </div>
+            <div class="bg-slate-900 text-white rounded-xl p-4 text-center">
+              <b>EXTRACT</b><br /><span class="text-xs text-slate-300"
+                >destructuring</span
+              >
+            </div>
+            <div class="bg-slate-900 text-white rounded-xl p-4 text-center">
+              <b>OPEN</b><br /><span class="text-xs text-slate-300"
+                >spread</span
+              >
+            </div>
+            <div class="bg-slate-900 text-white rounded-xl p-4 text-center">
+              <b>COLLECT</b><br /><span class="text-xs text-slate-300"
+                >rest</span
+              >
+            </div>
+            <div class="bg-slate-900 text-white rounded-xl p-4 text-center">
+              <b>CHECK</b><br /><span class="text-xs text-slate-300"
+                >includes</span
+              >
+            </div>
+            <div class="bg-slate-900 text-white rounded-xl p-4 text-center">
+              <b>LOOP</b><br /><span class="text-xs text-slate-300"
+                >for...of</span
+              >
+            </div>
+            <div class="bg-slate-900 text-white rounded-xl p-4 text-center">
+              <b>UNIQUE</b><br /><span class="text-xs text-slate-300">Set</span>
+            </div>
+            <div class="bg-slate-900 text-white rounded-xl p-4 text-center">
+              <b>CONNECT</b><br /><span class="text-xs text-slate-300"
+                >Map</span
+              >
+            </div>
+            <div class="bg-slate-900 text-white rounded-xl p-4 text-center">
+              <b>SHARE</b><br /><span class="text-xs text-slate-300"
+                >export / import</span
+              >
+            </div>
+            <div class="bg-slate-900 text-white rounded-xl p-4 text-center">
+              <b>WAIT</b><br /><span class="text-xs text-slate-300"
+                >async / await</span
+              >
+            </div>
+            <div class="bg-slate-900 text-white rounded-xl p-4 text-center">
+              <b>BUILD</b><br /><span class="text-xs text-slate-300"
+                >class</span
+              >
+            </div>
+            <div class="bg-amber-600 text-white rounded-xl p-4 text-center">
+              <b>UNDERSTAND</b><br /><span class="text-xs text-amber-100"
+                >don't just memorise</span
+              >
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="bg-slate-950 text-slate-400 px-6 py-10 text-center">
+        <p class="font-cinzel text-white font-bold text-lg">
+          JavaScript Fundamentals
+        </p>
+        <p class="text-sm mt-2">
+          Part 1 + Part 2 · Learn it → explain it → code it → teach it.
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
