@@ -1,0 +1,1587 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Evergreen Professional Web, Mobile, Backend & AI Development Roadmap
+      (18-Month OS)
+    </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background-color: #f8fafc;
+        color: #0f172a;
+      }
+
+      .font-cinzel {
+        font-family: "Cinzel", serif;
+      }
+
+      @media print {
+        body {
+          background-color: #ffffff !important;
+          color: #000000 !important;
+          padding: 0 !important;
+          line-height: 38px !important;
+        }
+
+        .no-print {
+          display: none !important;
+        }
+
+        .page-card {
+          box-shadow: none !important;
+          border: 1px solid #cbd5e1 !important;
+          max-width: 100% !important;
+          margin: 0 !important;
+          background: #ffffff !important;
+          color: #000000 !important;
+        }
+
+        .text-amber-800,
+        .text-amber-900,
+        .text-amber-700 {
+          color: #854d0e !important;
+        }
+
+        .text-slate-700,
+        .text-slate-600,
+        .text-slate-800 {
+          color: #0f172a !important;
+        }
+
+        .bg-amber-50,
+        .bg-amber-100\/50,
+        .bg-slate-50,
+        .bg-slate-100 {
+          background-color: #ffffff !important;
+          border-color: #e2e8f0 !important;
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="bg-slate-50 text-slate-900 antialiased selection:bg-indigo-500 selection:text-white"
+  >
+    <!-- Print Control Bar (Non-printable) -->
+    <div
+      class="no-print bg-slate-900 text-white py-3 px-6 shadow-md flex justify-between items-center sticky top-0 z-50"
+    >
+      <div class="text-sm font-semibold tracking-wide font-cinzel">
+        Software Engineering Mastery Operating System (Evergreen Edition)
+      </div>
+      <button
+        onclick="window.print()"
+        class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg text-xs font-bold transition-all shadow flex items-center gap-2"
+      >
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
+          ></path>
+        </svg>
+        Print Roadmap / Export PDF
+      </button>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10 space-y-12">
+      <!-- Header / Hero Section -->
+      <header
+        class="text-center page-card bg-white border border-slate-200 p-8 sm:p-12 rounded-3xl shadow-sm relative overflow-hidden"
+      >
+        <div
+          class="inline-block text-xs font-bold tracking-widest text-indigo-700 uppercase bg-indigo-50 px-4 py-1.5 rounded-full border border-indigo-100 mb-4"
+        >
+          Target Timeline: Self-Paced Journey (Month 1 → Month 18)
+        </div>
+        <h1
+          class="font-cinzel text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight uppercase leading-tight"
+        >
+          Professional Web, Mobile, Backend & AI Development Roadmap
+        </h1>
+        <p
+          class="text-slate-600 text-base sm:text-lg mt-4 max-w-3xl mx-auto leading-relaxed"
+        >
+          By <strong class="text-slate-900">Month 18</strong> of your start date
+          ($T = 0$), the goal is to become a professional full-stack software
+          engineer capable of designing, building, testing, securing, deploying,
+          and maintaining modern web, mobile, and AI-powered applications.
+        </p>
+
+        <!-- Visual Stack Progression Flowchart -->
+        <div class="mt-10 pt-8 border-t border-slate-100">
+          <h3
+            class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-6"
+          >
+            Architectural Progression Pathway
+          </h3>
+          <div
+            class="flex flex-wrap justify-center items-center gap-2 text-xs font-bold"
+          >
+            <span
+              class="bg-indigo-50 text-indigo-700 px-3 py-1.5 rounded-lg border border-indigo-200"
+              >JavaScript</span
+            >
+            →
+            <span
+              class="bg-indigo-50 text-indigo-700 px-3 py-1.5 rounded-lg border border-indigo-200"
+              >React</span
+            >
+            →
+            <span
+              class="bg-indigo-50 text-indigo-700 px-3 py-1.5 rounded-lg border border-indigo-200"
+              >React Apps</span
+            >
+            →
+            <span
+              class="bg-indigo-50 text-indigo-700 px-3 py-1.5 rounded-lg border border-indigo-200"
+              >Next.js + Node + Express + MongoDB</span
+            >
+            →
+            <span
+              class="bg-indigo-50 text-indigo-700 px-3 py-1.5 rounded-lg border border-indigo-200"
+              >Production Next.js</span
+            >
+            →
+            <span
+              class="bg-indigo-50 text-indigo-700 px-3 py-1.5 rounded-lg border border-indigo-200"
+              >React Native</span
+            >
+            →
+            <span
+              class="bg-indigo-50 text-indigo-700 px-3 py-1.5 rounded-lg border border-indigo-200"
+              >Python + Flutter</span
+            >
+            →
+            <span
+              class="bg-indigo-50 text-indigo-700 px-3 py-1.5 rounded-lg border border-indigo-200"
+              >Laravel + PHP</span
+            >
+            →
+            <span
+              class="bg-indigo-50 text-indigo-700 px-3 py-1.5 rounded-lg border border-indigo-200"
+              >DevOps & Security</span
+            >
+            →
+            <span
+              class="bg-indigo-50 text-indigo-700 px-3 py-1.5 rounded-lg border border-indigo-200"
+              >AI Integration</span
+            >
+            →
+            <span
+              class="bg-emerald-600 text-white px-4 py-1.5 rounded-lg shadow-sm"
+              >Production-Ready Engineer</span
+            >
+          </div>
+        </div>
+      </header>
+
+      <!-- Executive Timeline Summary Table -->
+      <section
+        class="page-card bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm"
+      >
+        <h2
+          class="font-cinzel text-xl sm:text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3"
+        >
+          <span class="w-3 h-8 bg-indigo-600 rounded-full inline-block"></span>
+          Master Roadmap Overview (Months 1–18)
+        </h2>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm border-collapse">
+            <thead>
+              <tr
+                class="bg-slate-100 text-slate-800 font-bold uppercase text-xs border-b border-slate-200"
+              >
+                <th class="p-4 rounded-tl-xl">Relative Period</th>
+                <th class="p-4">Primary Focus</th>
+                <th class="p-4 rounded-tr-xl">Main Outcome</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200 text-slate-700">
+              <tr class="hover:bg-slate-50">
+                <td class="p-4 font-semibold text-slate-900">Month 1</td>
+                <td class="p-4 font-medium text-indigo-600">JavaScript</td>
+                <td class="p-4">Strong JavaScript foundation</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-4 font-semibold text-slate-900">Months 2–3</td>
+                <td class="p-4 font-medium text-indigo-600">React 18/19</td>
+                <td class="p-4">Professional React knowledge</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-4 font-semibold text-slate-900">Months 4–6</td>
+                <td class="p-4 font-medium text-indigo-600">
+                  React Application Development
+                </td>
+                <td class="p-4">Complete a substantial React application</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-4 font-semibold text-slate-900">Months 7–8</td>
+                <td class="p-4 font-medium text-indigo-600">
+                  Next.js + Express + Node.js + MongoDB
+                </td>
+                <td class="p-4">Full-stack development</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-4 font-semibold text-slate-900">Months 9–10</td>
+                <td class="p-4 font-medium text-indigo-600">
+                  Next.js 15/16 Application Development
+                </td>
+                <td class="p-4">Production-grade Next.js application</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-4 font-semibold text-slate-900">Months 11–12</td>
+                <td class="p-4 font-medium text-indigo-600">React Native</td>
+                <td class="p-4">Cross-platform mobile development</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-4 font-semibold text-slate-900">Months 13–15</td>
+                <td class="p-4 font-medium text-indigo-600">
+                  Python + Flutter
+                </td>
+                <td class="p-4">
+                  Python backend/AI foundation + Flutter mobile
+                </td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-4 font-semibold text-slate-900">Months 16–18</td>
+                <td class="p-4 font-medium text-indigo-600">Laravel + PHP</td>
+                <td class="p-4">Professional PHP/Laravel development</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-4 font-semibold text-slate-900">Continuous</td>
+                <td class="p-4 font-medium text-indigo-600">
+                  Networking & Security
+                </td>
+                <td class="p-4">
+                  Strong infrastructure and network engineering knowledge
+                </td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-4 font-semibold text-slate-900">Continuous</td>
+                <td class="p-4 font-medium text-indigo-600">AI Integration</td>
+                <td class="p-4">AI-powered application development</td>
+              </tr>
+              <tr class="bg-indigo-50/50">
+                <td class="p-4 font-bold text-slate-900">
+                  By Month 18 ($T = 18$)
+                </td>
+                <td class="p-4 font-bold text-indigo-800">Full Integration</td>
+                <td class="p-4 font-bold text-indigo-900">
+                  Full-stack + mobile + AI professional capability
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Governing Rule Visual Box -->
+        <div
+          class="mt-8 bg-slate-900 text-white rounded-2xl p-6 sm:p-8 shadow-inner"
+        >
+          <h3
+            class="text-xs font-bold uppercase tracking-widest text-amber-400 mb-3"
+          >
+            The Execution Rule Governing The Entire Blueprint
+          </h3>
+          <blockquote
+            class="text-base sm:text-lg italic text-slate-200 mb-6 border-l-4 border-amber-400 pl-4"
+          >
+            "Don't just know how the technology works. Know how to use it to
+            solve real problems. Avoid watching tutorials endlessly."
+          </blockquote>
+          <div
+            class="flex flex-wrap items-center justify-between gap-2 text-xs font-mono bg-slate-800 p-4 rounded-xl border border-slate-700"
+          >
+            <span class="text-amber-400 font-bold">Execution Cycle:</span>
+            <span>1. LEARN</span> → <span>2. UNDERSTAND</span> →
+            <span>3. PRACTICE</span> → <span>4. BUILD</span> →
+            <span>5. BREAK</span> → <span>6. DEBUG</span> →
+            <span>7. REFACTOR</span> → <span>8. TEST</span> →
+            <span>9. DEPLOY</span> → <span>10. DOCUMENT</span> →
+            <span class="text-amber-400 font-bold">11. TEACH</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- DETAILED MODULE PHASES -->
+
+      <!-- PHASE 1: JAVASCRIPT MASTERCLASS -->
+      <section
+        class="page-card bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm space-y-8"
+      >
+        <div
+          class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 border-b border-slate-100 pb-4"
+        >
+          <div>
+            <span
+              class="text-xs font-bold text-amber-800 bg-amber-50 px-3 py-1 rounded-md border border-amber-200"
+              >PHASE 1</span
+            >
+            <h2
+              class="font-cinzel text-2xl sm:text-3xl font-bold text-slate-900 mt-1"
+            >
+              JavaScript Masterclass
+            </h2>
+          </div>
+          <span
+            class="text-xs font-semibold text-slate-500 bg-slate-100 px-4 py-1.5 rounded-full"
+            >Month 1 (Weeks 1–4)</span
+          >
+        </div>
+
+        <p class="text-slate-600 text-sm leading-relaxed">
+          This month represents your core technical foundation. Do not rush
+          through Month 1. Frameworks such as React, Next.js, Node.js, and React
+          Native will become significantly easier to engineer if your core
+          JavaScript understanding is bulletproof.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Week 1 -->
+          <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="font-bold text-slate-900 text-base">
+                Week 1: Fundamentals
+              </h3>
+              <span
+                class="text-[10px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-mono"
+                >Syntax & Logic</span
+              >
+            </div>
+            <ul class="text-xs text-slate-600 space-y-2 list-disc pl-4 mb-4">
+              <li>
+                Core JavaScript syntax, runtime mechanics, and dynamic typing.
+              </li>
+              <li>
+                Variable scopes:
+                <code class="bg-slate-200 text-slate-800 px-1 rounded"
+                  >let</code
+                >
+                vs
+                <code class="bg-slate-200 text-slate-800 px-1 rounded"
+                  >const</code
+                >
+                scoping rules.
+              </li>
+              <li>
+                Data primitive types: Strings, Numbers, Booleans,
+                <code class="bg-slate-200 text-slate-800 px-1 rounded"
+                  >null</code
+                >,
+                <code class="bg-slate-200 text-slate-800 px-1 rounded"
+                  >undefined</code
+                >.
+              </li>
+              <li>
+                Complex primitive containers: Objects and Arrays fundamentals.
+              </li>
+              <li>
+                Operators: Arithmetic, Comparison, Strict Equality, Logical
+                Operators.
+              </li>
+              <li>
+                Control Flow:
+                <code class="bg-slate-200 text-slate-800 px-1 rounded"
+                  >if/else</code
+                >,
+                <code class="bg-slate-200 text-slate-800 px-1 rounded"
+                  >switch</code
+                >
+                statements, and Ternary operator conditional logic.
+              </li>
+            </ul>
+            <div
+              class="bg-white p-3 rounded-lg border border-slate-200 text-xs"
+            >
+              <span class="font-bold text-slate-800 block mb-1"
+                >Practical Target Builds:</span
+              >
+              <p class="text-slate-600">
+                Build isolated CLI/GUI tools: Age calculator, Grade calculator,
+                Simple calculator, Currency converter, and Salary calculator.
+              </p>
+            </div>
+          </div>
+
+          <!-- Week 2 -->
+          <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="font-bold text-slate-900 text-base">
+                Week 2: Functions, Arrays & Objects
+              </h3>
+              <span
+                class="text-[10px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-mono"
+                >Data Structures</span
+              >
+            </div>
+            <ul class="text-xs text-slate-600 space-y-2 list-disc pl-4 mb-4">
+              <li>
+                Function Declarations vs Arrow Functions (<code
+                  class="bg-slate-200 text-slate-800 px-1 rounded"
+                  >const greet = () =&gt; {}</code
+                >).
+              </li>
+              <li>
+                Parameters, Arguments, Return values, Default Parameters, Scope.
+              </li>
+              <li>Callback functions and Higher-Order Function mechanics.</li>
+              <li>
+                Nested Objects, Array Destructuring, Object Destructuring.
+              </li>
+              <li>
+                Spread operator (<code
+                  class="bg-slate-200 text-slate-800 px-1 rounded"
+                  >...</code
+                >) and Rest parameters.
+              </li>
+              <li>
+                Master vital Array methods:
+                <code class="bg-slate-200 text-slate-800 px-1 rounded"
+                  >map()</code
+                >,
+                <code class="bg-slate-200 text-slate-800 px-1 rounded"
+                  >filter()</code
+                >,
+                <code class="bg-slate-200 text-slate-800 px-1 rounded"
+                  >reduce()</code
+                >,
+                <code class="bg-slate-200 text-slate-800 px-1 rounded"
+                  >find()</code
+                >,
+                <code class="bg-slate-200 text-slate-800 px-1 rounded"
+                  >findIndex()</code
+                >,
+                <code class="bg-slate-200 text-slate-800 px-1 rounded"
+                  >some()</code
+                >,
+                <code class="bg-slate-200 text-slate-800 px-1 rounded"
+                  >every()</code
+                >,
+                <code class="bg-slate-200 text-slate-800 px-1 rounded"
+                  >forEach()</code
+                >,
+                <code class="bg-slate-200 text-slate-800 px-1 rounded"
+                  >sort()</code
+                >.
+              </li>
+            </ul>
+            <div
+              class="bg-slate-900 text-slate-200 p-3 rounded-lg font-mono text-[11px] overflow-x-auto"
+            >
+              <span class="text-slate-400">// Array Transformation Example</span
+              ><br />
+              const pendingTotal = invoices<br />
+              &nbsp;&nbsp;.filter(inv => inv.status === 'unpaid')<br />
+              &nbsp;&nbsp;.reduce((acc, inv) => acc + inv.amount, 0);
+            </div>
+          </div>
+
+          <!-- Week 3 -->
+          <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="font-bold text-slate-900 text-base">
+                Week 3: Modern JS & Asynchronous Architecture
+              </h3>
+              <span
+                class="text-[10px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-mono"
+                >Async Patterns</span
+              >
+            </div>
+            <ul class="text-xs text-slate-600 space-y-2 list-disc pl-4 mb-4">
+              <li>
+                Template Literals, ES Modules (<code
+                  class="bg-slate-200 text-slate-800 px-1 rounded"
+                  >import</code
+                >
+                /
+                <code class="bg-slate-200 text-slate-800 px-1 rounded"
+                  >export</code
+                >).
+              </li>
+              <li>
+                OOP in JS: Classes, Constructors,
+                <code class="bg-slate-200 text-slate-800 px-1 rounded"
+                  >this</code
+                >
+                context, Static methods, Getters/Setters.
+              </li>
+              <li>
+                Error Handling:
+                <code class="bg-slate-200 text-slate-800 px-1 rounded"
+                  >try / catch / finally</code
+                >
+                blocks.
+              </li>
+              <li>
+                Asynchronous Evolution: Callbacks → Promises →
+                <code class="bg-slate-200 text-slate-800 px-1 rounded"
+                  >async / await</code
+                >.
+              </li>
+              <li>
+                Promise methods:
+                <code class="bg-slate-200 text-slate-800 px-1 rounded"
+                  >then()</code
+                >,
+                <code class="bg-slate-200 text-slate-800 px-1 rounded"
+                  >catch()</code
+                >,
+                <code class="bg-slate-200 text-slate-800 px-1 rounded"
+                  >finally()</code
+                >.
+              </li>
+              <li>
+                Asynchronous Fetch API consumption and HTTP error handling.
+              </li>
+            </ul>
+            <div
+              class="bg-slate-900 text-slate-200 p-3 rounded-lg font-mono text-[11px] overflow-x-auto"
+            >
+              <span class="text-slate-400">// Async Fetch Pattern</span><br />
+              async function loadData(url) {<br />
+              &nbsp;&nbsp;try {<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;const res = await fetch(url);<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;if (!res.ok) throw new
+              Error(res.statusText);<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;return await res.json();<br />
+              &nbsp;&nbsp;} catch (err) { console.error(err); }<br />
+              }
+            </div>
+          </div>
+
+          <!-- Week 4 -->
+          <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="font-bold text-slate-900 text-base">
+                Week 4: Advanced Concepts & DOM Storage
+              </h3>
+              <span
+                class="text-[10px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-mono"
+                >Browser Execution</span
+              >
+            </div>
+            <ul class="text-xs text-slate-600 space-y-2 list-disc pl-4 mb-4">
+              <li>
+                Execution Context, Variable Hoisting, Lexical Scope, Closures.
+              </li>
+              <li>
+                Browser Execution Engine: Call Stack, Event Loop, Microtasks,
+                Macrotasks.
+              </li>
+              <li>DOM Manipulation, Event Listeners, Form Event Handling.</li>
+              <li>
+                Browser Persistence: LocalStorage, SessionStorage, JSON
+                parsing/stringifying.
+              </li>
+              <li>
+                Debugging using Chrome DevTools, Breakpoints, Network
+                Inspection.
+              </li>
+            </ul>
+            <div
+              class="bg-white p-3 rounded-lg border border-slate-200 text-xs"
+            >
+              <span class="font-bold text-slate-800 block mb-1"
+                >Month 1 Goal:</span
+              >
+              <p class="text-slate-600">
+                By the end of Week 4, write functional JavaScript independently
+                without copying code from tutorials.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- October Capstone Project Card -->
+        <div
+          class="bg-indigo-900 text-white p-6 rounded-2xl shadow-md border border-indigo-800"
+        >
+          <div
+            class="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-4"
+          >
+            <div>
+              <span
+                class="text-xs font-bold uppercase tracking-widest text-indigo-300"
+                >Phase 1 Capstone Deliverable</span
+              >
+              <h3 class="text-xl font-bold font-cinzel text-white">
+                Business Management System (Vanilla JS)
+              </h3>
+            </div>
+            <span
+              class="text-xs font-bold bg-indigo-700 text-indigo-100 px-3 py-1 rounded-lg border border-indigo-600"
+              >Pure JavaScript + LocalStorage</span
+            >
+          </div>
+          <div
+            class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono mb-4 text-indigo-200"
+          >
+            <span class="bg-indigo-950 p-2 rounded border border-indigo-800"
+              >✓ Dashboard UI</span
+            >
+            <span class="bg-indigo-950 p-2 rounded border border-indigo-800"
+              >✓ Customer Management</span
+            >
+            <span class="bg-indigo-950 p-2 rounded border border-indigo-800"
+              >✓ Product Catalog</span
+            >
+            <span class="bg-indigo-950 p-2 rounded border border-indigo-800"
+              >✓ Invoicing Engine</span
+            >
+            <span class="bg-indigo-950 p-2 rounded border border-indigo-800"
+              >✓ Payment Tracker</span
+            >
+            <span class="bg-indigo-950 p-2 rounded border border-indigo-800"
+              >✓ Dynamic Reports</span
+            >
+            <span class="bg-indigo-950 p-2 rounded border border-indigo-800"
+              >✓ Search & Filtering</span
+            >
+            <span class="bg-indigo-950 p-2 rounded border border-indigo-800"
+              >✓ CRUD & Form Validation</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- PHASE 2: REACT 18/19 FOUNDATION & PATTERNS -->
+      <section
+        class="page-card bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm space-y-8"
+      >
+        <div
+          class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 border-b border-slate-100 pb-4"
+        >
+          <div>
+            <span
+              class="text-xs font-bold text-amber-800 bg-amber-50 px-3 py-1 rounded-md border border-amber-200"
+              >PHASE 2</span
+            >
+            <h2
+              class="font-cinzel text-2xl sm:text-3xl font-bold text-slate-900 mt-1"
+            >
+              React 18 / 19 Foundation & Patterns
+            </h2>
+          </div>
+          <span
+            class="text-xs font-semibold text-slate-500 bg-slate-100 px-4 py-1.5 rounded-full"
+            >Months 2–3 (Weeks 5–12)</span
+          >
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Month 2 -->
+          <div
+            class="bg-slate-50 p-6 rounded-2xl border border-slate-200 flex flex-col justify-between"
+          >
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-bold text-slate-900 text-base">
+                  Month 2: React Foundation (Weeks 5–8)
+                </h3>
+                <span
+                  class="text-[10px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-mono"
+                  >Core Component System</span
+                >
+              </div>
+              <ul class="text-xs text-slate-600 space-y-2 list-disc pl-4 mb-4">
+                <li>
+                  React Virtual DOM architecture, Component Lifecycle, JSX
+                  rules.
+                </li>
+                <li>
+                  Props passing, State mechanics, Event handling, Conditional
+                  rendering.
+                </li>
+                <li>Keys in lists and reconciliation algorithm mechanics.</li>
+                <li>
+                  Form handling, Controlled components vs Uncontrolled
+                  components.
+                </li>
+                <li>
+                  <strong>React Hooks Mastery:</strong>
+                  <div
+                    class="grid grid-cols-2 gap-1 text-[11px] font-mono text-indigo-700 mt-1"
+                  >
+                    <span>• useState</span>
+                    <span>• useEffect</span>
+                    <span>• useRef</span>
+                    <span>• useContext</span>
+                    <span>• useMemo</span>
+                    <span>• useCallback</span>
+                  </div>
+                </li>
+                <li>
+                  Component composition, Reusable UI components, Custom Hooks
+                  creation.
+                </li>
+                <li>
+                  API integration patterns: Loading states, Error states, Empty
+                  states, Skeleton loaders.
+                </li>
+              </ul>
+            </div>
+            <div
+              class="bg-slate-900 text-slate-200 p-3 rounded-lg font-mono text-[11px] overflow-x-auto"
+            >
+              <span class="text-slate-400">// Custom Hook API Pattern</span
+              ><br />
+              function useFetch(url) {<br />
+              &nbsp;&nbsp;const [data, setData] = useState(null);<br />
+              &nbsp;&nbsp;const [loading, setLoading] = useState(true);<br />
+              &nbsp;&nbsp;useEffect(() => { /* fetch execution */ }, [url]);<br />
+              &nbsp;&nbsp;return { data, loading };<br />
+              }
+            </div>
+          </div>
+
+          <!-- Month 3 -->
+          <div
+            class="bg-slate-50 p-6 rounded-2xl border border-slate-200 flex flex-col justify-between"
+          >
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-bold text-slate-900 text-base">
+                  Month 3: Professional React (Weeks 9–12)
+                </h3>
+                <span
+                  class="text-[10px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-mono"
+                  >Enterprise Ecosystem</span
+                >
+              </div>
+              <ul class="text-xs text-slate-600 space-y-2 list-disc pl-4 mb-4">
+                <li>
+                  <strong>Routing:</strong> React Router, Nested layouts,
+                  Dynamic routes, Protected routes.
+                </li>
+                <li>
+                  <strong>State Management:</strong> Local state vs Context API
+                  vs Server State (TanStack Query / React Query).
+                </li>
+                <li>
+                  <strong>Forms & Validation:</strong> React Hook Form
+                  integrated with Zod schema validation.
+                </li>
+                <li>
+                  <strong>Professional Architecture:</strong> Enterprise folder
+                  structure, Code splitting, Lazy loading with
+                  <code class="bg-slate-200 text-slate-800 px-1 rounded"
+                    >React.lazy</code
+                  >
+                  and
+                  <code class="bg-slate-200 text-slate-800 px-1 rounded"
+                    >Suspense</code
+                  >.
+                </li>
+                <li>
+                  Error Boundaries, Accessibility (a11y), API Integration,
+                  Authentication flows, Role-Based Access Control (RBAC).
+                </li>
+              </ul>
+            </div>
+            <div
+              class="bg-slate-900 text-slate-200 p-3 rounded-lg font-mono text-[11px] overflow-x-auto"
+            >
+              <span class="text-slate-400">// Zod Schema Validation</span><br />
+              const UserSchema = z.object({<br />
+              &nbsp;&nbsp;email: z.string().email(),<br />
+              &nbsp;&nbsp;role: z.enum(['ADMIN', 'USER'])<br />
+              });
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PHASE 3: REACT APPLICATION DEVELOPMENT -->
+      <section
+        class="page-card bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm space-y-8"
+      >
+        <div
+          class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 border-b border-slate-100 pb-4"
+        >
+          <div>
+            <span
+              class="text-xs font-bold text-amber-800 bg-amber-50 px-3 py-1 rounded-md border border-amber-200"
+              >PHASE 3</span
+            >
+            <h2
+              class="font-cinzel text-2xl sm:text-3xl font-bold text-slate-900 mt-1"
+            >
+              React Application Build (3-Month Deep Dive)
+            </h2>
+          </div>
+          <span
+            class="text-xs font-semibold text-slate-500 bg-slate-100 px-4 py-1.5 rounded-full"
+            >Months 4–6 (Weeks 13–24)</span
+          >
+        </div>
+
+        <p class="text-slate-600 text-sm leading-relaxed">
+          Do not jump immediately to new frameworks. Spend 3 complete months
+          building a production-grade application to transition theoretical
+          React knowledge into professional software engineering capability.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs">
+          <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+            <span class="font-bold text-indigo-600 block text-sm mb-2"
+              >Month 4: Foundation</span
+            >
+            <ul class="space-y-1.5 text-slate-600 list-disc pl-4">
+              <li>Project architecture setup & linting standards.</li>
+              <li>Authentication UI: Login, Registration, Password Reset.</li>
+              <li>
+                Responsive Dashboard shell, Sidebar, Top bar, Theme hooks.
+              </li>
+              <li>Reusable UI Component Library building.</li>
+            </ul>
+          </div>
+          <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+            <span class="font-bold text-indigo-600 block text-sm mb-2"
+              >Month 5: Business Modules</span
+            >
+            <ul class="space-y-1.5 text-slate-600 list-disc pl-4">
+              <li>Customers management & Product inventory categories.</li>
+              <li>Invoicing engine, Payment recording system.</li>
+              <li>Server-side search, Live filtering, and Pagination.</li>
+              <li>Complex Form validations & REST API integrations.</li>
+            </ul>
+          </div>
+          <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+            <span class="font-bold text-indigo-600 block text-sm mb-2"
+              >Month 6: Professionalization</span
+            >
+            <ul class="space-y-1.5 text-slate-600 list-disc pl-4">
+              <li>RBAC, Toast notifications, Modal workflows.</li>
+              <li>Skeleton loaders, Visual Chart reports.</li>
+              <li>Unit testing, Performance optimization.</li>
+              <li>Security hardening & Cloud Deployment.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Architecture Flow Diagram -->
+        <div
+          class="bg-slate-100 p-6 rounded-2xl border border-slate-200 text-center"
+        >
+          <span
+            class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-3"
+            >Enterprise SaaS Application UI Architecture</span
+          >
+          <div
+            class="flex flex-wrap justify-center items-center gap-3 text-xs font-mono font-bold text-slate-700"
+          >
+            <span
+              class="bg-white px-3 py-2 rounded-lg border border-slate-300 shadow-sm"
+              >Auth Guard</span
+            >
+            →
+            <span
+              class="bg-white px-3 py-2 rounded-lg border border-slate-300 shadow-sm"
+              >Dashboard Layout</span
+            >
+            →
+            <span
+              class="bg-white px-3 py-2 rounded-lg border border-slate-300 shadow-sm"
+              >TanStack Query Cache</span
+            >
+            →
+            <span
+              class="bg-white px-3 py-2 rounded-lg border border-slate-300 shadow-sm"
+              >Business Sub-systems</span
+            >
+            →
+            <span
+              class="bg-white px-3 py-2 rounded-lg border border-slate-300 shadow-sm"
+              >Analytics & Reports</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- PHASE 4: NEXT.JS + EXPRESS + NODE.JS + MONGODB + TYPESCRIPT -->
+      <section
+        class="page-card bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm space-y-8"
+      >
+        <div
+          class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 border-b border-slate-100 pb-4"
+        >
+          <div>
+            <span
+              class="text-xs font-bold text-amber-800 bg-amber-50 px-3 py-1 rounded-md border border-amber-200"
+              >PHASE 4</span
+            >
+            <h2
+              class="font-cinzel text-2xl sm:text-3xl font-bold text-slate-900 mt-1"
+            >
+              Full-Stack & TypeScript Mastery
+            </h2>
+          </div>
+          <span
+            class="text-xs font-semibold text-slate-500 bg-slate-100 px-4 py-1.5 rounded-full"
+            >Months 7–8 (Weeks 25–32)</span
+          >
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Month 7 -->
+          <div
+            class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-4"
+          >
+            <h3 class="font-bold text-slate-900 text-base">
+              Month 7: Node.js & Express API Engineering
+            </h3>
+            <ul class="text-xs text-slate-600 space-y-2 list-disc pl-4">
+              <li>
+                Node.js Event Loop, Asynchronous I/O, npm, Environment
+                variables.
+              </li>
+              <li>
+                Express Routing, Controllers, Middleware chain execution, Custom
+                error handlers.
+              </li>
+              <li>
+                RESTful API design principles, Standardized HTTP Response Status
+                Codes.
+              </li>
+              <li>
+                Validation middleware, CORS policy setup, Rate Limiting
+                security.
+              </li>
+            </ul>
+            <div
+              class="bg-slate-900 text-slate-200 p-3 rounded-lg font-mono text-[11px]"
+            >
+              <span class="text-slate-400">// Backend Request Pattern</span
+              ><br />
+              Request → Route → Middleware → Controller → Service → Database →
+              Response
+            </div>
+          </div>
+
+          <!-- Month 8 -->
+          <div
+            class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-4"
+          >
+            <h3 class="font-bold text-slate-900 text-base">
+              Month 8: MongoDB & TypeScript Integration
+            </h3>
+            <ul class="text-xs text-slate-600 space-y-2 list-disc pl-4">
+              <li>
+                NoSQL Mechanics: Collections, BSON Documents, Indexing
+                strategies.
+              </li>
+              <li>
+                Mongoose ORM: Schemas, Models, Aggregation Pipelines,
+                Transactions, Atlas.
+              </li>
+              <li>
+                <strong>TypeScript Integration:</strong> Static types,
+                Interfaces, Generics, Type Narrowing, API Response Types, Form
+                Types across full stack.
+              </li>
+              <li>
+                Security: JWT, HttpOnly Cookies, Password hashing with bcrypt,
+                RBAC.
+              </li>
+            </ul>
+            <div
+              class="bg-slate-900 text-slate-200 p-3 rounded-lg font-mono text-[11px]"
+            >
+              <span class="text-slate-400">// TypeScript Interface Example</span
+              ><br />
+              interface ApiResponse&lt;T&gt; {<br />
+              &nbsp;&nbsp;success: boolean;<br />
+              &nbsp;&nbsp;data: T;<br />
+              &nbsp;&nbsp;error?: string;<br />
+              }
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PHASE 5: NEXT.JS 15/16 APPLICATION DEVELOPMENT -->
+      <section
+        class="page-card bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm space-y-8"
+      >
+        <div
+          class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 border-b border-slate-100 pb-4"
+        >
+          <div>
+            <span
+              class="text-xs font-bold text-amber-800 bg-amber-50 px-3 py-1 rounded-md border border-amber-200"
+              >PHASE 5</span
+            >
+            <h2
+              class="font-cinzel text-2xl sm:text-3xl font-bold text-slate-900 mt-1"
+            >
+              Next.js 15/16 Production SaaS Development
+            </h2>
+          </div>
+          <span
+            class="text-xs font-semibold text-slate-500 bg-slate-100 px-4 py-1.5 rounded-full"
+            >Months 9–10 (Weeks 33–40)</span
+          >
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="space-y-3">
+            <h3 class="font-bold text-slate-900 text-base">
+              Deep Architecture Concepts
+            </h3>
+            <ul class="text-xs text-slate-600 space-y-2 list-disc pl-4">
+              <li>
+                App Router architecture, Layouts, Template files,
+                Parallel/Intercepting Routes.
+              </li>
+              <li>
+                React Server Components (RSC) vs Client Components ("use
+                client").
+              </li>
+              <li>
+                Server Actions for direct database mutation without API
+                boilerplate.
+              </li>
+              <li>
+                Caching strategies, Incremental Static Regeneration (ISR),
+                Revalidation triggers.
+              </li>
+              <li>
+                Middleware proxies, Authentication, Metadata API, Dynamic SEO,
+                Image Optimization.
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="bg-indigo-900 text-white p-6 rounded-2xl border border-indigo-800 flex flex-col justify-between"
+          >
+            <div>
+              <span
+                class="text-xs font-bold uppercase tracking-widest text-indigo-300 block mb-1"
+                >Flagship Project Outcome</span
+              >
+              <h4 class="font-bold text-lg font-cinzel mb-2">
+                Financial / Multi-Tenant SaaS Engine
+              </h4>
+              <p class="text-xs text-indigo-200 mb-4">
+                Includes Organizations, Multi-Tenancy, Custom Roles,
+                Permissions, Invoicing, Webhooks, Payments, Audit logs,
+                Analytics, and Search.
+              </p>
+            </div>
+            <div
+              class="bg-indigo-950 p-3 rounded font-mono text-[11px] text-indigo-300"
+            >
+              Modern Stack: TypeScript + Next.js App Router + PostgreSQL/MongoDB
+              + Prisma + Server Actions
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PHASE 6: REACT NATIVE -->
+      <section
+        class="page-card bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm space-y-8"
+      >
+        <div
+          class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 border-b border-slate-100 pb-4"
+        >
+          <div>
+            <span
+              class="text-xs font-bold text-amber-800 bg-amber-50 px-3 py-1 rounded-md border border-amber-200"
+              >PHASE 6</span
+            >
+            <h2
+              class="font-cinzel text-2xl sm:text-3xl font-bold text-slate-900 mt-1"
+            >
+              Cross-Platform Mobile (React Native)
+            </h2>
+          </div>
+          <span
+            class="text-xs font-semibold text-slate-500 bg-slate-100 px-4 py-1.5 rounded-full"
+            >Months 11–12 (Weeks 41–48)</span
+          >
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-xs">
+          <div
+            class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-3"
+          >
+            <h3 class="font-bold text-slate-900 text-sm">
+              Month 11: Core Mobile Foundations
+            </h3>
+            <ul class="space-y-2 text-slate-600 list-disc pl-4">
+              <li>
+                React Native primitives: View, Text, Image, ScrollView,
+                FlatList.
+              </li>
+              <li>
+                Flexbox layout mechanics tailored for iOS and Android screens.
+              </li>
+              <li>
+                Expo SDK workflow, Navigation (Stack, Tabs), Native Device
+                Features.
+              </li>
+              <li>
+                Understanding differences: Web DOM vs Native Bridge Execution.
+              </li>
+            </ul>
+          </div>
+          <div
+            class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-3"
+          >
+            <h3 class="font-bold text-slate-900 text-sm">
+              Month 12: Professional Mobile Build
+            </h3>
+            <ul class="space-y-2 text-slate-600 list-disc pl-4">
+              <li>
+                Secure Storage for Tokens, Push Notifications, Camera
+                Integration.
+              </li>
+              <li>
+                Offline data sync, Deep Linking, File Uploads, App Build
+                binaries.
+              </li>
+              <li>
+                <strong>Project Target:</strong> Mobile Application extension
+                for your Multi-Tenant SaaS platform using API-first development.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- PHASE 7: PYTHON + FLUTTER + AI ENGINEERING -->
+      <section
+        class="page-card bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm space-y-8"
+      >
+        <div
+          class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 border-b border-slate-100 pb-4"
+        >
+          <div>
+            <span
+              class="text-xs font-bold text-amber-800 bg-amber-50 px-3 py-1 rounded-md border border-amber-200"
+              >PHASE 7</span
+            >
+            <h2
+              class="font-cinzel text-2xl sm:text-3xl font-bold text-slate-900 mt-1"
+            >
+              Python, AI Engineering & Flutter
+            </h2>
+          </div>
+          <span
+            class="text-xs font-semibold text-slate-500 bg-slate-100 px-4 py-1.5 rounded-full"
+            >Months 13–15 (Weeks 49–60)</span
+          >
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs">
+          <div
+            class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-2"
+          >
+            <span class="font-bold text-indigo-600 block text-sm"
+              >Month 13: Python & FastAPI</span
+            >
+            <ul class="space-y-1.5 text-slate-600 list-disc pl-4">
+              <li>Python syntax, OOP, Type hinting, Virtualenvs.</li>
+              <li>FastAPI, Pydantic validation, Async execution.</li>
+              <li>RESTful API construction & Database engines.</li>
+            </ul>
+          </div>
+          <div
+            class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-2"
+          >
+            <span class="font-bold text-indigo-600 block text-sm"
+              >Month 14: AI Engineering</span
+            >
+            <ul class="space-y-1.5 text-slate-600 list-disc pl-4">
+              <li>LLM API integration, Embeddings, Structured Output.</li>
+              <li>Vector Databases, Retrieval-Augmented Generation (RAG).</li>
+              <li>Tool Calling, Agents, Automated Document Processing.</li>
+            </ul>
+          </div>
+          <div
+            class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-2"
+          >
+            <span class="font-bold text-indigo-600 block text-sm"
+              >Month 15: Flutter Mobile</span
+            >
+            <ul class="space-y-1.5 text-slate-600 list-disc pl-4">
+              <li>Dart language: Null Safety, Async/Await, Futures.</li>
+              <li>
+                Flutter Widget tree (Stateless/Stateful), State management.
+              </li>
+              <li>API Consumption & Cross-Platform mobile compile.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- AI API Pipeline Visual -->
+        <div
+          class="bg-slate-900 text-white p-5 rounded-xl text-center text-xs font-mono"
+        >
+          <span class="text-amber-400 block font-bold mb-2"
+            >AI Microservice Data Pipeline</span
+          >
+          User Prompt → Next.js App → FastAPI Microservice → LLM Provider →
+          Vector Search (RAG) → Tool Execution → Structured JSON Response
+        </div>
+      </section>
+
+      <!-- PHASE 8: LARAVEL + PHP -->
+      <section
+        class="page-card bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm space-y-8"
+      >
+        <div
+          class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 border-b border-slate-100 pb-4"
+        >
+          <div>
+            <span
+              class="text-xs font-bold text-amber-800 bg-amber-50 px-3 py-1 rounded-md border border-amber-200"
+              >PHASE 8</span
+            >
+            <h2
+              class="font-cinzel text-2xl sm:text-3xl font-bold text-slate-900 mt-1"
+            >
+              PHP & Enterprise Laravel Development
+            </h2>
+          </div>
+          <span
+            class="text-xs font-semibold text-slate-500 bg-slate-100 px-4 py-1.5 rounded-full"
+            >Months 16–18 (Weeks 61–72)</span
+          >
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs">
+          <div
+            class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-2"
+          >
+            <span class="font-bold text-indigo-600 block text-sm"
+              >Month 16: Modern PHP 8</span
+            >
+            <ul class="space-y-1.5 text-slate-600 list-disc pl-4">
+              <li>OOP PHP, Interfaces, Traits, Namespaces.</li>
+              <li>Composer package manager, PDO, Security.</li>
+            </ul>
+          </div>
+          <div
+            class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-2"
+          >
+            <span class="font-bold text-indigo-600 block text-sm"
+              >Month 17: Enterprise Laravel</span
+            >
+            <ul class="space-y-1.5 text-slate-600 list-disc pl-4">
+              <li>Routing, Eloquent ORM, Migrations, Seeders.</li>
+              <li>Sanctum Auth, Queues, Jobs, Events, Mail.</li>
+            </ul>
+          </div>
+          <div
+            class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-2"
+          >
+            <span class="font-bold text-indigo-600 block text-sm"
+              >Month 18: API Architecture</span
+            >
+            <ul class="space-y-1.5 text-slate-600 list-disc pl-4">
+              <li>Build Enterprise API serving multi-clients.</li>
+              <li>Consume API from React, Next.js, and Mobile.</li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="p-4 bg-indigo-50 border border-indigo-100 rounded-xl text-xs text-indigo-900 font-semibold text-center"
+        >
+          Key Professional Principle: "The frontend does not need to know what
+          backend framework powers the API."
+        </div>
+      </section>
+
+      <!-- CONTINUOUS MASTERY & INFRASTRUCTURE MODULES -->
+      <section
+        class="page-card bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm space-y-8"
+      >
+        <div class="border-b border-slate-100 pb-4">
+          <span
+            class="text-xs font-bold text-indigo-700 bg-indigo-50 px-3 py-1 rounded-md border border-indigo-100"
+            >CROSS-CUTTING CURRICULUM</span
+          >
+          <h2
+            class="font-cinzel text-2xl sm:text-3xl font-bold text-slate-900 mt-1"
+          >
+            Infrastructure, Security, DevOps & Testing
+          </h2>
+        </div>
+
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-xs"
+        >
+          <!-- Networking -->
+          <div
+            class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-3"
+          >
+            <h3 class="font-bold text-slate-900 text-sm">🌐 Networking</h3>
+            <ul class="space-y-1.5 text-slate-600 list-disc pl-4">
+              <li>IP (v4/v6), MAC, Ports, TCP/UDP.</li>
+              <li>DNS, DHCP, NAT mechanics.</li>
+              <li>HTTP/HTTPS, TLS/SSL Certificates.</li>
+              <li>Reverse Proxy, Nginx, CDNs.</li>
+            </ul>
+          </div>
+
+          <!-- DevOps -->
+          <div
+            class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-3"
+          >
+            <h3 class="font-bold text-slate-900 text-sm">
+              🐳 DevOps & Infrastructure
+            </h3>
+            <ul class="space-y-1.5 text-slate-600 list-disc pl-4">
+              <li>Git, Branching, PRs, Rebase.</li>
+              <li>Linux Ubuntu server administration.</li>
+              <li>Docker, Containers, Docker Compose.</li>
+              <li>CI/CD via GitHub Actions.</li>
+            </ul>
+          </div>
+
+          <!-- Security -->
+          <div
+            class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-3"
+          >
+            <h3 class="font-bold text-slate-900 text-sm">🔒 App Security</h3>
+            <ul class="space-y-1.5 text-slate-600 list-disc pl-4">
+              <li>OWASP Top 10 Vulnerabilities.</li>
+              <li>Authentication, JWT, HttpOnly Cookies.</li>
+              <li>SQL & NoSQL Injection defense.</li>
+              <li>XSS, CSRF, CORS, Rate Limiting.</li>
+            </ul>
+          </div>
+
+          <!-- Testing & DB -->
+          <div
+            class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-3"
+          >
+            <h3 class="font-bold text-slate-900 text-sm">
+              🧪 Databases & Testing
+            </h3>
+            <ul class="space-y-1.5 text-slate-600 list-disc pl-4">
+              <li>PostgreSQL (ACID, JOINS) & MongoDB.</li>
+              <li>Prisma ORM for TypeScript.</li>
+              <li>Unit & Integration Testing.</li>
+              <li>Automated E2E with Playwright.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXECUTION SYSTEM & DAILY ROUTINE -->
+      <section
+        class="page-card bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm space-y-8"
+      >
+        <h2
+          class="font-cinzel text-2xl font-bold text-slate-900 border-b border-slate-100 pb-4"
+        >
+          Daily & Weekly Learning Execution System
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
+          <!-- Daily routine -->
+          <div
+            class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-3"
+          >
+            <h3 class="font-bold text-slate-900 text-sm">
+              Monday–Friday System (2-3 Hours)
+            </h3>
+            <div class="space-y-2">
+              <div class="p-2 bg-white rounded border border-slate-200">
+                <span class="font-bold text-indigo-600">First 30–45 Mins:</span>
+                Read docs & study concepts.
+              </div>
+              <div class="p-2 bg-white rounded border border-slate-200">
+                <span class="font-bold text-indigo-600">Next 60–90 Mins:</span>
+                Write actual code.
+              </div>
+              <div class="p-2 bg-white rounded border border-slate-200">
+                <span class="font-bold text-indigo-600">Final 30 Mins:</span>
+                Review & evaluate understanding.
+              </div>
+            </div>
+          </div>
+
+          <!-- Weekend routine -->
+          <div
+            class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-3"
+          >
+            <h3 class="font-bold text-slate-900 text-sm">
+              Weekend Building & Review
+            </h3>
+            <div class="space-y-2">
+              <div class="p-2 bg-white rounded border border-slate-200">
+                <span class="font-bold text-emerald-600">Saturday:</span> Major
+                feature build, debugging, refactoring, and documentation.
+              </div>
+              <div class="p-2 bg-white rounded border border-slate-200">
+                <span class="font-bold text-emerald-600">Sunday:</span> Review
+                progress, address knowledge gaps, and set 3 weekly goals.
+              </div>
+            </div>
+          </div>
+
+          <!-- Weekly schedule table -->
+          <div
+            class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-2"
+          >
+            <h3 class="font-bold text-slate-900 text-sm mb-2">
+              Weekly Cadence Structure
+            </h3>
+            <ul class="space-y-1 text-slate-600">
+              <li><strong>Mon:</strong> New concept study</li>
+              <li><strong>Tue:</strong> Guided coding practice</li>
+              <li><strong>Wed:</strong> Debugging & problem solving</li>
+              <li><strong>Thu:</strong> Feature implementation</li>
+              <li><strong>Fri:</strong> Code refactoring & review</li>
+              <li><strong>Sat:</strong> Intensive project build</li>
+              <li><strong>Sun:</strong> Weekly reflection & planning</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECT LADDER & ULTIMATE CAPSTONE -->
+      <section
+        class="page-card bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm space-y-8"
+      >
+        <h2
+          class="font-cinzel text-2xl font-bold text-slate-900 border-b border-slate-100 pb-4"
+        >
+          The Progressive Project Ladder
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-5 gap-3 text-xs">
+          <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+            <span class="font-bold text-slate-800 block mb-1">Level 1: JS</span>
+            <p class="text-slate-600">
+              Calculator, Todo, Expense tracker, Invoice tool.
+            </p>
+          </div>
+          <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+            <span class="font-bold text-slate-800 block mb-1"
+              >Level 2: React</span
+            >
+            <p class="text-slate-600">
+              Dashboard UI, CRM, Inventory, E-commerce.
+            </p>
+          </div>
+          <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+            <span class="font-bold text-slate-800 block mb-1"
+              >Level 3: Full Stack</span
+            >
+            <p class="text-slate-600">
+              Auth, REST APIs, Databases, RBAC, Uploads.
+            </p>
+          </div>
+          <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+            <span class="font-bold text-slate-800 block mb-1"
+              >Level 4: SaaS</span
+            >
+            <p class="text-slate-600">
+              Multi-Tenancy, Subscriptions, Audit Logs, Webhooks.
+            </p>
+          </div>
+          <div class="p-4 bg-indigo-50 border border-indigo-200 rounded-xl">
+            <span class="font-bold text-indigo-900 block mb-1"
+              >Level 5: Platform</span
+            >
+            <p class="text-indigo-700">
+              Web + Mobile + AI + DevOps + Cloud Deployment.
+            </p>
+          </div>
+        </div>
+
+        <!-- Ultimate Capstone Architecture Visual -->
+        <div class="bg-slate-900 text-white p-6 sm:p-8 rounded-2xl space-y-4">
+          <div
+            class="flex justify-between items-center border-b border-slate-800 pb-3"
+          >
+            <h3 class="font-cinzel text-lg font-bold text-amber-400">
+              Final Month 18 Capstone Architecture
+            </h3>
+            <span class="text-xs font-mono text-slate-400"
+              >Enterprise Scale</span
+            >
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-mono">
+            <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+              <span class="text-amber-400 font-bold block mb-2"
+                >Frontend Applications</span
+              >
+              <ul class="space-y-1 text-slate-300">
+                <li>• Web: Next.js / React</li>
+                <li>• Mobile 1: React Native</li>
+                <li>• Mobile 2: Flutter</li>
+              </ul>
+            </div>
+            <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+              <span class="text-amber-400 font-bold block mb-2"
+                >Backend & AI Services</span
+              >
+              <ul class="space-y-1 text-slate-300">
+                <li>• Node.js / Express API</li>
+                <li>• Python FastAPI / AI RAG</li>
+                <li>• Laravel Enterprise API</li>
+              </ul>
+            </div>
+            <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+              <span class="text-amber-400 font-bold block mb-2"
+                >Infrastructure & Cloud</span
+              >
+              <ul class="space-y-1 text-slate-300">
+                <li>• PostgreSQL + MongoDB</li>
+                <li>• Docker + Nginx + SSL</li>
+                <li>• CI/CD GitHub Actions</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER & FINAL STANDARD STATEMENT -->
+      <footer
+        class="page-card bg-white border border-slate-200 rounded-3xl p-8 sm:p-12 text-center space-y-6"
+      >
+        <h3 class="font-cinzel text-2xl font-bold text-slate-900">
+          The Ultimate Engineering Standard
+        </h3>
+        <blockquote
+          class="text-base sm:text-lg italic text-slate-700 max-w-3xl mx-auto border-l-4 border-indigo-600 pl-4 text-left"
+        >
+          "Give me a real-world problem, and I can analyze it, design the
+          architecture, choose the right technology, build the system, connect
+          the database, secure it, test it, deploy it, monitor it and maintain
+          it."
+        </blockquote>
+        <div
+          class="pt-6 border-t border-slate-100 flex flex-wrap justify-between items-center text-xs text-slate-500 font-semibold"
+        >
+          <span>Months 1 → 18 Self-Paced Evergreen Roadmap</span>
+          <span>Software Engineering Standards</span>
+          <span>Print-Ready Document</span>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
