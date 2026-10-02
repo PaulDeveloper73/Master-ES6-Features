@@ -108,3 +108,19 @@ for (let i = 0; i < 9; i++) {
   }
   console.log(i + 1 + ':Number between 21 and 30: ' + randNum30)
 }
+
+const myNum2 = '23.534VFG'
+console.log('Floating Number: ' + Number.parseFloat(myNum2))
+console.clear()
+console.log('Master Mobile/Web App development')
+console.log(isNaN(myNum2))
+const myNum3 = '23.534'
+console.log('Floating Number: ' + Number.parseFloat(myNum3))
+console.log(isNaN(myNum3))
+console.log(isNaN(Number.parseFloat(myNum3)))
+const number4 = Number.parseFloat(myNum3)
+console.log(isNaN(number4))
+const mySon = 'Magezi'
+console.log(mySon)
+console.log(mySon.length)
+console.log(isNaN(mySon))
