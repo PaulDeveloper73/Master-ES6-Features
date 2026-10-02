@@ -76,3 +76,35 @@ console.log(typeof newNumer)
 // Check is the number is NaN(Not a Number)
 console.log(`Checking if the number is NaN: ${isNaN(myFloat2)}`)
 console.log(`Checking if the number is NaN: ${isNaN(newNumer)}`)
+
+// Math function manipulations
+console.log('Math function manipulations')
+const myNum = 100.53456789
+const My_TAX = 0.5
+console.log(Math.round(myNum))
+console.log(Math.floor(myNum))
+console.log(Math.ceil(myNum))
+
+// Generate  9 arandom number betweeen 1  and 10
+
+const randNum10 = Math.floor(Math.random() * 10 + 1)
+
+// Generate 9 arandom number betweeen 21  and 30
+const randNum30 = Math.floor(Math.random() * 30 + 21)
+console.log('Number between 1 and 10: ' + randNum10)
+console.log('Number between 21 and 30: ' + randNum30)
+// Usagae of for loop
+// Generate 9 arandom number betweeen 1  and 10
+for (let i = 0; i < 9; i++) {
+  const randNum10 = Math.floor(Math.random() * 10 + 1)
+  console.log('Number between 1 and 10: ' + randNum10)
+}
+// Generate 9 arandom number betweeen 21  and 30
+for (let i = 0; i < 9; i++) {
+  const randNum30 = Math.floor(Math.random() * 30 + 21)
+  if (randNum30 <= 21 || randNum30 >= 30) {
+    i--
+    continue
+  }
+  console.log(i + 1 + ':Number between 21 and 30: ' + randNum30)
+}
