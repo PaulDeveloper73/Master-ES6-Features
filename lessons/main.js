@@ -124,3 +124,181 @@ const mySon = 'Magezi'
 console.log(mySon)
 console.log(mySon.length)
 console.log(isNaN(mySon))
+
+// * Write code that will return arandom letter from your name
+const myName = 'Kisakye Paul'
+const nameIndex = Math.floor(Math.random() * myName.length + 1)
+const myNameLetter = myName.charAt(nameIndex)
+
+console.log('My Name random letter is:' + myNameLetter)
+
+// Logic statement, if else, switch statemet,ternary operator
+
+const passMark = 40
+const studentMark = 52
+console.log(studentMark ?? 'Your did not enter the mark,Try Again!')
+let grade
+if (studentMark >= 90) {
+  grade = 'A'
+} else if (studentMark >= 80) {
+  grade = 'B'
+} else if (studentMark >= 70) {
+  grade = 'C'
+} else if (studentMark >= 60) {
+  grade = 'D'
+} else if (studentMark >= passMark) {
+  grade = 'E'
+} else {
+  grade = 'F'
+}
+console.log('Your grade is:' + grade)
+
+switch (true) {
+  case studentMark >= 90:
+    grade = 'A'
+    console.log('Your performance exceeded expectations')
+
+    break
+
+  case studentMark >= 80:
+    grade = 'B'
+    console.log('Your performance is good')
+    break
+
+  case studentMark >= 70:
+    grade = 'C'
+    console.log('Your performance is average')
+
+    break
+
+  case studentMark >= 60:
+    grade = 'D'
+    console.log('Your performance is below average')
+    break
+
+  case studentMark >= passMark:
+    grade = 'E'
+    console.log('Your performance is passing')
+    break
+
+  default:
+    grade = 'F'
+    console.log('Your performance is failing')
+}
+
+// Color switch selection
+const colorItems = ['green', 'Blue', 'Orange', 'Red', 'Pink', 'Purple']
+const index = Math.floor(Math.random() * colorItems.length)
+console.log(colorItems[index])
+
+// Ternary Operator
+
+const myGrade =
+  studentMark >= 90
+    ? (grade = 'A')
+    : studentMark >= 80
+    ? (grade = 'B')
+    : studentMark >= 70
+    ? (grade = 'C')
+    : studentMark >= 60
+    ? (grade = 'E')
+    : studentMark >= passMark
+    ? (grade = 'F')
+    : "You didn't enter your mark,Try Again!"
+console.log('You scored:' + myGrade)
+
+// Loops: while,do while, for loop, foreach
+
+let count = 0
+while (count <= 10) {
+  console.log(count)
+  count++
+}
+const userName = 'Mukisa'
+let lettercount = 0
+while (true) {
+  for (let i = 0; i <= userName.length; i++) {
+    const userLetter = userName.charAt(
+      Math.floor(Math.random() * userName.length + 1) // ** This is a random letter generator from th e name, to use linear method just use charAt(i)
+    )
+    if (userLetter == 's') {
+      break
+    }
+    console.log(userLetter)
+    lettercount++
+  }
+
+  console.log('Letter iteration  summed to:' + lettercount)
+  break
+}
+
+// Array data manipulations
+const fruits = [
+  'Mango',
+  'Apple',
+  'Banana',
+  'Orange',
+  'Pineapple',
+  'Watermelon',
+  'Avocado'
+]
+const users = ['Paul', 'John', 'Mary', 'Peter', 'Sarah', 'David', 'Grace']
+const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+
+const colors = ['Red', 'Blue', 'Green', 'Yellow', 'Purple', 'Orange', 'Black']
+
+const numbers = [10, 20, 30, 40, 50, 30, 60, 70]
+
+// Two dimension array
+
+const myArray001 = [users, letters]
+const myArray002 = [colors, numbers]
+const myArray003 = [fruits, myArray001, myArray002]
+console.log(myArray002[0][4])
+console.log(myArray002[1][3])
+
+// Three dimension array
+const myArray004 = [myArray003, myArray002, myArray001]
+console.log(myArray004[0][1][1][2])
+console.log(myArray004[0][2][0][5])
+console.log(myArray004[1][0][4])
+console.log(myArray004[2][1][6])
+
+//Array data  manipulation methods: unshift,shift, pop, push, splice, slice, indexOf, lastIndexOf, includes, find, findIndex, filter, map, reduce, forEach
+numbers.push(80)
+colors.pop()
+console.log(numbers)
+console.log(colors)
+// unshift and shift
+letters.unshift('Z', 'Y', 'X')
+console.log(letters)
+const removedColors = colors.shift()
+console.log(removedColors)
+// * splice in Action : can add, remove and replace elements in an array
+console.log(users)
+console.log(users.splice(1, 1)) // removed John from the array
+console.log(users)
+console.log(letters.splice(3, 0, 'M', 'J')) //Added new items in the array
+console.log(letters)
+console.log(numbers.splice(6, 1, 100))
+console.log(numbers) // replaced an item in the array
+// slice in Action: can copy a portion of an array into a new array
+const newArray = colors.slice(3)
+console.log(newArray)
+console.log(colorItems.indexOf('Blue'))
+console.log(numbers.indexOf(30))
+console.log(numbers.lastIndexOf(30))
+console.log(colors.includes('cyan'))
+const myNumArray = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+const find50 = myNumArray.find(num => num === 50)
+console.log(find50)
+const findIndex50 = myNumArray.findIndex(num => num === 50)
+console.log(findIndex50)
+
+// Filter
+
+// Map
+
+// Reduce
+
+// Foreach
