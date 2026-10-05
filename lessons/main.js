@@ -282,7 +282,7 @@ console.log(letters.splice(3, 0, 'M', 'J')) //Added new items in the array
 console.log(letters)
 console.log(numbers.splice(6, 1, 100))
 console.log(numbers) // replaced an item in the array
-// slice in Action: can copy a portion of an array into a new array
+// slice in Action: can g3copy a portion of an array into a new array
 const newArray = colors.slice(3)
 console.log(newArray)
 console.log(colorItems.indexOf('Blue'))
@@ -295,10 +295,55 @@ console.log(find50)
 const findIndex50 = myNumArray.findIndex(num => num === 50)
 console.log(findIndex50)
 
-// Filter
+console.clear()
 
+// Array and object data manipulation methods: filter, map, reduce, forEach
+
+const arryNumbers = [10, 20, 30, 40, 50, 30, 60, 2, 4, 7, 9, 4, 54, 92, 70]
+console.log('Checking if acertain array is an instance of Array family')
+console.log(arryNumbers instanceof Array)
+// Filter
+// ?Filter if value is greater than "40"
+const moreFortyValue = arryNumbers.filter(n => n > 40)
+console.log('Array value greater than 40 are:' + moreFortyValue)
 // Map
+// ?Multiply by 2
+const numberResult = moreFortyValue.map(n => n * 3)
+console.log('Each value is multiplied by 3: ' + numberResult)
 
 // Reduce
+// ? Sum all the numbers
+const totalSum = numberResult.reduce((acc, curr) => acc + curr, 0)
+console.log('Total sum of the array is: ' + totalSum)
+
+// Sorting the array asceding order
+const ascendOrder = [...numberResult].sort((a, b) => a - b)
+console.log('Asceding Array order is:' + ascendOrder)
+
+// Sorting the array descending order
+const descendOrder = [...numberResult].sort((a, b) => b - a)
+console.log('Descending Array order is:', descendOrder)
 
 // Foreach
+arryNumbers.forEach((n, i) => {
+  console.log(i + 1 + '. My value is: ' + n)
+})
+
+// Final touch on loops and array manipulations
+
+const usernamePro = 'Paulyukom'
+let counter = 0
+
+while (counter <= usernamePro.length) {
+  const myLetter = usernamePro[counter]
+  if (counter === 2) {
+    counter++
+    continue
+  }
+  if (myLetter === 'm') {
+    break
+  }
+  console.log('Am here er:' + myLetter)
+
+  counter++
+}
