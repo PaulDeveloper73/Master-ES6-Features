@@ -347,3 +347,61 @@ while (counter <= usernamePro.length) {
 
   counter++
 }
+
+console.log('\n\n--------------Final touch on for loops--------------')
+// For loop(for general iterations), for in(Specifically used for object it return keys/indexes), for of(Fore arrays return values), foreach( for array datat , it returns index,+values and array as callback)
+
+// ** For loop
+const arryNumberMin = [10, 20, 30, 40, 50, 30, 60, 2, 4, 7, 9, 4, 54, 92, 70]
+console.log('\n\n-------For loop--------')
+for (let i = 0; i < arryNumberMin.length; i++) {
+  console.log(arryNumberMin[i])
+}
+// ** For in loop
+console.log('\n\n-------For in loop--------')
+for (const index in arryNumberMin) {
+  console.log(`${index}: value is: ${arryNumbers[index]}`)
+}
+// ** For of loop
+console.log('\n\n-------For of loop--------')
+for (const value of arryNumberMin) {
+  console.log(`Value is: ${value}`)
+}
+
+console.log('\n\n-------For each loop--------')
+// ** For each loop
+arryNumberMin.forEach((n, i) => {
+  console.log(`${i}: value is: ${n}`)
+})
+// My object data manipulations
+const musicalInstruments = {
+  guitorName: 'Guitar',
+  type: 'String',
+  brand: 'Fender',
+  price: 1000
+}
+// Object destructuring
+const { guitorName, type, brand, price } = musicalInstruments
+// const{guitorName:myGuitor,brand:gBrand}=musicalInstruments; // Optional renaming of the object properties
+// Delete a key from the object
+delete musicalInstruments.price // delete price key entry from the object
+
+// Object Inheriance
+const myMusicObj = Object.create(musicalInstruments)
+myMusicObj.Array = ['Guitar', 'Piano', 'Drums', 'Violin']
+myMusicObj.play = function () {
+  console.log('I can play the following musical instruments:' + this.Array)
+}
+myMusicObj.play()
+
+console.log(Object.keys(musicalInstruments))
+console.log(Object.values(musicalInstruments))
+const manfacDate = new Date()
+musicalInstruments.manufacturerDate = manfacDate.toDateString()
+console.log(musicalInstruments)
+for (const key in musicalInstruments) {
+  console.log(`${key}: ${musicalInstruments[key]}`)
+}
+
+// Object methods: Object.keys(), Object.values(), Object.entries(), Object.assign(), Object.freeze(), Object.seal(), Object.hasOwnProperty()
+console.log(Object.entries(musicalInstruments))
