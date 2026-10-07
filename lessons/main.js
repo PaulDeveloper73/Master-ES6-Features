@@ -404,4 +404,99 @@ for (const key in musicalInstruments) {
 }
 
 // Object methods: Object.keys(), Object.values(), Object.entries(), Object.assign(), Object.freeze(), Object.seal(), Object.hasOwnProperty()
-console.log(Object.entries(musicalInstruments))
+
+const person = {
+  name: 'Paul',
+  age: 30,
+  country: 'Uganda'
+}
+const contact = {
+  email: 'paul@example.com',
+  phone: '0700000000'
+}
+console.log('\n\n DEALING WITH OBJECT METHODS')
+console.log('Object 001:' + person)
+console.log('Object 002:' + contact)
+
+console.log(person.country)
+
+console.log(Object.keys(person))
+console.log(Object.values(contact))
+console.log(Object.assign(person, contact))
+// Alternative object assignment
+console.log(Object.assign(person, { currentYear: 2026 }))
+
+console.log(Object.freeze(contact))
+contact.email = 'kisakyepaul73@gmail.com' //Attempting to modify a locked object, its impossible now.
+console.log(contact.email)
+console.log(Object.seal(person))
+person.age = 70 // modificatin allowed.
+person.id = 'AB001' // not allowed because its anew entry in the person object
+console.log(contact.hasOwnProperty('phone')) // true
+console.log(Object.hasOwn(person, 'countryCode')) //false
+
+console.log('\n\n')
+console.log("Final modified objects:Person & contact")
+console.log(Object.entries(person))
+console.log(Object.entries(contact))
+
+
+
+// Mastering array methods: map,filter,find,sort and reduce.
+const products = [
+  {
+    id: 1,
+    name: 'Laptop',
+    category: 'Electronics',
+    price: 2500000,
+    stock: 5,
+    active: true
+  },
+  {
+    id: 2,
+    name: 'Phone',
+    category: 'Electronics',
+    price: 1200000,
+    stock: 12,
+    active: true
+  },
+  {
+    id: 3,
+    name: 'Office Chair',
+    category: 'Furniture',
+    price: 450000,
+    stock: 8,
+    active: true
+  },
+  {
+    id: 4,
+    name: 'Desk',
+    category: 'Furniture',
+    price: 800000,
+    stock: 0,
+    active: false
+  },
+  {
+    id: 5,
+    name: 'Keyboard',
+    category: 'Electronics',
+    price: 150000,
+    stock: 20,
+    active: true
+  }
+]
+
+// Reversing the array
+
+const transactions = ['January', 'February', 'March', 'April']
+// Reverse method
+const reverseArry3 = [...transactions].reverse() // this creates acopy of the original array, no-mutation is experienced here, original array remain un changed
+
+// toReversed: - professional modern js way
+const Last_4_Transaction = transactions.toReversed() // this does not mutates the original array/ array objects
+
+console.log('Original array is:' + transactions)
+console.log('Reversed array is:' + reverseArry3)
+console.log('Last (4) transactions:' + Last_4_Transaction)
+const reverseArry = transactions.reverse() // this muttats the opriginal array
+console.log('Reversed array is:' + reverseArry)
