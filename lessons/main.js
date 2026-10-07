@@ -436,11 +436,10 @@ console.log(contact.hasOwnProperty('phone')) // true
 console.log(Object.hasOwn(person, 'countryCode')) //false
 
 console.log('\n\n')
-console.log("Final modified objects:Person & contact")
+console.log('Final modified objects:Person & contact')
 console.log(Object.entries(person))
 console.log(Object.entries(contact))
-
-
+console.log('\n\n')
 
 // Mastering array methods: map,filter,find,sort and reduce.
 const products = [
@@ -486,6 +485,93 @@ const products = [
   }
 ]
 
+//  Data manipulations
+// ? Show only products that are in stock
+//? Showing  a real-world use of filter() in: Search, Product catalogs, User lists, Admin dashboards,Tables,Reports, Notifications
+//? Sort products by price (Lowest price)
+//? Sort by highest price
+//? Sort alphabetically
+const alphabetical = [...products].sort((a, b) => a.name.localeCompare(b.name))
+
+// ?Show me active electronics products, sorted by cheapest price.
+// ? Find the names of active products only: use Combine filter() + map()
+//? Find the total value of only active products that are in stock:
+// const totalValue = products
+//   .filter(product => product.active && product.stock > 0)
+//   .reduce((total, product) => {
+//     return total + product.price * product.stock
+//   }, 0)
+
+// ?Solve this dashboard needs: Total products,Active products,Out-of-stock products,Find a particular product(use id),Product names,Total inventory value,Sort cheapest first
+//Solve the above all here: These are not "school examples."
+
+// These are patterns you'll actually use in:
+
+// E-commerce
+// FinFlow-style financial applications
+// Admin dashboards
+// CRM systems
+// Inventory systems
+// Reporting systems
+// React applications
+// API data processing
+
+// One more task: consider the shopping cart below, calculate the total price of the items in the cart, and display the total in a formatted currency style (e.g., $2,850.00). Use array methods to achieve this.
+// * Task: Find one product,Get active products,Get only product names,Sort by price,Calculate inventory value
+const ShoppingCartProducts = [
+  { id: 1, name: 'Laptop', price: 2500000, stock: 5, active: true },
+  { id: 2, name: 'Phone', price: 1200000, stock: 12, active: true },
+  { id: 3, name: 'Chair', price: 450000, stock: 8, active: true },
+  { id: 4, name: 'Desk', price: 800000, stock: 0, active: false }
+]
+const cart = [
+  {
+    name: 'Laptop',
+    price: 2500000,
+    quantity: 1
+  },
+  {
+    name: 'Mouse',
+    price: 100000,
+    quantity: 2
+  },
+  {
+    name: 'Keyboard',
+    price: 150000,
+    quantity: 1
+  }
+]
+// We need Laptop     2,500,000
+// Mouse        200,000
+// Keyboard     150,000
+// ---------------------
+// TOTAL      2,850,000
+
+// Example: Get product names
+const usersFromAPI = [
+  {
+    id: 1,
+    first_name: 'Paul',
+    last_name: 'Kisakye'
+  },
+  {
+    id: 2,
+    first_name: 'John',
+    last_name: 'Smith'
+  }
+]
+
+// ? map():- Transform API data: This is extremely common in professional applications. return the user id and the full name,
+// ?Using find methos:  Find where product id is 3
+
+//? Find role where the username email is "paul@gmail.com" of currently logged in user
+const minUusers = [
+  { id: 1, email: 'paul@gmail.com', role: 'admin' },
+  { id: 2, email: 'john@gmail.com', role: 'staff' },
+  { id: 3, email: 'mary@gmail.com', role: 'customer' }
+]
+
+console.log('\n\n')
 // Reversing the array
 
 const transactions = ['January', 'February', 'March', 'April']
@@ -500,3 +586,21 @@ console.log('Reversed array is:' + reverseArry3)
 console.log('Last (4) transactions:' + Last_4_Transaction)
 const reverseArry = transactions.reverse() // this muttats the opriginal array
 console.log('Reversed array is:' + reverseArry)
+
+// *Search data
+// Yes. The key is to stop thinking of includes(), find(), filter(), some(), etc. as isolated JavaScript tricks. In real applications, they are data-management tools.
+
+// For example, imagine a real system with 10,000 customers, products, invoices, payments, or transactions. You constantly need to ask:
+
+// Does this value exist?
+// Does this customer exist?
+// Find this exact record.
+// Find all matching records.
+// Does at least one record match?
+// Does every record satisfy a rule?
+// Search by name/email/reference.
+// Remove duplicates.
+// Check whether selected IDs exist.
+// Process large collections without accidentally missing records.
+
+// *Let's build the professional mental model.
