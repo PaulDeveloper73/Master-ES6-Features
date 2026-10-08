@@ -427,11 +427,11 @@ console.log(Object.assign(person, contact))
 console.log(Object.assign(person, { currentYear: 2026 }))
 
 console.log(Object.freeze(contact))
-contact.email = 'kisakyepaul73@gmail.com' //Attempting to modify a locked object, its impossible now.
+// contact.email = 'kisakyepaul73@gmail.com' //Attempting to modify a locked object, its impossible now.
 console.log(contact.email)
 console.log(Object.seal(person))
 person.age = 70 // modificatin allowed.
-person.id = 'AB001' // not allowed because its anew entry in the person object
+// person.id = 'AB001' // not allowed because its anew entry in the person object
 console.log(contact.hasOwnProperty('phone')) // true
 console.log(Object.hasOwn(person, 'countryCode')) //false
 
@@ -485,25 +485,108 @@ const products = [
   }
 ]
 
-//  Data manipulations
+// * Data manipulations
 // ? Show only products that are in stock
-//? Showing  a real-world use of filter() in: Search, Product catalogs, User lists, Admin dashboards,Tables,Reports, Notifications
-//? Sort products by price (Lowest price)
+
+const StockProductAvailable = products.filter(product => product.stock > 0)
+console.log(`Avalible Products are Here:`)
+console.log(StockProductAvailable)
+
+//* Showing  a real-world use of filter() in: Search, Product catalogs, User lists, Admin dashboards,Tables,Reports, Notifications
+
+// ! Search term "my Laptop"
+const seachTerm = 'laptop '
+const searchResults = products.filter(product =>
+  product.name.trim().toLowerCase().includes(seachTerm.trim().toLowerCase())
+)
+console.log(`Searchresult for: ${seachTerm.trim().toLowerCase()} are here`)
+console.log(searchResults)
+
+//* Sort products by price (Lowest price)
+const sortedProductsByLowestprice = [...products].sort(
+  (a, b) => a.price - b.price
+)
+console.log('Sorted products by Lowest Prices are here')
+console.log(sortedProductsByLowestprice)
 //? Sort by highest price
-//? Sort alphabetically
+const sortedProductsByHighestprice = [...products].sort(
+  (a, b) => b.price - a.price
+)
+console.log('Sorted products by Highest Prices are here')
+console.log(sortedProductsByHighestprice)
+//! Sort alphabetically
 const alphabetical = [...products].sort((a, b) => a.name.localeCompare(b.name))
 
-// ?Show me active electronics products, sorted by cheapest price.
-// ? Find the names of active products only: use Combine filter() + map()
-//? Find the total value of only active products that are in stock:
-// const totalValue = products
-//   .filter(product => product.active && product.stock > 0)
-//   .reduce((total, product) => {
-//     return total + product.price * product.stock
-//   }, 0)
+// *Show me active electronics products, sorted by cheapest price.
+const activeElectronicByLowestPrice = [...products]
+  .filter(product => product.category === 'Electronics')
+  .sort((a, b) => a.price - b.price)
 
-// ?Solve this dashboard needs: Total products,Active products,Out-of-stock products,Find a particular product(use id),Product names,Total inventory value,Sort cheapest first
-//Solve the above all here: These are not "school examples."
+console.log('Electronics Category Sorted by Lowest Prices are Here')
+console.log(activeElectronicByLowestPrice)
+// * Find the names of active products only: use Combine filter() + map()
+
+const activeproductsNames = products.filter(product => product.active === true)
+console.log(`Active Product Names are here:`)
+console.log(activeproductsNames)
+
+//? Find the total value of only active products that are in stock:
+const totalProductValue = products
+  .filter(product => product.active === true && product.stock > 0)
+  .reduce(
+    (total, product) => total + product.price * product.stock,
+
+    0
+  )
+
+console.log(
+  `Total active Product value is: ${totalProductValue.toLocaleString()} UGX`
+)
+// ?Solve this dashboard needs: Total products,Active products,Out-of-stock products,
+//Find a particular product(use id),Product names,Total inventory value,Sort cheapest first
+//Solve the above all here: These are not "school examples, This real world production level"
+//!! Solutions are here
+
+// * Find the Total products:
+
+const allProducts = products.map(product => {
+  return `<li>${product.id}. Product: ${product.name} , Price: ${product.price}</li>`
+})
+console.log(`Total Products are all here:`)
+console.log(allProducts)
+// * Find active Products
+const activeProducts = products.filter(product => product.active === true)
+console.log(`Out of stock products are here:`)
+console.log(activeProducts)
+
+// * Find out of stock Products
+const outOfStockProducts = products.filter(product => product.stock === 0)
+console.log(`Out of Stock Products are:`)
+console.log(outOfStockProducts)
+// * Find aparticular/single product: id=3
+const myChairItem = products.find(product => product.id === 3)
+console.log('My chair is here:')
+console.log(myChairItem)
+
+// * Find the Product Names
+const productNames = products.map(product => product.name)
+console.log('Product names are here: ')
+console.log(productNames)
+
+// * Total Inventory Value
+const totalProductRevenue = products
+  .filter(product => product.stock > 0)
+  .reduce((total, product) => {
+    return total + product.price * product.stock
+  }, 0)
+
+console.log(
+  `Total Inventory Value is: ${totalProductRevenue.toLocaleString()} UGX`
+)
+// * Sort The cheapest Product first
+const cheapestproducts = [...products].sort((a, b) => a.price - b.price)
+console.log(`Cheapest Products as here in Ascending Order`)
+console.log(cheapestproducts)
 
 // These are patterns you'll actually use in:
 
@@ -516,7 +599,9 @@ const alphabetical = [...products].sort((a, b) => a.name.localeCompare(b.name))
 // React applications
 // API data processing
 
-// One more task: consider the shopping cart below, calculate the total price of the items in the cart, and display the total in a formatted currency style (e.g., $2,850.00). Use array methods to achieve this.
+// One more task: consider the shopping cart below, calculate the total price of the items in the cart,
+// and display the total in a formatted currency style (e.g., $2,850.00).
+// Use array methods to achieve this.
 // * Task: Find one product,Get active products,Get only product names,Sort by price,Calculate inventory value
 const ShoppingCartProducts = [
   { id: 1, name: 'Laptop', price: 2500000, stock: 5, active: true },
@@ -524,6 +609,14 @@ const ShoppingCartProducts = [
   { id: 3, name: 'Chair', price: 450000, stock: 8, active: true },
   { id: 4, name: 'Desk', price: 800000, stock: 0, active: false }
 ]
+
+// * Calculate the total price of the items in the cart
+const totalCartPrice = products
+  .filter(product => product.stock > 0)
+  .reduce((sum, product) => {
+    return sum + product.price * product.stock
+  }, 0)
+console.log(`Cart Grand Total is: ${totalCartPrice.toLocaleString()} UGX`)
 const cart = [
   {
     name: 'Laptop',
@@ -546,30 +639,59 @@ const cart = [
 // Keyboard     150,000
 // ---------------------
 // TOTAL      2,850,000
+// * Calculate the cart grand total
 
-// Example: Get product names
+const myCartTotal = cart
+  .filter(product => product.quantity > 0)
+  .reduce((total, product) => {
+    return total + product.price * product.quantity
+  }, 0)
+
+console.log(`New Cart Grand Total is: ${myCartTotal.toLocaleString()} UGX`)
+// * Find Get product names
+const productNamesInCart = cart.map(product => product.name)
+console.log('Product name are here: ' + productNamesInCart)
 const usersFromAPI = [
   {
     id: 1,
-    first_name: 'Paul',
-    last_name: 'Kisakye'
+    firstName: 'Paul',
+    lastName: 'Kisakye'
   },
   {
     id: 2,
-    first_name: 'John',
-    last_name: 'Smith'
+    firstName: 'John',
+    lastName: 'Smith'
   }
 ]
 
-// ? map():- Transform API data: This is extremely common in professional applications. return the user id and the full name,
-// ?Using find methos:  Find where product id is 3
+// * map():- Transform API data: This is extremely common in professional applications.
+//return the user id and the full name
+
+const useData = usersFromAPI.map(user => {
+  return {
+    id: user.id,
+    fullName: user.firstName + ' ' + user.lastName
+  }
+})
+console.log(useData) // API data is now transform into useful meaning ready to be used in real world applications
+
+// * Using find methods:  Find where product id is 3
+const myProductId = usersFromAPI.find(user => user.id === 3)
+
+console.log(`User with ID:3 is here!`)
+console.log(myProductId) //undefine because from userFroApi array object there is no user having ID:3
 
 //? Find role where the username email is "paul@gmail.com" of currently logged in user
 const minUusers = [
-  { id: 1, email: 'paul@gmail.com', role: 'admin' },
-  { id: 2, email: 'john@gmail.com', role: 'staff' },
-  { id: 3, email: 'mary@gmail.com', role: 'customer' }
+  { id: 1, email: 'paul@gmail.com', role: 'admin', isOnline: true },
+  { id: 2, email: 'john@gmail.com', role: 'staff', isOnline: false },
+  { id: 3, email: 'mary@gmail.com', role: 'customer', isOnline: true }
 ]
+const SystemUserRole = minUusers.find(
+  user => user.isOnline === true && user.email === 'paul@gmail.com'
+)?.role
+// console.log(SystemUserRole.role)// alteratively without optional chaining you cna use this
+console.log(SystemUserRole)
 
 console.log('\n\n')
 // Reversing the array
