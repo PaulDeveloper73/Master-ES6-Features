@@ -461,6 +461,14 @@ const products = [
   },
   {
     id: 3,
+    name: 'Phone',
+    category: 'Electronics',
+    price: 500000,
+    stock: 7,
+    active: true
+  },
+  {
+    id: 4,
     name: 'Office Chair',
     category: 'Furniture',
     price: 450000,
@@ -468,7 +476,7 @@ const products = [
     active: true
   },
   {
-    id: 4,
+    id: 5,
     name: 'Desk',
     category: 'Furniture',
     price: 800000,
@@ -897,19 +905,38 @@ console.log(
 const myDevice = [
   { name: 'Laptop', stock: 5 },
   { name: 'Phone', stock: 10 },
-  { name: 'Mouse', stock: 3 }
+  { name: 'Mouse', stock: 3 },
+  { name: 'UPS', stock: 0 }
 ]
 
 // * Task 003: use every to check if stock for each product is greater than 0
+const isProductAvailable = myDevice.every(product => product.stock > 0)
+console.log(`Are all products available in Stock? ${isProductAvailable}`)
 // * Make use of "find" and "findIndex" :This is useful when updating or removing an item from an array.
-
 const users_002 = [
-  { id: 1, name: 'Paul' },
   { id: 2, name: 'John' },
+  { id: 1, name: 'Paul' },
   { id: 3, name: 'Mary' }
 ]
 
-// Task 004: Change Paul's name to Magezi Joshua where id = 1, when neer yu find Paul, replace with Magezi Joshua
+// Task 004: Change Paul's name to Magezi Joshua where id = 1
+
+// Finding Index of Paul
+
+const findPaulIndex = users_002.findIndex(
+  user => user.name.toLowerCase() === 'Paul '.trim().toLowerCase()
+)
+console.log(`Paul index is: ${findPaulIndex}`)
+// replace name
+const replaceName = users_002.find(user => user.id === 2)
+
+if (replaceName) {
+  replaceName.name = 'Magezi Joshua'
+  console.log(replaceName)
+} else {
+  console.log('No data available!')
+}
+console.log(users_002)
 
 const invoices = [
   { id: 101, amount: 50000 },
@@ -921,6 +948,11 @@ const invoices = [
 const selectedIds = [101, 102, 104]
 
 // Calculate the total of selected invoices
+
+const selectedInvoiceTotal = invoices
+  .filter(inv => selectedIds.includes(inv.id))
+  .reduce((total, inv) => total + inv.amount, 0)
+console.log(' USh ' + selectedInvoiceTotal.toLocaleString())
 // Now combine filter() + reduce():
 // Get all selected objects
 
@@ -929,6 +961,16 @@ const selectedIds = [101, 102, 104]
 // Search: "phone"
 // Category: Electronics
 // Sort: Lowest price
+const query = 'phone'.trim().toLowerCase()
+const category = 'Electronics'.trim().toLowerCase()
+const userSearchOption = products
+  .filter(product => product.name.toLowerCase().includes(query))
+  .filter(item => item.category.trim().toLowerCase() === category)
+  .toSorted((a, b) => a.price - b.price)  
+
+const myresults = userSearchOption.length > 0 ? userSearchOption :  "No data available" 
+
+console.log(myresults)
 
 //////////// * Task 005 find is seach user is blocked.
 // * Task 005: find is seach user is blocked.
