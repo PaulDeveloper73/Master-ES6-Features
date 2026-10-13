@@ -939,10 +939,14 @@ if (replaceName) {
 console.log(users_002)
 
 const invoices = [
-  { id: 101, amount: 50000 },
-  { id: 102, amount: 70000 },
-  { id: 103, amount: 30000 },
-  { id: 104, amount: 90000 }
+  { id: 101, amount: 50000, status: 'paid' },
+  { id: 102, amount: 70000, status: 'paid' },
+  { id: 103, amount: 30000, status: 'notpaid' },
+  { id: 104, amount: 90000, status: 'paid' },
+  { id: 105, amount: 30000, status: 'notpaid' },
+  { id: 106, amount: 80000, status: 'notpaid' },
+  { id: 107, amount: 12000, status: 'notpaid' },
+  { id: 108, amount: 67000, status: 'notpaid' }
 ]
 
 const selectedIds = [101, 102, 104]
@@ -966,26 +970,50 @@ const category = 'Electronics'.trim().toLowerCase()
 const userSearchOption = products
   .filter(product => product.name.toLowerCase().includes(query))
   .filter(item => item.category.trim().toLowerCase() === category)
-  .toSorted((a, b) => a.price - b.price)  
+  .toSorted((a, b) => a.price - b.price)
 
-const myresults = userSearchOption.length > 0 ? userSearchOption :  "No data available" 
+const myresults =
+  userSearchOption.length > 0 ? userSearchOption : 'No data available'
 
 console.log(myresults)
 
 //////////// * Task 005 find is seach user is blocked.
 // * Task 005: find is seach user is blocked.
-// nst blockedUserIds = [2, 5, 9, 15];
+// blockedUserIds = [2, 5, 9, 15];
+const blockedUserIds = [2, 5, 9, 15]
+const userId = 6
 
-const userId = 5
+const isUserBlackListed = blockedUserIds.find(user => user === userId)
+if (isUserBlackListed) {
+  console.log('Your account is banned!!!,')
+} else {
+  console.log('Access Granted Successfully!')
+}
 
+const blockedUser = blockedUserIds.includes(userId)
+  ? 'System access denied, consult the support team!'
+  : 'Welcome User! '
+
+console.log(blockedUser)
 // ? "Is invoice 102 selected?"
+const isSelectedInvoice = selectedIds.includes(102)
+console.log(isSelectedInvoice)
 
 //? "Give me invoice 102"
+const myInvoice_001 = invoices.find(inv => inv.id === 102)
+console.log(myInvoice_001)
 
 // ?"Give me all unpaid invoices"
+const outStandingInvoice = invoices.filter(inv => inv.status !== 'paid')
+console.log(`View list of un paid invoice here`)
+console.log(outStandingInvoice)
 
 // ?"Calculate unpaid total"
-
+const outStandingInvoiceTotal = invoices
+  .filter(inv => inv.status !== 'paid')
+  .reduce((total, inv) => total + inv.amount, 0)
+console.log(`Outstanding Invoice Total is here:`)
+console.log(`SHs. ${outStandingInvoiceTotal.toLocaleString()}`)
 // * Task 006 Create A reusable professional search function
 // Instead of rewriting the same logic everywhere:
 
