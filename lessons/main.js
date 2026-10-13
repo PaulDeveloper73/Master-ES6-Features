@@ -1016,6 +1016,46 @@ console.log(`Outstanding Invoice Total is here:`)
 console.log(`SHs. ${outStandingInvoiceTotal.toLocaleString()}`)
 // * Task 006 Create A reusable professional search function
 // Instead of rewriting the same logic everywhere:
+// const customers = [
+//   {
+//     id: 1,
+//     name: 'Paul Kisakye',
+//     email: 'kisakyepaul73@gmail.com',
+//     phone: '0774185964'
+//   },
+//   {
+//     id: 2,
+//     name: 'John Smith',
+//     email: 'john@gmail.com',
+//     phone: '0700000002'
+//   },
+//   {
+//     id: 3,
+//     name: 'Mary Namukasa',
+//     email: 'mary@gmail.com',
+//     phone: '0700000003'
+//   }
+// ]
+const globalSearch = (dataSource, query) => {
+  const searchTerm = query.trim().toLowerCase()
+  if (!searchTerm) {
+    return dataSource
+  }
+  const userSearcResults = dataSource.filter(user => {
+    const name = String(user.name?.trim() ?? '').toLowerCase()
+    const email = String(user.email?.trim() ?? '').toLowerCase()
+    const phone = String(user.phone?.trim() ?? '').toLowerCase()
+
+    return (
+      name.includes(searchTerm) ||
+      email.includes(searchTerm) ||
+      phone.includes(searchTerm)
+    )
+  })
+
+  return userSearcResults.length > 0 ? userSearcResults : ' No data available'
+}
+console.log(globalSearch(customers, 'marY'))
 
 /// Once you can translate business requirements → array operation, you're moving from simply knowing JavaScript syntax toward thinking like a professional application developer.
 
