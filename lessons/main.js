@@ -349,7 +349,7 @@ while (counter <= usernamePro.length) {
 }
 
 console.log('\n\n--------------Final touch on for loops--------------')
-// For loop(for general iterations), for in(Specifically used for object it return keys/indexes), for of(Fore arrays return values), foreach( for array datat , it returns index,+values and array as callback)
+// For loop(for general iterations), for in(Specifically used for object it return keys/indexes), for of(Fore arrays return values), foreach( for array data , it returns index,+values and array as callback)
 
 // ** For loop
 const arryNumberMin = [10, 20, 30, 40, 50, 30, 60, 2, 4, 7, 9, 4, 54, 92, 70]
@@ -709,10 +709,30 @@ console.log('Last (4) transactions:' + Last_4_Transaction)
 const reverseArry = transactions.reverse() // this muttats the opriginal array
 console.log('Reversed array is:' + reverseArry)
 
-// *Search data
-// Yes. The key is to stop thinking of includes(), find(), filter(), some(), etc. as isolated JavaScript tricks. In real applications, they are data-management tools.
+// Js objects
+// * Object destructuring: - This is a professional way of extracting data from objects and arrays. It makes your code cleaner and more readable.
+const schoolObject = {
+  id: 1,
+  name: 'St. Marys College Kisubi',
+  location: 'Kisubi, Wakiso District',
+  fees: 5000000,
+  hobies: ['Reading', 'Swimming', 'Football', 'Basketball']
+}
 
-// For example, imagine a real system with 10,000 customers, products, invoices, payments, or transactions. You constantly need to ask:
+const dislayHobbies = schoolObject.hobies.map(hobby => hobby)
+console.log(`My school hobies are: ${dislayHobbies}`)
+
+const displayUserLocation = ({ location }) => {
+  // Object destructuring in action in the function parameter
+  return `User location is: ${location}`
+}
+console.log(displayUserLocation(schoolObject))
+// *Search data
+// Yes. The key is to stop thinking of includes(), find(), filter(), some(), etc. as isolated
+// JavaScript tricks. In real applications, they are data-management tools.
+
+// For example, imagine a real system with 10,000 customers, products, invoices, payments,
+// or transactions. You constantly need to ask:
 
 // Does this value exist?
 // Does this customer exist?
@@ -726,3 +746,207 @@ console.log('Reversed array is:' + reverseArry)
 // Process large collections without accidentally missing records.
 
 // *Let's build the professional mental model.
+console.log('Loading more data....')
+const users_001 = [
+  { id: 1, name: 'Paul' },
+  { id: 2, name: 'John' },
+  { id: 3, name: 'Mary' }
+]
+//Use .some() when you only want to know whether a user exists.
+const isPaulAvailble = users_001.some(user => user.name === 'Paul')
+console.log(isPaulAvailble)
+//? Check for existence of a user with id 2 using includes
+const checkUserId = users_001.some(user => user.id === 3)
+console.log(checkUserId)
+
+//Use .find() when you want to access the actual user's details.
+const getUserName = users_001.find(user => user.id === 2)
+console.log(getUserName)
+
+//* Real-world search
+// ? Suppose your application has customers:
+
+const customers = [
+  {
+    id: 1,
+    name: 'Paul Kisakye',
+    email: 'kisakyepaul73@gmail.com',
+    phone: '0774185964'
+  },
+  {
+    id: 2,
+    name: 'John Smith',
+    email: 'john@gmail.com',
+    phone: '0700000002'
+  },
+  {
+    id: 3,
+    name: 'Mary Namukasa',
+    email: 'mary@gmail.com',
+    phone: '0700000003'
+  }
+]
+
+// ! Task 001: Seach for user type,search term: "Paul"
+const searchTerm = '003'.trim().toLowerCase()
+
+const searchUser = customers.filter(user =>
+  user.name?.toLowerCase().includes(searchTerm)
+)
+const dataAvailable = searchUser.length > 0 ? searchUser : 'No data Available!'
+console.log(dataAvailable)
+// ! Task 002:// Search across multiple fields
+// A professional search usually shouldn't search only one field.
+// Suppose the user can search:
+// - name
+// - email
+// - phone
+const userSearchPro = customers.filter(user => {
+  const name = String(user.name ?? '').toLowerCase()
+  const email = String(user.email ?? '').toLowerCase()
+  const phone = String(user.phone ?? '').toLowerCase()
+
+  return (
+    name.includes(searchTerm) ||
+    email.includes(searchTerm) ||
+    phone.includes(searchTerm)
+  )
+})
+
+console.log(
+  'Professional searching for:' + searchTerm + ' in the customer database'
+)
+console.log(userSearchPro)
+// ! TASK 003: Professional search function
+//* Instead of putting everything directly inside your UI, create a reusable function:
+
+const mySearch = (datasource, term) => {
+  const userSearTerm = term.trim().toLowerCase()
+  return datasource.filter(user => {
+    const name = String(user.name ?? '').toLowerCase()
+    const email = String(user.email ?? '').toLowerCase()
+    const phone = String(user.phone ?? '').toLowerCase()
+
+    return (
+      name.includes(userSearTerm) ||
+      email.includes(userSearTerm) ||
+      phone.includes(userSearTerm)
+    )
+  })
+}
+
+console.log(mySearch(customers, 'pAul'))
+// some() tasks:
+// "Does at least ONE item satisfy this condition?"
+const premierUsers = [
+  { id: 1, name: 'Paul', role: 'admin' },
+  { id: 2, name: 'John', role: 'staff' },
+  { id: 3, name: 'Emma', role: 'customer' },
+  { id: 4, name: 'Teddy', role: 'manager' },
+  { id: 5, name: 'Joshua', role: 'CTO' },
+  { id: 6, name: 'Amosi', role: 'general manager' },
+  { id: 7, name: 'Joel', role: 'sales marketing manager' },
+  { id: 8, name: 'Babra', role: 'supervisor' }
+]
+
+// * Does  the company have genral manager or admin personel
+
+const hasTeamLeader = premierUsers.some(
+  user =>
+    user.role.toLowerCase().includes('general manager'.toLowerCase()) ||
+    user.role.toLowerCase().includes('admin'.toLowerCase())
+)
+console.log('Does the company have strong team? ' + hasTeamLeader)
+const findadminIndex = premierUsers.findIndex(
+  user => user.role === 'admin' || user.role === 'general manager'
+)
+console.log(`Admin index is: ${findadminIndex}`)
+premierUsers.forEach((n, i) => {
+  console.log(
+    `${i + 1}. My name is ${
+      n.name
+    } and i work as ${n.role.toUpperCase()} at pemier advertising company.`
+  )
+})
+
+// ? Use some() in user permissions
+const userPermisiions = [
+  'Accountant',
+  'Auditor',
+  'Director',
+  'Admin',
+  'manager'
+]
+
+const incomingUserRole = 'admin'
+const isUserPermitted = userPermisiions.some(user =>
+  user.toLowerCase().includes(incomingUserRole.toLowerCase())
+)
+console.log(
+  `Is user permitted? ${
+    isUserPermitted
+      ? 'Yes, Access Granted Sucessfully!'
+      : 'No, User not authorised to access the system'
+  }`
+)
+
+// ? every() — validate the whole collection
+// every() asks:
+// "Do ALL items satisfy this condition?"
+// use on this:
+const myDevice = [
+  { name: 'Laptop', stock: 5 },
+  { name: 'Phone', stock: 10 },
+  { name: 'Mouse', stock: 3 }
+]
+
+// * Task 003: use every to check if stock for each product is greater than 0
+// * Make use of "find" and "findIndex" :This is useful when updating or removing an item from an array.
+
+const users_002 = [
+  { id: 1, name: 'Paul' },
+  { id: 2, name: 'John' },
+  { id: 3, name: 'Mary' }
+]
+
+// Task 004: Change Paul's name to Magezi Joshua where id = 1, when neer yu find Paul, replace with Magezi Joshua
+
+const invoices = [
+  { id: 101, amount: 50000 },
+  { id: 102, amount: 70000 },
+  { id: 103, amount: 30000 },
+  { id: 104, amount: 90000 }
+]
+
+const selectedIds = [101, 102, 104]
+
+// Calculate the total of selected invoices
+// Now combine filter() + reduce():
+// Get all selected objects
+
+//Search + filter + sort
+//  * Imagine an admin table with:
+// Search: "phone"
+// Category: Electronics
+// Sort: Lowest price
+
+//////////// * Task 005 find is seach user is blocked.
+// * Task 005: find is seach user is blocked.
+// nst blockedUserIds = [2, 5, 9, 15];
+
+const userId = 5
+
+// ? "Is invoice 102 selected?"
+
+//? "Give me invoice 102"
+
+// ?"Give me all unpaid invoices"
+
+// ?"Calculate unpaid total"
+
+// * Task 006 Create A reusable professional search function
+// Instead of rewriting the same logic everywhere:
+
+/// Once you can translate business requirements → array operation, you're moving from simply knowing JavaScript syntax toward thinking like a professional application developer.
+
+// *
