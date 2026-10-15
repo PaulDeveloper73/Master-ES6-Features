@@ -148,9 +148,6 @@ const myMinCompanyObj = new MinCompany(
   34
 )
 
-console.log(myMinCompanyObj.getStaffDetails())
-console.log(myMinCompanyObj.getStaffDetails())
-
 console.log(
   'Basic salary: UGX ' + myMinCompanyObj.getBasicSalary().toLocaleString()
 )
@@ -171,3 +168,41 @@ console.log(
 )
 console.log('User full details are here:')
 console.log(myMinCompanyObj.getStaffDetails())
+
+// WOKRING WITH JSON DATA,  JS ERRORS WITH TRY AND CATCH BLOCKS
+// const vehicle = 'Paul'
+// console.log(vehicle)//creates syntax error
+// Object..assign()// creates syntax error
+// console.log(james) // Creates a reference error
+//* Working with JSON Data
+console.log(typeof vehicle) //Object Data
+const receiveData = JSON.stringify(vehicle) //
+console.log(typeof receiveData) // String data
+
+//* conversion back to an object is here
+const myVehicleObj = JSON.parse(receiveData)
+console.log(typeof myVehicleObj)
+console.log(myVehicleObj) // Back to original object but methods were lost during string conversion process
+
+// * Handling Errors
+console.error('This is acustom error')
+console.warn('This is acustom')
+// * errors while using try and catch block
+
+const makeError = () => {
+  let i = 0
+  while (i <= 10) {
+    try {
+      if (i % 2 !== 0) {
+        throw new Error('This is Odd Number')
+      }
+      console.log('This is even number: ' + i)
+    } catch (err) {
+      console.error(err.stack)
+    } finally {
+      i++
+      console.log('Finally block executed no matter what')
+    }
+  }
+}
+makeError()
