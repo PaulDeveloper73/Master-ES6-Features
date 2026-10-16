@@ -1,0 +1,491 @@
+/**
+ * Salonist Appointment — default frontend style overrides.
+ *
+ * Shipped with the plugin so the booking widget is fully styled on its own,
+ * independent of the active theme. This is used as the default value for the
+ * "Custom CSS Overrides" box in Admin → Styles; if an admin saves their own
+ * custom CSS, theirs replaces this entirely.
+ *
+ * Scoped to .salonist-app-container (the wrapper present in every booking/giftcard
+ * mount) so it only affects the booking widget and never depends on — or is
+ * affected by — the active theme's own classes.
+ *
+ * IMPORTANT — theme independence: WordPress block themes (confirmed on
+ * Twenty Twenty-One, common across many core/block themes) ship global button
+ * resets like `button:not(:hover):not(:active):not(.has-text-color) { color:
+ * var(--global--color-background); }`. Each `:not(...)` argument counts
+ * toward specificity, so a rule like that can end up MORE specific than a
+ * plain `.salonist-app-container .calendar-picker button` selector and win
+ * even though it looks generic. Every color/background/border/font
+ * declaration below that represents the plugin's own intentional styling
+ * must carry `!important`, or a host theme can silently repaint it. This is
+ * not optional — the plugin ships to many different client sites with
+ * unpredictable themes, and colors/fonts must stay identical everywhere
+ * until the admin explicitly changes them from Admin → Styles.
+ */
+.salonist-app-container {
+  background: #fff !important;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.salonist-app-container button:focus {
+  outline: none;
+}
+.salonist-app-container button.bg-white {
+  background: #f6397e !important;
+  color: #fff !important;
+  font-size: 14px;
+  transition: 0.5s all ease;
+}
+
+/* Host themes commonly ship a global default `button` background/border (e.g.
+   WordPress core themes like Twenty Twenty-One force a dark button fill) that
+   otherwise beats these compound-class selectors. !important guarantees the
+   widget's own brand color always wins, on any theme, on any install. */
+.salonist-app-container .salonist-select-location-btn,
+.salonist-app-container .salonist-select-plan-btn,
+.salonist-app-container .salonist-select-service-btn {
+  background: #f6397e !important;
+  border-radius: 16px;
+  padding-inline: 20px;
+}
+
+/* Package cards ("Select a Package") are plain <div>s, unlike the Services
+   category cards above which are <button>s and so already matched the
+   `button.bg-white` rules further down (that's how those get their pink fill
+   + white text "for free"). Packages never matched those tag-scoped rules,
+   which is why they stayed plain white while Services turned pink. Give
+   packages the identical look explicitly so both tabs match. */
+.salonist-app-container .salonist-select-package-btn {
+  background: #f6397e !important;
+  border-radius: 16px;
+}
+.salonist-app-container .salonist-select-package-btn h3,
+.salonist-app-container .salonist-select-package-btn .text-violet-600 {
+  color: #fff !important;
+}
+.salonist-app-container
+  .salonist-select-package-btn
+  .salonist-package-validity {
+  background: rgb(255 255 255 / 20%) !important;
+  color: #fff !important;
+}
+/* The package card's "Select a Package" CTA used the same violet-family
+   colors as the rest of the app's default (unthemed) buttons, which read as
+   low-contrast/illegible once the card itself became pink. Invert it to a
+   solid white pill so it stands out as the primary action on the pink card. */
+.salonist-app-container .salonist-add-package-btn {
+  background: #fff !important;
+  color: #f6397e !important;
+  border-color: #fff !important;
+}
+.salonist-app-container .salonist-add-package-btn:hover {
+  background: #ffe4ef !important;
+  color: #f6397e !important;
+  border-color: #ffe4ef !important;
+}
+
+/* Grid/List view toggle: same host-theme button-default bleed-through as
+   every other button in this file — the active state's `bg-white/90` was
+   never given `!important`, so it rendered as the theme's own dark default
+   instead. Force both states explicitly. */
+.salonist-app-container .salonist-view-grid-btn,
+.salonist-app-container .salonist-view-list-btn {
+  background: transparent !important;
+  border: none !important;
+}
+.salonist-app-container .salonist-view-grid-btn.bg-white/90,
+.salonist-app-container .salonist-view-list-btn.bg-white/90 {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  color: #f6397e !important;
+}
+
+/* Coupon input: host themes commonly style form fields with their own accent
+   color (e.g. a theme's configured highlight color painting text inputs),
+   which beat this input's own `bg-slate-800/50` Tailwind class since it had
+   no !important. Force the dark card-matching look explicitly. */
+.salonist-app-container .salonist-coupon-input {
+  background-color: rgba(30, 41, 59, 0.5) !important;
+  border-color: rgba(51, 65, 85, 0.5) !important;
+  color: #fff !important;
+}
+.salonist-app-container .salonist-coupon-input:focus {
+  background-color: #1e293b !important;
+  border-color: #8b5cf6 !important;
+}
+
+/* Services/Packages toggle: some host page builders/themes (e.g. Elementor's
+   global button kit, WordPress core theme Twenty Twenty-One) ship their own
+   default `button` background/border, which beats the widget's own
+   single-class Tailwind utility. Force our own design explicitly for BOTH
+   states (inactive = white pill with pink outline, active = solid pink fill)
+   with matching specificity + !important so it always wins regardless of host. */
+.salonist-app-container .salonist-tab-services-btn,
+.salonist-app-container .salonist-tab-packages-btn {
+  background: #fff !important;
+  border: 2px solid #f6397e !important;
+}
+.salonist-app-container .salonist-tab-services-btn.bg-[#f6397e],
+.salonist-app-container .salonist-tab-packages-btn.bg-[#f6397e] {
+  background-color: #f6397e !important;
+  border-color: #f6397e !important;
+  color: #fff !important;
+}
+.salonist-app-container .salonist-select-location-btn .absolute {
+  background: #f5f3ff2e !important;
+}
+.salonist-app-container .salonist-select-location-btn .relative svg {
+  transition: 0.5s all ease;
+}
+.salonist-app-container .salonist-select-location-btn:hover .relative svg {
+  stroke: #000 !important;
+}
+.salonist-app-container .salonist-change-location-btn {
+  text-transform: capitalize;
+}
+.salonist-app-container .salonist-select-plan-btn .mt-4.text-violet-500 {
+  color: #000 !important;
+}
+
+.salonist-app-container .salonist-select-service-btn h3,
+.salonist-app-container .salonist-select-service-btn svg,
+.salonist-app-container .salonist-select-service-btn span {
+  color: #fff !important;
+}
+/* Price text on the pink (unselected) card uses Tailwind's violet-600 accent by
+   default, which clashes with the pink background. Force it white to match the
+   title, but only on the unselected state — the selected card (light lavender
+   bg-violet-50) keeps its default violet, which reads fine there. */
+.salonist-app-container .salonist-select-service-btn.bg-white span {
+  color: #fff !important;
+}
+/* Row layout (icon beside label) needs more horizontal room than a 2-up
+   mobile grid cell has to give alongside "PAY AT SALON" — icon + text
+   together were overflowing/clipping there. Only force row layout once
+   there's enough width; below that it falls back to the same stacked
+   icon-above-label layout the other three gateway buttons already use
+   safely at every width. */
+@media (min-width: 480px) {
+  .salonist-app-container .salonist-payment-cash-btn {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+.salonist-app-container .salonist-payment-cash-btn.salonist-gateway-selected {
+  background: #f6397e !important;
+  border-color: #f6397e !important;
+  color: #fff !important;
+}
+.salonist-app-container
+  .salonist-payment-cash-btn.salonist-gateway-selected
+  svg {
+  color: #fff !important;
+}
+
+/* Unselected payment gateway buttons (Credit Card, PayPal, Razorpay, etc.) use
+   Tailwind's `bg-slate-50` for a neutral light-gray look, but they also carry
+   `group` (for hover effects). That combination unintentionally matches the
+   unrelated `button.group.bg-slate-50` rule below (written for a different
+   element), which was repainting them bright yellow instead. Restore the
+   intended neutral look with a more specific selector. */
+.salonist-app-container button.salonist-payment-gateway-btn.bg-slate-50 {
+  background: #f8fafc !important;
+  border-color: #f8fafc !important;
+  color: #64748b !important;
+}
+.salonist-app-container button.salonist-payment-gateway-btn.bg-slate-50 svg {
+  color: #64748b !important;
+}
+.salonist-app-container button.salonist-payment-gateway-btn.bg-slate-50:hover {
+  background: #fff !important;
+  border-color: #e2e8f0 !important;
+}
+.salonist-app-container .salonist-confirm-book-cash-btn {
+  padding: 0;
+  background: transparent !important;
+  border: none;
+}
+.salonist-app-container .salonist-confirm-book-cash-btn .relative span {
+  letter-spacing: normal;
+  font-family: "Poppins", Sans-serif !important;
+  font-size: 16px;
+  font-weight: 500;
+}
+.salonist-app-container .salonist-confirm-book-cash-btn .relative {
+  padding-block: 16px;
+  height: auto;
+  line-height: 1;
+  border-radius: 75px;
+}
+.salonist-app-container .salonist-confirm-book-cash-btn .relative .h-10 {
+  width: 30px;
+  height: 30px;
+}
+.salonist-app-container .salonist-confirm-book-cash-btn .relative .h-10 svg {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+.salonist-app-container .salonist-steps-progress .absolute .bg-violet-500 {
+  background: #f6397e !important;
+}
+/* Some host themes (e.g. "beautique") ship their own utility CSS that also
+   defines a generic `.bg-violet-600` class, which can collide with and beat
+   Tailwind's compiled one of the same name — this is what was leaving the
+   step-number circle its native purple instead of brand pink, even though
+   the progress line (bg-violet-500, a shade the theme apparently doesn't
+   also define) recolored correctly. Target our own unique hook class instead
+   of relying on the generic Tailwind name at all. */
+.salonist-app-container .salonist-steps-progress .salonist-step-circle-active {
+  background-color: #f6397e !important;
+}
+
+.salonist-app-container button.bg-slate-900 {
+  background: #012348 !important;
+  padding-inline: 24px;
+  border: none;
+  height: auto;
+}
+.salonist-app-container .sticky .bg-gradient-to-b {
+  --tw-gradient-from: rgb(2 6 23 / 14%) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(2 6 23 / 17%) var(--tw-gradient-to-position);
+}
+.salonist-app-container .sticky .bg-gradient-to-b .border-slate-800 .text-3xl {
+  font-size: 26px;
+}
+.salonist-app-container .bg-slate-900 {
+  background: #012348 !important;
+}
+.salonist-app-container button.bg-white .text-slate-900 {
+  color: #fff !important;
+  font-weight: 600;
+  text-transform: capitalize;
+  letter-spacing: normal;
+  font-size: 18px;
+  transition: 0.5s all ease;
+}
+.salonist-app-container .salonist-back-to-staff-btn {
+  height: auto !important;
+  width: fit-content;
+  max-width: fit-content;
+  margin: auto;
+}
+.salonist-app-container button.bg-white .text-slate-500 {
+  color: #fff !important;
+  text-transform: capitalize;
+}
+.salonist-app-container button.bg-white .bg-violet-50 {
+  background: rgb(245 243 255 / 18%) !important;
+}
+.salonist-app-container button.group.bg-slate-50 {
+  background: #fdcd47 !important;
+  border-color: #fdcd47 !important;
+  color: #000 !important;
+}
+.salonist-app-container button.group.bg-slate-50 span.text-violet-400 {
+  color: #000 !important;
+}
+.salonist-app-container button.bg-white .text-violet-600 {
+  color: #fff !important;
+}
+.salonist-app-container button.bg-white svg.lucide-clock {
+  color: #fff !important;
+}
+.salonist-app-container button.bg-white:hover {
+  background: #fdcd47 !important;
+  border-color: #fdcd47 !important;
+}
+.salonist-app-container button.bg-white:hover .text-violet-500 {
+  color: #000 !important;
+}
+.salonist-app-container button.bg-white:hover .text-slate-900 {
+  color: #000 !important;
+}
+.salonist-app-container button.bg-white:hover .text-slate-500 {
+  color: #000 !important;
+}
+.salonist-app-container button.bg-white:hover .bg-violet-50 {
+  background: rgb(245 243 255 / 18%) !important;
+}
+.salonist-app-container button.bg-white:hover .text-violet-600 {
+  color: #000 !important;
+}
+.salonist-app-container button.bg-white:hover svg.lucide-clock {
+  color: #000 !important;
+}
+.salonist-app-container h2 {
+  font-weight: 700;
+  font-size: 24px;
+  color: #0f172a !important;
+}
+.salonist-app-container p {
+  font-size: 16px;
+}
+.salonist-app-container .md:items-end {
+  align-items: center;
+}
+
+.salonist-app-container main .max-w-7xl {
+  max-width: 100%;
+}
+.salonist-app-container .calendar-picker .text-slate-900 {
+  font-weight: 700;
+  color: #1e293b !important;
+}
+.salonist-app-container .calendar-picker button {
+  background: transparent !important;
+  color: #0f172a !important;
+}
+.salonist-app-container .calendar-picker button[disabled] {
+  border: 1px solid #cccccca8;
+}
+.salonist-app-container .calendar-picker button[disabled] span {
+  color: #cccccca8 !important;
+}
+.salonist-app-container .calendar-picker button .font-black {
+  font-weight: 600;
+  font-size: 16px;
+}
+.salonist-app-container .rounded-[2.5rem] {
+  border-radius: 1rem;
+}
+.salonist-app-container .font-black {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.salonist-app-container .space-y-2 input {
+  border: 1px solid #0f172a;
+  border-radius: 12px;
+  font-weight: 400;
+  font-size: 14px;
+}
+.salonist-app-container .space-y-2 input[type="tel"] {
+  padding-left: 40px;
+}
+.salonist-app-container .space-y-2 input:focus {
+  outline: none;
+}
+.salonist-app-container .space-y-2 p.font-bold {
+  font-weight: 500;
+  text-transform: capitalize;
+  font-size: 16px;
+  letter-spacing: normal;
+}
+.salonist-app-container .custom-scrollbar .flex button.text-rose-500 {
+  background: #f43f5e !important;
+  color: #fff !important;
+  padding: 6px;
+}
+
+.salonist-app-container footer p {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+.salonist-app-container main .slot-container label {
+  font-size: 14px !important;
+}
+.salonist-app-container .bg-slate-900 h3.tracking-tight {
+  color: #fff !important;
+  margin-bottom: 0;
+}
+.salonist-app-container .bg-slate-900 .bg-gradient-to-b .tracking-tight span {
+  font-size: 14px;
+}
+.salonist-app-container .bg-slate-900 .bg-gradient-to-b .tracking-widest {
+  font-size: 11px !important;
+  color: #8a9ab0 !important;
+}
+.salonist-app-container
+  header.salonist-header
+  .bg-violet-50
+  span.text-violet-700 {
+  font-size: 12px;
+}
+
+@media (max-width: 767px) {
+  .salonist-app-container .salonist-header > div:nth-child(1) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .salonist-app-container main.p-8 {
+    padding: 1rem;
+  }
+  .salonist-app-container main .col-span-full.p-6 {
+    padding: 18px;
+  }
+  .salonist-app-container main .col-span-full.p-6 .items-end.gap-3 button {
+    padding-inline: 15px;
+  }
+  .salonist-app-container
+    main
+    .col-span-full.p-6
+    .items-end.gap-3
+    button
+    .truncate {
+    max-width: 100px;
+  }
+  .salonist-app-container .col-span-full.space-y-8 .col-span-full {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+}
+
+.salonist-app-container label,
+.salonist-app-container legend,
+.salonist-app-container input[type="text"] {
+  color: #334155 !important;
+}
+
+.salonist-app-container button.bg-white {
+  color: #fff !important;
+}
+.salonist-app-container button.bg-white .bg-violet-600 {
+  background-color: #fff !important;
+}
+.salonist-app-container .salonist-select-plan-btn:hover {
+  border-color: #ff1493 !important;
+}
+.salonist-app-container .salonist-select-plan-btn .text-violet-500 {
+  color: #ff1493 !important;
+}
+.salonist-app-container .salonist-select-service-btn .text-violet-600 {
+  color: #000 !important;
+}
+.salonist-app-container button.bg-white:hover {
+  background: #e52d7021 !important;
+  border-color: #f6397e !important;
+}
+
+/* Theme-independent replacement for the old .astra-dark-mode-enable focus hack:
+   keep the plugin's inputs transparent on focus regardless of the active theme. */
+.salonist-app-container input[type="text"]:focus,
+.salonist-app-container input[type="tel"]:focus,
+.salonist-app-container input[type="email"]:focus {
+  background-color: transparent !important;
+}
+
+.salonist-app-container .space-y-2 input {
+  border: 1px solid #ff1493 !important;
+  color: #334155 !important;
+  background-color: transparent !important;
+}
+.salonist-app-container .salonist-header .lucide-sparkles {
+  color: #f6397e !important;
+}
+.salonist-app-container .salonist-header .text-violet-700 {
+  color: #f6397e !important;
+}
+.salonist-app-container .salonist-header .bg-violet-50 {
+  background-color: #f6397e08 !important;
+}
+.salonist-app-container .salonist-header .border-violet-100 {
+  border-color: #f6397e24 !important;
+}
+.salonist-app-container .text-left p span {
+  color: #f6397e !important;
+}
+/* CACHETEST123 */

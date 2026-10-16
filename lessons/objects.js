@@ -1,3 +1,4 @@
+import customerData from './customer.js'
 const vehicle = {
   wheel: 4,
   color: ['red', 'green', 'blue', 'orange', 'black'],
@@ -168,7 +169,8 @@ console.log(
 )
 console.log('User full details are here:')
 console.log(myMinCompanyObj.getStaffDetails())
-
+//JSON stands for JavaScript Object Notation.
+//It is a text-based format used to store and exchange structured data.
 // WOKRING WITH JSON DATA,  JS ERRORS WITH TRY AND CATCH BLOCKS
 // const vehicle = 'Paul'
 // console.log(vehicle)//creates syntax error
@@ -206,3 +208,162 @@ const makeError = () => {
   }
 }
 makeError()
+
+// * Document Object Model
+
+// * JavaScript Masterclass: JSON, try...catch, and fetch() — from beginner to professional React developer
+//These three concepts work together in almost every modern web application. When you build React 18/19 applications, you will use them to communicate with APIs, load invoices, register customers, authenticate users, handle payments, and display errors when something goes wrong.
+//Imagine you are building a financial application that displays invoices.
+// {
+//   "id": 1,
+//   "name": "Paul",
+//   "email": "paul@example.com",
+//   "isActive": true,
+//   "balance": 250000,
+// "name": "Paul",
+// "age": 30,
+// "isDeveloper": true,
+// "isMarried": false,
+// "middleName": null,
+// "skills": ["JavaScript", "React", "Node.js"],
+// "address": {
+//   "city": "Kampala",
+//   "country": "Uganda"
+// }
+
+// }
+// JSON.stringify(value,replacor,space) // syntax
+console.log(customerData) // the customer data details are here.
+console.log('Convert Js customer object to text value is here')
+const convertedCutomerdata = JSON.stringify(customerData)
+console.log(convertedCutomerdata, null, 2) // indent by 2 spacefromthe right, good for debgging API data
+console.log('The above JSON is of type: ' + typeof convertedCutomerdata)
+console.log(JSON.stringify('paul'))
+const user = { name: 'Paul' }
+// user.self = user // This hinder the object from being stringified because its refering to its own self
+
+JSON.stringify(user) // Throws TypeError
+console.log('object')
+// * JSON.PARSE
+const jsonCustomer = '{"id":1,"name":"Paul","isActive":true}'
+//CONVERT THE JSON TEXT
+console.log(typeof jsonCustomer)
+const response = JSON.parse(jsonCustomer)
+console.log(response)
+console.log(typeof response)
+console.log(response.name)
+// Try & catch block
+const jsonCustomerPro = '{"name": "Paul",}'
+
+try {
+  const customer = JSON.parse(jsonCustomerPro)
+
+  console.log(customer.name)
+} catch (error) {
+  console.error('Could not read customer data:', error.stack)
+} finally {
+  console.log('Application continues')
+}
+
+function createInvoice (amount) {
+  if (typeof amount !== 'number' || !Number.isFinite(amount)) {
+    throw new TypeError('Invoice amount must be a finite number')
+  }
+
+  if (amount <= 0) {
+    throw new RangeError('Invoice amount must be greater than zero')
+  }
+
+  return {
+    id: 'INV-001',
+    amount,
+    status: 'unpaid'
+  }
+}
+
+try {
+  const invoice = createInvoice(50000)
+  // console.log(invoice)
+} catch (error) {
+  console.error(error.message)
+}
+// * Fetch APIs
+// this aweb API for making http requests.
+// async function createCustomer(customerData) {
+// try {
+//   const response = await fetch('/api/customers', {
+//     method: 'POST',
+
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+
+//     body: JSON.stringify(customerData)
+//   })
+
+//   if (!response.ok) {
+//     throw new Error(`Failed to create customer: HTTP ${response.status}`)
+//   }
+
+//   const createdCustomer = await response.json()
+
+//   console.log('Customer created:', createdCustomer)
+
+//   return createdCustomer
+// } catch (error) {
+//   console.error('Create customer failed:', error)
+//   throw error
+// }
+
+const newCustomer = {
+  name: 'Paul',
+  email: 'paul@example.com',
+  phone: '+256700000000'
+}
+///
+async function getInvoices () {
+  return await fetch('./api.json')
+}
+
+async function displayInvoices () {
+  try {
+    const invoices = await getInvoices()
+    const invoiceData = await invoices.json()
+    console.log('-------Invoices returned sucessfully now!---------')
+    console.log('Invoices:', invoiceData)
+  } catch (error) {
+    if (error.status === 401) {
+      console.error('Please sign in again.')
+    } else if (error.status === 403) {
+      console.error('You do not have permission to view these invoices.')
+    } else {
+      console.error('Could not load invoices:', error.stack)
+    }
+  }
+}
+
+displayInvoices()
+// My custom fetch method
+
+const fetchData = async () => {
+  try {
+    const response = await fetch('./api.json')
+    const data = await response.json()
+    if (!response.ok) {
+      throw new Error('An error occured')
+    }
+
+    return data
+  } catch (err) {
+    console.error(err.stack)
+    return false
+  } finally {
+    console.log('Fetching data is in progress...')
+  }
+}
+const customerInvoices = await fetchData()
+const paidInvoice = customerInvoices.filter(inv => inv.status === 'paid')
+console.log('All paid invoice are here:')
+console.log(paidInvoice)
+console.log('All invoices are here:')
+console.log(customerInvoices)

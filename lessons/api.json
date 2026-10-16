@@ -1,0 +1,14 @@
+[
+  {
+    "id": "INV-001",
+    "customer": "Paul",
+    "amount": 500000,
+    "status": "unpaid"
+  },
+  {
+    "id": "INV-002",
+    "customer": "Mary",
+    "amount": 250000,
+    "status": "paid"
+  }
+]
