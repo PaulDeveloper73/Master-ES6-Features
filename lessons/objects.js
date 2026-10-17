@@ -287,6 +287,7 @@ try {
 } catch (error) {
   console.error(error.message)
 }
+console.clear()
 // * Fetch APIs
 // this aweb API for making http requests.
 // async function createCustomer(customerData) {
@@ -367,3 +368,85 @@ console.log('All paid invoice are here:')
 console.log(paidInvoice)
 console.log('All invoices are here:')
 console.log(customerInvoices)
+const response_001 = await fetch('/api/customers')
+
+console.log(response_001.status)
+console.log(response_001.ok)
+console.log(response_001.statusText)
+console.log(response_001.headers)
+console.log(response_001.url)
+
+// * Pro fetch APIs methods usage
+const originalInvoice = {
+  id: 'INV-001',
+  customer: 'Paul',
+  amount: 500000,
+  paid: false
+}
+// Convert to text
+
+// ! Preparing data for storage
+const inInvoiceForStorage = JSON.stringify(originalInvoice)
+// store invoices
+localStorage.setItem('myInvoices', inInvoiceForStorage)
+console.log(inInvoiceForStorage)
+console.log(typeof inInvoiceForStorage)
+// retrive the stored invoices
+const storedInvoices = JSON.parse(localStorage.getItem('myInvoices'))
+console.log(typeof storedInvoices)
+if (storedInvoices !== null) {
+  console.log('Some Data is available in local storage')
+} else {
+  console.log('No data available in local storage')
+}
+console.log(storedInvoices)
+
+//
+
+const jsonCustomerData = '{"id":1,"name":"Paul","isActive":true}'
+const jsonCustomerObj = JSON.parse(jsonCustomerData)
+console.log('Original Json text is here: ' + jsonCustomerData)
+console.log('Converted Json Object is here: ')
+console.log(jsonCustomerObj)
+const isJsonObjSame =
+  jsonCustomerData === jsonCustomerObj
+    ? 'The above Json formats are the same'
+    : 'The above Json format are not the .'
+console.log(isJsonObjSame)
+console.log(
+  `One is of type:  ${typeof jsonCustomerData}  and another is of type: ${typeof jsonCustomerObj}`
+)
+// ! trying to parse and object akready an object
+// console.log(JSON.parse(originalInvoice)) /// syntax errot data is already an object no need to parse it.
+console.log('Object')
+// * Dont just cacth the error let it be of significany to the user
+
+const getCustomerName = customerData => {
+  try {
+    const convertedCustomerData = JSON.parse(customerData)
+    console.log('Customer data is right here')
+    console.log(convertedCustomerData)
+    return convertedCustomerData
+  } catch (err) {
+    console.error('An Error has occured: ' + err.message)
+    return null
+  } finally {
+    console.log('Thank you for shopping with Us!')
+  }
+}
+const customerSource = JSON.stringify({
+  name: 'Magezi Joshua',
+  email: 'magezijosua@gmail.com',
+  age: 24,
+  hobbies: [
+    'football',
+    'volley ball',
+    'music',
+    'running',
+    'watching movies and music'
+  ]
+})
+const client = getCustomerName(customerSource)
+const clientDetails =
+  client !== null ? client.name : 'No customer data is available'
+console.log(clientDetails)
