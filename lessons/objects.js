@@ -448,5 +448,5 @@ const customerSource = JSON.stringify({
 })
 const client = getCustomerName(customerSource)
 const clientDetails =
-  client !== null ? client.name : 'No customer data is available'
+  client !== null ? client?.name : 'No customer data is available'
 console.log(clientDetails)
