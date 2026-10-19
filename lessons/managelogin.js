@@ -50,3 +50,21 @@ const handleSubmit = e => {
 }
 
 // Create acustom event
+// 1. Listen for the custom event
+myloginform.addEventListener('userLogin', event => {
+  const { username, userId } = event.detail
+
+  console.log('Username:', username)
+  console.log('User ID:', userId)
+})
+
+// 2. Create the custom event
+const myCustomEvent = new CustomEvent('userLogin', {
+  detail: {
+    username: 'mukisa@gmail.com',
+    userId: '001'
+  }
+})
+
+// 3. Dispatch the event
+myloginform.dispatchEvent(myCustomEvent)
