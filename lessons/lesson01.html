@@ -3,12 +3,228 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lesson 001</title>
-    <!-- <script type="module" defer src="./main.js"></script>
-    <script type="module" defer src="./objects.js"></script> -->
-    <script type="module" defer src="./fetch.js"></script>
+
+    <title>Login | Ionic Solutions Ltd</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- JavaScript Module -->
+    <script type="module" defer src="./managelogin.js"></script>
+
+    <style>
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+
+      .brand-font {
+        font-family: "Cinzel", serif;
+      }
+
+      .login-background {
+        background:
+          radial-gradient(
+            circle at top left,
+            rgba(59, 130, 246, 0.12),
+            transparent 38%
+          ),
+          radial-gradient(
+            circle at bottom right,
+            rgba(99, 102, 241, 0.12),
+            transparent 38%
+          ),
+          #f8fafc;
+      }
+
+      .input-field {
+        transition:
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .input-field:focus {
+        border-color: #4f46e5;
+        box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.12);
+        outline: none;
+      }
+    </style>
   </head>
-  <body>
-    <h4>Loading Pro Js features</h4>
+
+  <body class="login-background min-h-screen text-slate-800">
+    <main
+      class="flex min-h-screen flex-col items-center justify-center px-4 py-10 capitalize"
+    >
+      <!-- Company Branding -->
+      <header
+        class="mb-8 capitalize text-center flex items-start justify-center"
+      >
+        <div
+          class="mx-auto mb-4 flex h-8 w-8 items-center justify-center rounded-2xl bg-indigo-600 text-xl font-extrabold text-white shadow-lg shadow-indigo-200"
+          aria-hidden="true"
+        >
+          I
+        </div>
+
+        <h2
+          class="brand-font text-3xl font-bold tracking-wide text-slate-900 sm:text-xl"
+        >
+          Ionic Solutions Ltd
+        </h2>
+      </header>
+      <p class="-mt-8 pb-4 text-sm text-slate-500">
+        Smart solutions. Seamless experiences.
+      </p>
+      <section
+        id="alertuser"
+        class="text-xs text-green-700 animate-pulse font-bold p-4 hidden"
+      >
+        <p>Access Granted Successfully!</p>
+        <p>Redirecting you to dashboard,please wait....</p>
+      </section>
+      <!-- Login Card -->
+      <section
+        id="formwrapper"
+        class="w-full max-w-md overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-xl shadow-slate-200/60"
+        aria-labelledby="login-title"
+      >
+        <!-- Card Header -->
+        <div class="border-b border-slate-100 px-7 pb-6 pt-8 sm:px-9">
+          <span
+            class="inline-flex items-center rounded-full bg-green-50 px-3 py-1 text-xs font-bold capitalize tracking-wider text-green-700"
+          >
+            Secure Access
+          </span>
+
+          <h1
+            id="login-title"
+            class="mt-4 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl"
+          >
+            Welcome back
+          </h1>
+
+          <p class="mt-2 text-sm leading-6 text-slate-500">
+            Sign in to access your Ionic Solutions account.
+          </p>
+        </div>
+
+        <!-- Login Form -->
+        <div id="myform" class="px-7 py-7 sm:px-9">
+          <form action="#" class="space-y-5" id="loginform" method="post">
+            <!-- Username -->
+            <div>
+              <label
+                for="username"
+                class="mb-2 block text-sm font-semibold text-slate-700"
+              >
+                Username
+              </label>
+
+              <input
+                type="text"
+                name="username"
+                id="username"
+                class="input-field block w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400"
+                placeholder="Enter your username"
+                autocomplete="username"
+                maxlength="100"
+                minlength="3"
+                required
+                autofocus
+              />
+            </div>
+
+            <!-- Password -->
+            <div>
+              <div class="mb-2 flex items-center justify-between">
+                <label
+                  for="password"
+                  class="block text-sm font-semibold text-slate-700"
+                >
+                  Password
+                </label>
+              </div>
+
+              <input
+                type="password"
+                name="password"
+                id="password"
+                class="input-field block w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+                maxlength="100"
+                minlength="3"
+                required
+              />
+            </div>
+
+            <!-- Submit Button -->
+            <button
+              type="submit"
+              id="submitBtn"
+              class="flex w-full items-center justify-center rounded-xl bg-indigo-600 px-5 py-3.5 text-sm font-bold text-white shadow-md shadow-indigo-200 transition duration-200 hover:bg-indigo-700 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-200 active:scale-[0.99]"
+            >
+              Sign In
+              <svg
+                class="ml-2 h-4 w-4"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M13 7l5 5m0 0l-5 5m5-5H4"
+                />
+              </svg>
+            </button>
+
+            <!-- Form Feedback -->
+            <p
+              id="formMessage"
+              class="hidden rounded-lg px-3 py-2 text-sm"
+              role="status"
+              aria-live="polite"
+            ></p>
+          </form>
+
+          <div class="mt-7 flex items-center gap-3">
+            <div class="h-px flex-1 bg-slate-200"></div>
+            <span class="text-xs text-slate-400">ACCOUNT SECURITY</span>
+            <div class="h-px flex-1 bg-slate-200"></div>
+          </div>
+
+          <p class="mt-4 text-center text-xs leading-5 text-slate-500">
+            Please keep your login credentials private and secure.
+          </p>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="mt-8 text-center">
+        <p class="text-xs text-slate-500">
+          &copy; <span id="currentYear"></span> Ionic Solutions Ltd. All rights
+          reserved.
+        </p>
+        <p class="mt-2 text-xs text-slate-400">
+          Designed for secure and reliable access.
+        </p>
+      </footer>
+    </main>
+
+    <script>
+      document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
+    </script>
   </body>
 </html>
