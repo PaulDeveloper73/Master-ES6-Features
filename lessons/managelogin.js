@@ -1,8 +1,18 @@
 //Manage login form
 
+// * check if user already login in
+const handleLoggedInUser = () => {
+  const isLoggedIn = sessionStorage.getItem('isLoggedIn')
+
+  if (isLoggedIn === 'true') {
+    window.location.replace('./welcome.html')
+  }
+}
 window.addEventListener('load', () => {
   initApp()
+  handleLoggedInUser()
 })
+
 const myloginform = document.querySelector('#loginform')
 const initApp = () => {
   //   alert('Loading data')
