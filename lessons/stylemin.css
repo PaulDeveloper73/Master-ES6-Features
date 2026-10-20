@@ -1,0 +1,28 @@
+.all-divs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+  gap: 5px;
+}
+
+.all-divs > div {
+  flex: 1;
+  flex-basis: 40px;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 2px 4px 10px -4px #000;
+  font-size: 20px;
+}
+
+.all-divs > div:nth-child(even) {
+  background: dodgerblue;
+}
+
+.all-divs > div:nth-child(odd) {
+  background: orange;
+}
+.all-divs > div:hover {
+  background: #fff;
+  cursor: pointer;
+}

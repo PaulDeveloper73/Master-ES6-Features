@@ -6,6 +6,11 @@
     <title>Master DOM Manipulations</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./stylemin.css" />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,11 +23,23 @@
   </head>
   <body class="bg-slate-100">
     <section id="dom-wrapper" class="p-4">
-      <h1 id="gtitle" class="text-blue-700 text-4xl font-medium">
+      <h1
+        id="gtitle"
+        class="text-blue-700 text-4xl text-center pb-10 font-medium"
+      >
         Welcome Ionic Game Pad
       </h1>
       <section id="gamedetails">
         <!-- data is loaded her dynamically -->
+      </section>
+      <section id="user-result" class="text-center pt-10 text-xl hidden">
+        <p>You clicked on pad:</p>
+        <span
+          id="result"
+          class="text-3xl font-bold text-green-700 animate-pulse"
+        >
+          10</span
+        >
       </section>
     </section>
   </body>
