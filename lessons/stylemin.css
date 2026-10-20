@@ -8,6 +8,9 @@
 
 .all-divs > div {
   flex: 1;
+  justify-content: center;
+  display: flex;
+  align-items: center;
   flex-basis: 40px;
   padding: 40px;
   border-radius: 10px;

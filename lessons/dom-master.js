@@ -23,15 +23,18 @@ const initApp = () => {
   const resultWrapper = document.querySelector('#user-result')
   const userResult = document.querySelector('#result')
   const divWrapper = document.querySelector('#gamedetails')
+  let hideResultTimeOut // initialise clear timeout
   divWrapper.addEventListener('click', e => {
     divWrapper
       .querySelectorAll('div')
       .forEach(element => element.classList.remove('animate-pulse'))
+    if (!e.target.matches('.item-list')) return
+    clearTimeout(hideResultTimeOut)
     if (e.target.matches('.item-list')) {
       resultWrapper.style.display = 'block'
       userResult.textContent = e.target.textContent
       e.target.classList.add('animate-pulse')
-      setTimeout(() => {
+      hideResultTimeOut = setTimeout(() => {
         resultWrapper.style.display = 'none'
       }, 5000)
     }
