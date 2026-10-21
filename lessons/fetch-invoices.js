@@ -4,6 +4,7 @@ const errorMessage = document.querySelector('#error-message')
 const pendingInvoicesPro = document.querySelector('#pending-invoices')
 const paidInvoicesPro = document.querySelector('#paid-invoices')
 const totalInvoices = document.querySelector('#total-invoices')
+const searchIvoice = document.querySelector('#search-inv')
 
 // Load invoice data from the local JSON file
 async function getInvoices () {
@@ -31,7 +32,7 @@ async function getInvoices () {
 function createCell (value, className = '') {
   const cell = document.createElement('td')
 
-  cell.className = className
+  cell.className = className ?? ''
   cell.textContent = value ?? '—'
 
   return cell
@@ -121,8 +122,8 @@ async function initApp () {
   errorMessage.hidden = true
   errorMessage.textContent = ''
 
+  const invoices = await getInvoices()
   try {
-    const invoices = await getInvoices()
     // Get all invoice bt not draft
     const invoicetotal = invoices.length
     const paidInvoices = invoices.filter(
@@ -151,6 +152,41 @@ async function initApp () {
       'Unable to load invoices. Please try again later.'
     errorMessage.hidden = false
   }
+
+  //   Mange user search
+  searchIvoice.addEventListener('keyup', e => {
+    displayInvoices(globalSearch(invoices, e.target.value))
+    if (e.target.value.length <= 0) {
+      loadingMessage.textContent = 'Loading Invoices...'
+    }
+  })
+}
+const globalSearch = (dataSource, query) => {
+  const searchTerm = query.trim().toLowerCase()
+  if (!searchTerm) {
+    return dataSource
+  }
+
+  const userSearcResults = dataSource.filter(user => {
+    const id = String(user.id?.trim() ?? '').toLowerCase()
+    const customer = String(user.customer?.trim() ?? '').toLowerCase()
+    const amount = String(user.amount ?? '')
+    const status = String(user.status?.trim() ?? '').toLowerCase()
+
+    return (
+      id.includes(searchTerm) ||
+      customer.includes(searchTerm) ||
+      amount.includes(searchTerm) ||
+      status.includes(searchTerm)
+    )
+  })
+  if (userSearcResults.length <= 0) {
+    loadingMessage.textContent = 'No Data Available!, Try Again!'
+  } else {
+    loadingMessage.textContent = 'Loading Invoices...'
+  }
+
+  return userSearcResults.length > 0 ? userSearcResults : []
 }
 
 window.addEventListener('load', () => {
