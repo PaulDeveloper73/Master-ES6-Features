@@ -39,6 +39,25 @@ const initApp = () => {
       }, 5000)
     }
   })
-
-  //   console.log(divWrapper.children)
+  // Hadle sublings and children
+  const mainParent = divWrapper.children
+  console.log(mainParent)
+  console.log(mainParent[6])
+  console.log(mainParent[6].textContent)
+  console.log(mainParent[6].parentElement)
+  console.log(mainParent[6].parentNode)
+  console.log(mainParent[6].parentNode)
+  console.log(mainParent[6].hasChildNodes())
+  console.log(mainParent[6].lastChild)
+  console.log(mainParent[6].firstChild)
+  console.log(mainParent[6].previousElementSibling)
+  console.log(mainParent[6].previousSibling)
+  console.log(mainParent[6].nextElementSibling)
+  console.log(mainParent[6].nextSibling)
+  console.log(divWrapper.firstElementChild)
+  console.log(divWrapper.lastElementChild)
+  console.log(divWrapper.lastElementChild.previousElementSibling)
+  console.log(divWrapper.innerHTML)
+  console.log(divWrapper.childElementCount)
+  console.log(divWrapper.children)
 }
