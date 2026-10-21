@@ -10,5 +10,11 @@
     "customer": "Mary",
     "amount": 250000,
     "status": "paid"
+  },
+  {
+    "id": "INV-003",
+    "customer": "teddy",
+    "amount": 90000,
+    "status": "draft"
   }
 ]
