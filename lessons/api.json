@@ -13,8 +13,14 @@
   },
   {
     "id": "INV-003",
-    "customer": "teddy",
+    "customer": "Teddy",
     "amount": 90000,
+    "status": "draft"
+  },
+  {
+    "id": "INV-004",
+    "customer": "Joshua",
+    "amount": 2300000,
     "status": "draft"
   }
 ]

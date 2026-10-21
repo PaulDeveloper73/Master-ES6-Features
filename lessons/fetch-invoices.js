@@ -146,14 +146,13 @@ async function initApp () {
     }
   } catch (error) {
     loadingMessage.hidden = true
-
     invoiceList.replaceChildren()
-
     errorMessage.textContent =
       'Unable to load invoices. Please try again later.'
-
     errorMessage.hidden = false
   }
 }
 
-initApp()
+window.addEventListener('load', () => {
+  initApp()
+})
