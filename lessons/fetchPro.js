@@ -169,3 +169,7 @@ async function submitInvoice (invoiceData) {
 }
 
 // ? Task :005 Use URLSearchParams for filters and search
+
+//*Send files using FormData
+// ?Send files using FormData
+// ?Not all API requests send JSON. If a user uploads an invoice PDF, a receipt, or a profile image, FormData is often appropriate.
