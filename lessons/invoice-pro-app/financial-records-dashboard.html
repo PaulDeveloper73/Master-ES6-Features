@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f172a" />
+    <meta
+      name="description"
+      content="Invoice management dashboard for reviewing invoice totals, filtering records, sorting columns, and exporting financial data."
+    />
+    <title>Invoice Management Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Export libraries: XLSX for Excel and jsPDF + AutoTable for PDF. -->
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.umd.js"></script>
+    <link rel="stylesheet" href="style-dompro.css" />
+    <script type="module" defer src="./mydomPro.js"></script>
+    <!-- Tailwind Configuration -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Plus Jakarta Sans", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="min-h-screen font-sans bg-slate-50 text-slate-800 antialiased">
+    <div
+      id="main-app-wrapper"
+      class="mx-auto flex min-h-screen w-full flex-col px-3 py-4 sm:px-5 sm:py-6 lg:px-8"
+    >
+      <div class="mx-auto flex w-full max-w-7xl flex-1 flex-col">
+        <header
+          class="app-header relative mb-6 overflow-hidden rounded-2xl px-5 py-6 text-white sm:px-8 sm:py-8 lg:px-10 lg:py-9"
+        >
+          <div class="header-decoration" aria-hidden="true"></div>
+          <div class="relative z-10">
+            <div
+              class="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between"
+            >
+              <div class="flex min-w-0 items-start gap-3 sm:gap-4">
+                <div
+                  class="brand-mark flex h-12 w-12 shrink-0 items-center justify-center rounded-xl sm:h-14 sm:w-14"
+                  aria-hidden="true"
+                >
+                  <i
+                    data-lucide="receipt-text"
+                    class="h-6 w-6 sm:h-7 sm:w-7"
+                  ></i>
+                </div>
+                <div class="min-w-0">
+                  <p
+                    class="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-amber-300"
+                  >
+                    Enterprise workspace
+                  </p>
+                  <h1
+                    class="text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl"
+                  >
+                    Invoice Management System
+                  </h1>
+                  <p
+                    class="mt-3 max-w-2xl text-sm leading-6 text-slate-300 sm:text-base"
+                  >
+                    Monitor invoice value, follow payment progress, filter
+                    individual columns, and export financial records in your
+                    preferred format.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="workspace-label inline-flex w-fit shrink-0 items-center gap-2 rounded-full px-3 py-2 text-xs font-semibold"
+              >
+                <span class="status-dot" aria-hidden="true"></span>
+                Dashboard overview
+              </div>
+            </div>
+            <div
+              class="mt-6 flex flex-col gap-3 border-t border-white/10 pt-5 lg:flex-row lg:items-center lg:justify-between"
+            >
+              <div class="flex items-center gap-2 text-sm text-slate-300">
+                <i
+                  data-lucide="calendar-days"
+                  class="h-4 w-4 text-amber-300"
+                  aria-hidden="true"
+                ></i>
+                <span>Invoice records overview</span>
+              </div>
+              <div class="flex flex-col gap-2 sm:flex-row">
+                <label class="sr-only" for="export-format"
+                  >Export file format</label
+                >
+                <select
+                  id="export-format"
+                  class="export-format min-h-11 rounded-xl border border-white/20 px-3 py-2 text-sm font-semibold"
+                >
+                  <option value="csv">CSV (.csv)</option>
+                  <option value="xlsx">Excel (.xlsx)</option>
+                  <option value="pdf">PDF (.pdf)</option>
+                  <option value="docx">Word document (.docx)</option>
+                  <option value="doc">Word-compatible (.doc)</option>
+                  <option value="json">JSON (.json)</option>
+                  <option value="txt">Plain text (.txt)</option>
+                </select>
+                <button
+                  id="export-button"
+                  type="button"
+                  class="primary-action inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold"
+                >
+                  <i
+                    data-lucide="download"
+                    class="h-4 w-4"
+                    aria-hidden="true"
+                  ></i>
+                  Export current view
+                </button>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <main class="flex-1">
+          <section aria-labelledby="summary-heading" class="mb-7">
+            <div
+              class="mb-4 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between"
+            >
+              <div>
+                <p class="section-eyebrow">Financial summary</p>
+                <h2
+                  id="summary-heading"
+                  class="mt-1 text-xl font-bold tracking-tight text-slate-900 sm:text-2xl"
+                >
+                  Your invoice dashboard
+                </h2>
+              </div>
+              <p class="text-sm text-slate-500">
+                Summary of all invoice records
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+              <article
+                class="stat-card stat-card-indigo rounded-2xl border p-5 sm:p-6"
+              >
+                <div class="flex items-start justify-between gap-3">
+                  <div>
+                    <p class="text-sm font-medium text-slate-600">
+                      Total invoices
+                    </p>
+                    <p
+                      id="total-invoice-count"
+                      class="mt-3 text-3xl font-bold tracking-tight text-slate-900"
+                    >
+                      0
+                    </p>
+                  </div>
+                  <span class="stat-icon"
+                    ><i
+                      data-lucide="files"
+                      class="h-5 w-5"
+                      aria-hidden="true"
+                    ></i
+                  ></span>
+                </div>
+                <p
+                  class="mt-4 text-xs font-medium uppercase tracking-wide text-slate-500"
+                >
+                  Total invoice value
+                </p>
+                <p
+                  id="total-invoice-value"
+                  class="mt-1 break-words text-lg font-bold text-indigo-700"
+                >
+                  UGX 0
+                </p>
+              </article>
+              <article
+                class="stat-card stat-card-green rounded-2xl border p-5 sm:p-6"
+              >
+                <div class="flex items-start justify-between gap-3">
+                  <div>
+                    <p class="text-sm font-medium text-slate-600">
+                      Paid invoices
+                    </p>
+                    <p
+                      id="paid-invoice-count"
+                      class="mt-3 text-3xl font-bold tracking-tight text-slate-900"
+                    >
+                      0
+                    </p>
+                  </div>
+                  <span class="stat-icon"
+                    ><i
+                      data-lucide="circle-check"
+                      class="h-5 w-5"
+                      aria-hidden="true"
+                    ></i
+                  ></span>
+                </div>
+                <p
+                  class="mt-4 text-xs font-medium uppercase tracking-wide text-slate-500"
+                >
+                  Collected amount
+                </p>
+                <p
+                  id="paid-invoice-value"
+                  class="mt-1 break-words text-lg font-bold text-emerald-700"
+                >
+                  UGX 0
+                </p>
+              </article>
+              <article
+                class="stat-card stat-card-amber rounded-2xl border p-5 sm:p-6"
+              >
+                <div class="flex items-start justify-between gap-3">
+                  <div>
+                    <p class="text-sm font-medium text-slate-600">
+                      Pending invoices
+                    </p>
+                    <p
+                      id="pending-invoice-count"
+                      class="mt-3 text-3xl font-bold tracking-tight text-slate-900"
+                    >
+                      0
+                    </p>
+                  </div>
+                  <span class="stat-icon"
+                    ><i
+                      data-lucide="clock-3"
+                      class="h-5 w-5"
+                      aria-hidden="true"
+                    ></i
+                  ></span>
+                </div>
+                <p
+                  class="mt-4 text-xs font-medium uppercase tracking-wide text-slate-500"
+                >
+                  Awaiting payment
+                </p>
+                <p
+                  id="pending-invoice-value"
+                  class="mt-1 break-words text-lg font-bold text-amber-700"
+                >
+                  UGX 0
+                </p>
+              </article>
+              <article
+                class="stat-card stat-card-red rounded-2xl border p-5 sm:p-6"
+              >
+                <div class="flex items-start justify-between gap-3">
+                  <div>
+                    <p class="text-sm font-medium text-slate-600">
+                      Overdue invoices
+                    </p>
+                    <p
+                      id="overdue-invoice-count"
+                      class="mt-3 text-3xl font-bold tracking-tight text-slate-900"
+                    >
+                      0
+                    </p>
+                  </div>
+                  <span class="stat-icon"
+                    ><i
+                      data-lucide="triangle-alert"
+                      class="h-5 w-5"
+                      aria-hidden="true"
+                    ></i
+                  ></span>
+                </div>
+                <p
+                  class="mt-4 text-xs font-medium uppercase tracking-wide text-slate-500"
+                >
+                  Past-due amount
+                </p>
+                <p
+                  id="overdue-invoice-value"
+                  class="mt-1 break-words text-lg font-bold text-rose-700"
+                >
+                  UGX 0
+                </p>
+              </article>
+            </div>
+          </section>
+
+          <section
+            aria-labelledby="invoice-records-heading"
+            class="content-card overflow-hidden rounded-2xl border border-slate-200 bg-white"
+          >
+            <div
+              class="flex flex-col gap-4 border-b border-slate-100 p-5 sm:p-6 lg:flex-row lg:items-end lg:justify-between"
+            >
+              <div>
+                <p class="section-eyebrow">Records management</p>
+                <h2
+                  id="invoice-records-heading"
+                  class="mt-1 text-xl font-bold tracking-tight text-slate-900"
+                >
+                  Invoice records
+                </h2>
+                <p class="mt-1 text-sm text-slate-500">
+                  Use global search, date range, and individual column filters.
+                  Select a column heading to sort.
+                </p>
+              </div>
+              <p
+                id="result-count"
+                class="rounded-lg bg-slate-100 px-3 py-2 text-sm font-semibold text-slate-600"
+                aria-live="polite"
+              >
+                0 invoices found
+              </p>
+            </div>
+
+            <div
+              class="grid grid-cols-1 gap-3 border-b border-slate-100 bg-slate-50/70 p-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 sm:p-6"
+            >
+              <label class="block sm:col-span-2 xl:col-span-2"
+                ><span
+                  class="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-slate-500"
+                  >Global search</span
+                ><span
+                  class="search-field flex min-h-11 items-center gap-2 rounded-xl border border-slate-200 bg-white px-3"
+                  ><i
+                    data-lucide="search"
+                    class="h-4 w-4 shrink-0 text-slate-400"
+                    aria-hidden="true"
+                  ></i
+                  ><input
+                    id="invoice-search"
+                    type="search"
+                    placeholder="Search all invoice fields..."
+                    class="w-full min-w-0 border-0 bg-transparent py-2 text-sm text-slate-800 outline-none placeholder:text-slate-400"
+                    autocomplete="off" /></span
+              ></label>
+              <label class="block"
+                ><span
+                  class="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-slate-500"
+                  >Status</span
+                ><select
+                  id="status-filter"
+                  class="filter-control min-h-11 w-full rounded-xl border border-slate-200 bg-white px-3 text-sm text-slate-700"
+                >
+                  <option value="all">All statuses</option>
+                  <option value="paid">Paid</option>
+                  <option value="pending">Pending</option>
+                  <option value="overdue">Overdue</option>
+                  <option value="cancelled">Cancelled</option>
+                  <option value="draft">Draft</option>
+                </select></label
+              >
+              <label class="block"
+                ><span
+                  class="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-slate-500"
+                  >Year</span
+                ><select
+                  id="year-filter"
+                  class="filter-control min-h-11 w-full rounded-xl border border-slate-200 bg-white px-3 text-sm text-slate-700"
+                >
+                  <option value="all">All years</option>
+                </select></label
+              >
+              <label class="block"
+                ><span
+                  class="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-slate-500"
+                  >Date from</span
+                ><input
+                  id="date-from"
+                  type="date"
+                  class="filter-control min-h-11 w-full rounded-xl border border-slate-200 bg-white px-3 text-sm text-slate-700"
+              /></label>
+              <label class="block"
+                ><span
+                  class="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-slate-500"
+                  >Date to</span
+                ><input
+                  id="date-to"
+                  type="date"
+                  class="filter-control min-h-11 w-full rounded-xl border border-slate-200 bg-white px-3 text-sm text-slate-700"
+              /></label>
+              <div class="flex items-end sm:col-span-2 xl:col-span-6">
+                <button
+                  id="reset-filters"
+                  type="button"
+                  class="secondary-action inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-600 hover:text-slate-900 sm:w-auto"
+                >
+                  <i
+                    data-lucide="rotate-ccw"
+                    class="h-4 w-4"
+                    aria-hidden="true"
+                  ></i
+                  >Reset all filters and sorting
+                </button>
+              </div>
+            </div>
+
+            <p
+              id="data-message"
+              class="mx-5 mt-4 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800 sm:mx-6"
+              role="status"
+              hidden
+            ></p>
+
+            <div class="table-scroll w-full overflow-x-auto">
+              <table
+                class="invoice-table w-full min-w-[1120px] border-collapse text-left text-sm"
+              >
+                <thead>
+                  <tr>
+                    <th scope="col" class="px-3 py-3">
+                      <button
+                        type="button"
+                        class="sort-button"
+                        data-sort-key="id"
+                      >
+                        Invoice ID
+                        <span class="sort-indicator" aria-hidden="true">↕</span>
+                      </button>
+                    </th>
+                    <th scope="col" class="px-3 py-3">
+                      <button
+                        type="button"
+                        class="sort-button"
+                        data-sort-key="customerId"
+                      >
+                        Customer ID
+                        <span class="sort-indicator" aria-hidden="true">↕</span>
+                      </button>
+                    </th>
+                    <th scope="col" class="px-3 py-3">
+                      <button
+                        type="button"
+                        class="sort-button"
+                        data-sort-key="customerName"
+                      >
+                        Customer
+                        <span class="sort-indicator" aria-hidden="true">↕</span>
+                      </button>
+                    </th>
+                    <th scope="col" class="px-3 py-3">
+                      <button
+                        type="button"
+                        class="sort-button"
+                        data-sort-key="amount"
+                      >
+                        Amount (UGX)
+                        <span class="sort-indicator" aria-hidden="true">↕</span>
+                      </button>
+                    </th>
+                    <th scope="col" class="px-3 py-3">
+                      <button
+                        type="button"
+                        class="sort-button"
+                        data-sort-key="status"
+                      >
+                        Status
+                        <span class="sort-indicator" aria-hidden="true">↕</span>
+                      </button>
+                    </th>
+                    <th scope="col" class="px-3 py-3">
+                      <button
+                        type="button"
+                        class="sort-button"
+                        data-sort-key="year"
+                      >
+                        Year
+                        <span class="sort-indicator" aria-hidden="true">↕</span>
+                      </button>
+                    </th>
+                    <th scope="col" class="px-3 py-3">
+                      <button
+                        type="button"
+                        class="sort-button"
+                        data-sort-key="createdAt"
+                      >
+                        Created date
+                        <span class="sort-indicator" aria-hidden="true">↓</span>
+                      </button>
+                    </th>
+                  </tr>
+                  <tr class="column-filter-row">
+                    <th>
+                      <input
+                        id="column-filter-id"
+                        class="column-filter"
+                        type="search"
+                        aria-label="Filter invoice ID"
+                        placeholder="Filter ID"
+                      />
+                    </th>
+                    <th>
+                      <input
+                        id="column-filter-customer-id"
+                        class="column-filter"
+                        type="search"
+                        aria-label="Filter customer ID"
+                        placeholder="Filter ID"
+                      />
+                    </th>
+                    <th>
+                      <input
+                        id="column-filter-customer-name"
+                        class="column-filter"
+                        type="search"
+                        aria-label="Filter customer name"
+                        placeholder="Filter customer"
+                      />
+                    </th>
+                    <th>
+                      <input
+                        id="column-filter-amount"
+                        class="column-filter"
+                        type="search"
+                        inputmode="decimal"
+                        aria-label="Filter amount"
+                        placeholder="Filter amount"
+                      />
+                    </th>
+                    <th>
+                      <select
+                        id="column-filter-status"
+                        class="column-filter"
+                        aria-label="Filter status"
+                      >
+                        <option value="all">All statuses</option>
+                        <option value="paid">Paid</option>
+                        <option value="pending">Pending</option>
+                        <option value="overdue">Overdue</option>
+                        <option value="cancelled">Cancelled</option>
+                        <option value="draft">Draft</option>
+                      </select>
+                    </th>
+                    <th>
+                      <select
+                        id="column-filter-year"
+                        class="column-filter"
+                        aria-label="Filter year"
+                      >
+                        <option value="all">All years</option>
+                      </select>
+                    </th>
+                    <th>
+                      <input
+                        id="column-filter-created-at"
+                        class="column-filter"
+                        type="search"
+                        aria-label="Filter created date"
+                        placeholder="YYYY-MM-DD"
+                      />
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="invoice-table-body">
+                  <tr>
+                    <td
+                      colspan="7"
+                      class="px-5 py-10 text-center text-slate-500"
+                    >
+                      Loading invoice records...
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div
+                id="empty-state"
+                class="empty-state px-5 py-12 text-center"
+                hidden
+              >
+                <span
+                  class="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-100 text-slate-500"
+                  ><i
+                    data-lucide="file-search"
+                    class="h-6 w-6"
+                    aria-hidden="true"
+                  ></i
+                ></span>
+                <h3 class="mt-4 font-semibold text-slate-800">
+                  No invoices found
+                </h3>
+                <p class="mt-1 text-sm text-slate-500">
+                  Try changing the search, date range, or column filters.
+                </p>
+              </div>
+            </div>
+            <div
+              class="flex flex-col gap-2 border-t border-slate-100 bg-white px-5 py-4 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between sm:px-6"
+            >
+              <span>Amounts are displayed in Ugandan shillings (UGX).</span
+              ><span id="sorting-description"
+                >Sorted by created date: newest first.</span
+              >
+            </div>
+          </section>
+        </main>
+
+        <footer
+          class="app-footer mt-6 flex flex-col items-center justify-between gap-3 border-t border-slate-200 px-1 py-5 text-center text-xs text-slate-500 sm:flex-row sm:text-left"
+        >
+          <p>
+            Copyright &copy; <span id="current-year"></span> Ionic Solutions
+            Ltd. All rights reserved.
+            <a href="tel:+256774185964" class="text-blue-700">
+              Developed By: Kisakye Paul, Software Engineer: +256 774 185 964</a
+            >
+          </p>
+          <span
+            class="inline-flex items-center gap-2 font-semibold text-slate-600"
+            ><i
+              data-lucide="shield-check"
+              class="h-4 w-4 text-indigo-500"
+              aria-hidden="true"
+            ></i>
+            Financial records workspace</span
+          >
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>

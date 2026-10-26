@@ -27,10 +27,16 @@
         transition: all 0.2s ease;
       }
     </style>
-    <script type="module" defer src="./master-dom-pro.js"></script>
   </head>
 
   <body class="bg-slate-50 text-slate-900 antialiased min-h-screen p-4 md:p-8">
+    <section id="other-data">
+      <p class="text-blue-800 text-md">Loading data..</p>
+      <h1>My Invoices</h1>
+      <p id="message">Welcome to your dashboard.</p>
+      <button type="button" id="loadButton">Load invoices</button>
+    </section>
+    <div class="h-80"></div>
     <div class="max-w-7xl mx-auto">
       <div
         class="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4"
@@ -176,5 +182,6 @@
         </div>
       </div>
     </div>
+    <script type="module" defer src="./master-dom-pro.js"></script>
   </body>
 </html>

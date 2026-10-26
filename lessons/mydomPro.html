@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f172a" />
+    <title>Enterprise Financial Records</title>
+
+    <!-- Tailwind CSS utilities -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="style-dompro.css" />
+    <!-- Tailwind Configuration -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Plus Jakarta Sans", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body class="min-h-screen font-sans bg-slate-50 text-slate-800 antialiased">
+    <section
+      id="main-app-wrapper"
+      class="app-shell mx-auto flex min-h-screen w-full flex-col px-4 py-6 sm:px-6 sm:py-8 lg:px-8"
+    >
+      <div class="mx-auto flex w-full max-w-6xl flex-1 flex-col">
+        <header
+          class="app-header relative mb-6 overflow-hidden rounded-2xl px-6 py-8 text-white sm:px-9 sm:py-10"
+        >
+          <div class="header-decoration" aria-hidden="true"></div>
+
+          <div class="relative z-10">
+            <div
+              class="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between"
+            >
+              <div class="flex items-start gap-4">
+                <div
+                  class="brand-mark flex h-12 w-12 shrink-0 items-center justify-center rounded-xl"
+                  aria-hidden="true"
+                >
+                  <i data-lucide="file-text" class="h-6 w-6"></i>
+                </div>
+
+                <div class="min-w-0">
+                  <p
+                    class="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-amber-300"
+                  >
+                    Enterprise workspace
+                  </p>
+                  <h1
+                    class="text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl"
+                  >
+                    Invoice Management System
+                  </h1>
+                </div>
+              </div>
+
+              <div
+                class="workspace-label inline-flex w-fit items-center gap-2 rounded-full px-3 py-2 text-xs font-semibold"
+              >
+                <span class="status-dot" aria-hidden="true"></span>
+                Financial records
+              </div>
+            </div>
+
+            <p
+              class="mt-6 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base"
+            >
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+              Doloremque, similique?
+            </p>
+          </div>
+        </header>
+
+        <main class="flex-1">
+          <section
+            class="content-card rounded-2xl border border-slate-200 bg-white p-5 sm:p-7 lg:p-9"
+          >
+            <div class="mb-6 flex items-start gap-3 sm:gap-4">
+              <div
+                class="section-icon flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
+                aria-hidden="true"
+              >
+                <i data-lucide="layout-dashboard" class="h-5 w-5"></i>
+              </div>
+
+              <div class="min-w-0 flex-1">
+                <p
+                  class="mb-1 text-xs font-bold uppercase tracking-[0.16em] text-indigo-600"
+                >
+                  Workspace overview
+                </p>
+                <h2
+                  class="text-lg font-bold tracking-tight text-slate-900 sm:text-xl"
+                >
+                  Enterprise financial records
+                </h2>
+                <p class="mt-1 text-sm leading-6 text-slate-500">
+                  Your financial management workspace and record information.
+                </p>
+              </div>
+            </div>
+
+            <div class="section-divider mb-6"></div>
+
+            <div class="record-copy rounded-xl p-4 sm:p-6">
+              <p
+                class="text-sm leading-7 text-slate-600 sm:text-base sm:leading-8"
+              >
+                Cutsomer transaction details will be loaded here below.
+              </p>
+            </div>
+            <section class="pt-12 space-y-4">
+              <h1 id="heading">Loading....</h1>
+              <button
+                type="button"
+                id="changeButton"
+                class="border w-full p-2 outline-none bg-blue-500 text-slate-50 hover:bg-blue-700"
+              >
+                Click Me
+              </button>
+            </section>
+            <!-- End of section 01 -->
+            <!-- Start of section 02 -->
+            <section>
+              <h1 id="pageTitle">Customer Dashboard</h1>
+              <p class="description">Manage your customers.</p>
+              <button type="button">Save</button>
+            </section>
+            <!-- end of section 02 -->
+            <!-- Start of section 03 -->
+            <ul id="tasks">
+              <li class="task">Learn variables</li>
+              <li class="task">Learn functions</li>
+              <li class="task">Learn the DOM</li>
+            </ul>
+            <!-- End of section 03 -->
+          </section>
+        </main>
+
+        <footer
+          class="app-footer mt-6 flex flex-col items-center justify-between gap-3 border-t border-slate-200 px-1 py-5 text-center text-xs text-slate-500 sm:flex-row sm:text-left"
+        >
+          <p>Copyright &copy; <span id="current-year"></span></p>
+          <a
+            href="#"
+            class="company-link inline-flex items-center gap-2 font-semibold text-slate-700"
+          >
+            Ionic Solutions Ltd
+            <i
+              data-lucide="arrow-up-right"
+              class="h-3.5 w-3.5"
+              aria-hidden="true"
+            ></i>
+          </a>
+        </footer>
+      </div>
+    </section>
+
+    <script>
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    </script>
+    <script type="module" src="./mydomPro.js"></script>
+  </body>
+</html>
