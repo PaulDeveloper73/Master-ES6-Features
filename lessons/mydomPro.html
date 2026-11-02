@@ -130,19 +130,192 @@
             </section>
             <!-- End of section 01 -->
             <!-- Start of section 02 -->
-            <section>
-              <h1 id="pageTitle">Customer Dashboard</h1>
-              <p class="description">Manage your customers.</p>
-              <button type="button">Save</button>
+            <section class="space-y-4">
+              <h1 id="pageTitle" class="text-blue-600">Customer Dashboard</h1>
+              <p class="description text-sm text-slate-600">
+                Manage your customers.
+              </p>
+              <button
+                type="button"
+                id="save-btn"
+                class="text-sm text-pink-500 border w-full p-3 rounded-md border-pink-500 hover:bg-pink-500 hover:text-white"
+              >
+                Save
+              </button>
             </section>
             <!-- end of section 02 -->
             <!-- Start of section 03 -->
-            <ul id="tasks">
-              <li class="task">Learn variables</li>
-              <li class="task">Learn functions</li>
-              <li class="task">Learn the DOM</li>
-            </ul>
+            <section class="p-4">
+              <ul id="tasks" class="list-disc text-slate-400">
+                <li class="task">Learn variables</li>
+                <li class="task">Learn functions</li>
+                <li class="task">Learn the DOM</li>
+              </ul>
+            </section>
             <!-- End of section 03 -->
+            <!-- Start of section 04 -->
+            <section>
+              <button
+                id="view-invoice"
+                type="button"
+                data-invoice-id="INV-001"
+                data-status="unpaid"
+                class="text-sm text-blue-500 border w-full p-3 rounded-md border-blue-500 hover:bg-blue-500 hover:text-white"
+              >
+                View invoice
+              </button>
+            </section>
+            <!-- End of section 04 -->
+            <!-- Start of section 05 -->
+            <section class="mt-4">
+              <button
+                type="button"
+                id="greetButton"
+                class="bg-pink-200 w-full p-2 hover:bg-pink-400"
+              >
+                Greet me
+              </button>
+              <p id="greeting"></p>
+            </section>
+            <!-- End of section 05 -->
+            <!-- Start of section 06 -->
+            <section class="mt-4">
+              <ul id="invoiceList">
+                <li>
+                  <button type="button" data-id="INV-001">Open INV-001</button>
+                </li>
+                <li>
+                  <button type="button" data-id="INV-002">Open INV-002</button>
+                </li>
+                <li>
+                  <button type="button" data-id="INV-003">Open INV-003</button>
+                </li>
+              </ul>
+            </section>
+            <!-- End of section 06 -->
+            <!-- Start of section 06_B -->
+            <section class="mt-4 space-y-5">
+              <form action="#" id="searchform">
+                <input
+                  id="invoiceSearch"
+                  placeholder="Search invoices..."
+                  class="w-full border p-2 ps-4 rounded-md shadow outline-none focus:border-blue-400"
+                />
+              </form>
+              <p class="text-sm">
+                Search for:
+                <span
+                  id="searchMessage"
+                  class="text-center text-sm text-green-700 animate-pulse"
+                >
+                </span>
+              </p>
+            </section>
+            <!-- End of section 06_B -->
+            <!-- Start of section 07 -->
+            <section class="mt-4">
+              <form
+                id="employeeForm"
+                class="mx-auto w-full max-w-lg space-y-5 rounded-xl border border-gray-200 bg-white p-6 shadow-lg sm:p-8"
+              >
+                <div class="mb-6 border-b border-gray-100 pb-5">
+                  <h2 class="text-2xl font-bold tracking-tight text-gray-900">
+                    Add Employee
+                  </h2>
+                  <p class="mt-2 text-sm text-gray-500">
+                    Enter the employee's details to add them to your records.
+                  </p>
+                </div>
+
+                <div class="space-y-2">
+                  <label
+                    for="employeeName"
+                    class="block text-sm font-semibold text-gray-700"
+                  >
+                    Employee name <span class="text-red-500">*</span>
+                  </label>
+
+                  <input
+                    id="employeeName"
+                    name="employeeName"
+                    type="text"
+                    placeholder="e.g. John Smith"
+                    autocomplete="name"
+                    required
+                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 hover:border-gray-400 focus:border-violet-500 focus:bg-white focus:ring-4 focus:ring-violet-100"
+                  />
+                </div>
+
+                <div class="space-y-2">
+                  <label
+                    for="employeeEmail"
+                    class="block text-sm font-semibold text-gray-700"
+                  >
+                    Email address <span class="text-red-500">*</span>
+                  </label>
+
+                  <input
+                    id="employeeEmail"
+                    name="employeeEmail"
+                    type="email"
+                    placeholder="e.g. john@example.com"
+                    autocomplete="email"
+                    required
+                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 hover:border-gray-400 focus:border-violet-500 focus:bg-white focus:ring-4 focus:ring-violet-100"
+                  />
+                </div>
+                <div class="space-y-2">
+                  <label
+                    for="gross-salalry"
+                    class="block text-sm font-semibold text-gray-700"
+                  >
+                    Gross Salary Ugx<span class="text-red-500">(*)</span>
+                  </label>
+
+                  <input
+                    id="gross-salalry"
+                    name="gross-salalry"
+                    type="number"
+                    placeholder="e.g. 7 000 000"
+                    autocomplete="number"
+                    required
+                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 hover:border-gray-400 focus:border-violet-500 focus:bg-white focus:ring-4 focus:ring-violet-100"
+                  />
+                </div>
+
+                <div class="pt-2">
+                  <button
+                    type="submit"
+                    class="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-violet-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition duration-200 hover:bg-violet-700 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-violet-200 active:scale-[0.99] sm:w-auto"
+                    id="add-customer"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M12 5v14M5 12h14" />
+                    </svg>
+                    Add customer
+                  </button>
+                </div>
+
+                <p
+                  id="formMessage"
+                  role="status"
+                  aria-live="polite"
+                  class="text-sm font-medium text-gray-600"
+                ></p>
+              </form>
+            </section>
+            <!-- End of section 07 -->
           </section>
         </main>
 

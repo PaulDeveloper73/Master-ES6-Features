@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Super Program</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="app.js" defer></script>
+    <!-- Tailwind CSS utilities -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="style-dompro.css" />
+    <!-- Tailwind Configuration -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Plus Jakarta Sans", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-gray-100 font-sans text-gray-900 h-screen min-h-screen flex flex-col"
+  >
+    <header class="bg-white shadow-md p-4">
+      <nav class="flex justify-between items-center">
+        <ul class="flex space-x-4">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="p-4">
+      <h1>Super Program</h1>
+      <p>Welcome to the Super Program!</p>
+    </main>
+    <footer class="bg-white shadow-md p-4 text-center">
+      <p>&copy; 2026 Super Program. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
