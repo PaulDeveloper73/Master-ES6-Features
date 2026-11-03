@@ -100,7 +100,7 @@
           <div class="grid grid-cols-1 lg:grid-cols-2">
             <!-- LEFT: INPUT FORM -->
             <div class="p-6 sm:p-9 lg:p-10">
-              <div class="mb-8">
+              <div class="mb-12">
                 <h2 class="text-xl font-bold text-slate-900">
                   Enter Your Details
                 </h2>
@@ -113,10 +113,16 @@
               <!-- Form -->
               <form id="age-calculator-form" class="space-y-6" novalidate>
                 <!-- Date of Birth -->
-                <div>
+                <div class="space-y-4 relative">
+                  <p
+                    id="alertMsg"
+                    class="text-sm text-red-500 text-center mb-2 absolute inset-x-0 -top-10 animate-pulse hidden"
+                  >
+                    Loading alert...
+                  </p>
                   <label
                     for="date-of-birth"
-                    class="mb-2 block text-sm font-semibold text-slate-700"
+                    class="m-2 block text-sm font-semibold text-slate-700"
                   >
                     Date of Birth
 
