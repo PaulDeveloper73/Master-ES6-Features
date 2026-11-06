@@ -12,12 +12,10 @@ export const initializeAgeCalculator = () => {
     const todaysDate = getTodayDate()
     console.log(`Today's date is: ${todaysDate}`)
     const age = calculateAge(dobValue)
-    displayResult(age)
-    // const age = calculateAge(dobValue)
-    // displayResult(age)
+    displayResult(age, nameValue)
+    form.reset()
+    name.focus()
   })
-  // const age = calculateAge(dobValue)
-  // displayResult(age)
 }
 
 export const calculateAge = dob => {
@@ -44,7 +42,7 @@ const getTodayDate = (today = new Date()) => {
 
   return `${year}-${month}-${day}`
 }
-const displayResult = age => {
+const displayResult = (age, nameValue) => {
   const result = document.querySelector('#result')
-  result.textContent = `${age}`
+  result.textContent = `${nameValue}: You are ${age} years old.`
 }
