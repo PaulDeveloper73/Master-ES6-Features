@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Master Date</title>
+    <!-- Tailwind CSS v3 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+
+    <!-- Tailwind Configuration -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Plus Jakarta Sans", "sans-serif"],
+            },
+            colors: {
+              primary: {
+                50: "#eff6ff",
+                100: "#dbeafe",
+                500: "#3b82f6",
+                600: "#2563eb",
+                700: "#1d4ed8",
+              },
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-slate-100 min-h-screen flex flex-col">
+    <header class="bg-primary-500 text-white p-4">
+      <ul class="flex space-x-4">
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../age-calculator.html">Age Calculator</a></li>
+      </ul>
+    </header>
+    <main>
+      <p class="mx-auto text-center text-2xl font-semibold mt-8 text-blue-800">
+        Welcome to the Max Age Calculator!
+      </p>
+
+      <section
+        id="max-age-calculation"
+        class="max-w-md mx-auto mt-8 p-4 bg-white rounded shadow-md"
+      >
+        <span id="error-message" class="text-red-500 hidden"
+          >Check again!!</span
+        >
+        <form id="calculation-form" class="flex flex-col space-y-4 p-8 rounded">
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            class="p-2 border rounded outline-none focus:ring-1 focus:ring-blue-500"
+          />
+
+          <label for="dob">Date of Birth:</label>
+          <input
+            type="date"
+            id="dob"
+            name="dob"
+            required
+            class="p-2 border rounded outline-none focus:ring-1 focus:ring-blue-500"
+          />
+          <button
+            type="submit"
+            id="calculate-btn"
+            class="bg-primary-500 text-white p-2 rounded hover:bg-primary-600 outline-none focus:ring-1 focus:ring-blue-500"
+          >
+            Calculate Max Age
+          </button>
+        </form>
+      </section>
+      <section
+        id="result-section"
+        class="max-w-md mx-auto mt-8 p-4 mb-4 bg-green-100 rounded shadow-md"
+      >
+        <h3 class="font-bold pb-2">Result:</h3>
+        <p id="result" class="text-lg hidden">asdasdas</p>
+      </section>
+    </main>
+
+    <footer
+      class="bg-slate-500/10 text-blue-800 p-2 mt-auto text-center text-sm"
+    >
+      <p>
+        &copy; <span id="current-year"> 2026 </span>Max Age Calculator. All
+        rights reserved. Developed by
+        <a href="tel:+256774185964">+256 774 185 964</a>
+      </p>
+    </footer>
+
+    <script type="module" src="./max-app.js"></script>
+  </body>
+</html>

@@ -33,6 +33,10 @@ const calculateAge = dob => {
   let age = today.getUTCFullYear() - birthDate.getUTCFullYear()
   const monthDiff = today.getUTCMonth() - birthDate.getUTCMonth()
   const dayDiff = today.getUTCDate() - birthDate.getUTCDate()
+
+  console.log(
+    `Month between DOB and today is:${monthDiff} and days are: ${dayDiff} `
+  )
   if (
     !/^\d{4}-\d{2}-\d{2}$/.test(dob) ||
     Number.isNaN(birthDate.getTime()) ||
@@ -47,7 +51,8 @@ const calculateAge = dob => {
     console.log('Your birthday has not yet occurred this year.')
     throw new Error('Enter a valid date of birth (MM-DD-YYYY).')
   }
-
+  console.log(getTodayDate())
+  console.log('Age: ' + age)
   return age
 }
 const manageAlertDisplay = (message, isError = false) => {
@@ -56,11 +61,41 @@ const manageAlertDisplay = (message, isError = false) => {
   alertMsg.classList.remove('hidden')
 }
 
+const getTodayDate = (today = new Date()) => {
+  const year = today.getFullYear()
+  const month = String(today.getMonth() + 1).padStart(2, '0')
+  const day = String(today.getDate()).padStart(2, '0')
+  console.log('0774'.padEnd(12, 'x'))
+  return `${year}-${month}-${day}`
+}
+const calculateTodaysDate = (today = new Date()) => {
+  const year = String(today.getFullYear()).padStart(4, '0')
+  const month = String(today.getMonth() + 1).padStart(2, '0')
+  const day = String(today.getDate()).padStart(2, '0')
+  return `${year}-${month}-${day}`
+}
+console.log('Todays date is: ' + calculateTodaysDate())
 const displayAge = age => {
   const result = document.querySelector('#age-years')
   result.textContent = `${age}`
 }
-console.log(calculateAge('1992-06-26')) // Test case: birthday already passed
-// console.log(calculateAge('2027-02-28')) // Test case: invalid date
-console.log(calculateAge('2023-06-26')) // Test case: birthday still upcoming
+const trialAgecounter = () => {
+  const testCases = [
+    // '1992-06-26', // birthday already passed
+    '1992-06-26' // birthday still upcoming
+    // '2025-02-30', // invalid date
+    // '2027-02-28' // future birth date
+  ]
+  testCases.forEach(testCase => {
+    try {
+      const age = calculateAge(testCase)
+      console.log('You are: ' + age + ' Yrs Old')
+      return age
+    } catch (err) {
+      throw new Error(err.message)
+    }
+  })
+}
+trialAgecounter() //Activate to the for different cases
 window.addEventListener('DOMContentLoaded', initApp())
+console.log('Loading other data here..')
