@@ -168,10 +168,16 @@ const globalSearch = (dataSource, query) => {
   }
 
   const userSearcResults = dataSource.filter(user => {
-    const id = String(user.id?.trim() ?? '').toLowerCase()
-    const customer = String(user.customer?.trim() ?? '').toLowerCase()
+    const id = String(user.id ?? '')
+      .trim()
+      .toLowerCase()
+    const customer = String(user.customer ?? '')
+      .trim()
+      .toLowerCase()
     const amount = String(user.amount ?? '')
-    const status = String(user.status?.trim() ?? '').toLowerCase()
+    const status = String(user.status ?? '')
+      .trim()
+      .toLowerCase()
 
     return (
       id.includes(searchTerm) ||
